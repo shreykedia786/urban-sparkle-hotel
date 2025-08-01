@@ -53,7 +53,7 @@ const Index = () => {
                         &lt;/div&gt;
                       &lt;/body&gt;
                     &lt;/html&gt;
-                  " width="100%" style="border: none; overflow: hidden; height: 110px; position: absolute; z-index: 99;" id="86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe">
+                  " width="100%" style="border: none; overflow: hidden; height: 110px; position: absolute; z-index: 99;" id="86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation allow-pointer-lock allow-modals">
                   </iframe>
                   <script>
                     function changeIframeHeight(newHeight) {
