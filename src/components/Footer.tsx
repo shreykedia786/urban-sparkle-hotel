@@ -122,16 +122,16 @@ export function Footer() {
                     {section.title}
                   </h3>
                   <ul className="space-y-3">
-                    {section.links.map((link) => (
-                      <li key={link.href}>
-                        <Link
-                          to={link.href}
-                          className="text-primary-foreground/70 hover:text-neon transition-colors text-sm"
-                        >
-                          {link.label}
-                        </Link>
-                      </li>
-                    ))}
+                     {section.links.map((link, index) => (
+                       <li key={`${section.title}-${index}`}>
+                         <Link
+                           to={link.href}
+                           className="text-primary-foreground/70 hover:text-neon transition-colors text-sm"
+                         >
+                           {link.label}
+                         </Link>
+                       </li>
+                     ))}
                   </ul>
                 </div>
               ))}

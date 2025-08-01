@@ -37,33 +37,7 @@ const Index = () => {
         
         {/* Booking Widget Overlay */}
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 w-full max-w-6xl px-4">
-          <div 
-            dangerouslySetInnerHTML={{
-              __html: `
-                <div class="book-form-home" id="37316DCF-9BB6-4B80-BE26-7651D87C5F6B_outerRGdiv" style="height:80px">
-                  <iframe srcdoc="
-                    &lt;html lang='en'&gt;
-                      &lt;head&gt;
-                        &lt;title&gt;Booking Engine Widget&lt;/title&gt;
-                        &lt;link href='https://ibe.rategain.com/widget/index.css' rel='stylesheet'/&gt;
-                      &lt;/head&gt;
-                      &lt;body&gt;            
-                        &lt;div data-brandID='51252208-2987-4e7b-a5bc-faa6c7e9d739'  data-chainID='fcae71fb-0983-4ac8-b48c-f4ce8ea72d05'  data-backgroundprimarycolor='#17202B' data-backgroundsecondarycolor='#17202B'   data-widgetFontColor='null'   data-widgetSearchFontColorButton='null'  data-widgetSearchColorButton='#9b7929'  data-widgetSearchFontColorHoverstate='null'   data-widgetSearchColorHoverState='#7e6428'   id='rg-booking-widget' &gt;
-                          &lt;script src='https://ibe.rategain.com/widget/index.js'&gt;&lt;/script&gt;
-                        &lt;/div&gt;
-                      &lt;/body&gt;
-                    &lt;/html&gt;
-                  " width="100%" style="border: none; overflow: hidden; height: 110px; position: absolute; z-index: 99;" id="86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation allow-pointer-lock allow-modals">
-                  </iframe>
-                  <script>
-                    function changeIframeHeight(newHeight) {
-                      document.getElementById('86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe').style.height = newHeight + 'px';
-                    }
-                  </script>
-                </div>
-              `
-            }}
-          />
+          <BookingWidget />
         </div>
       </section>
 
@@ -75,8 +49,8 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Genuine <span className="text-donatello-gold">Hospitality</span><br />
-              Outstanding <span className="text-donatello-gold">Comfort</span>
+              Genuine <span className="text-neon">Hospitality</span><br />
+              Outstanding <span className="text-neon">Comfort</span>
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
               Visit the vibrant city of Dubai and experience the perfect blend of innovative design, classic refinement and personalized service that is Donatello Hotel!
@@ -96,7 +70,7 @@ const Index = () => {
               />
               <div className="text-left">
                 <h6 className="text-sm font-semibold text-muted-foreground mb-1">Reservation</h6>
-                <a href="tel:+97143409040" className="text-donatello-gold text-xl font-bold hover:underline">
+                <a href="tel:+97143409040" className="text-neon text-xl font-bold hover:underline">
                   +971 4 340 9040
                 </a>
               </div>
@@ -260,22 +234,22 @@ const Index = () => {
                 {amenity.link ? (
                   amenity.link.startsWith('/') ? (
                     <Link to={amenity.link} className="block">
-                      <amenity.icon className="w-12 h-12 mx-auto mb-3 text-donatello-gold group-hover:scale-110 transition-transform" />
-                      <h3 className="text-sm font-semibold text-foreground group-hover:text-donatello-gold transition-colors">
+                      <amenity.icon className="w-12 h-12 mx-auto mb-3 text-neon group-hover:scale-110 transition-transform" />
+                      <h3 className="text-sm font-semibold text-foreground group-hover:text-neon transition-colors">
                         {amenity.title}
                       </h3>
                     </Link>
                   ) : (
                     <a href={amenity.link} target="_blank" rel="noopener noreferrer" className="block">
-                      <amenity.icon className="w-12 h-12 mx-auto mb-3 text-donatello-gold group-hover:scale-110 transition-transform" />
-                      <h3 className="text-sm font-semibold text-foreground group-hover:text-donatello-gold transition-colors">
+                      <amenity.icon className="w-12 h-12 mx-auto mb-3 text-neon group-hover:scale-110 transition-transform" />
+                      <h3 className="text-sm font-semibold text-foreground group-hover:text-neon transition-colors">
                         {amenity.title}
                       </h3>
                     </a>
                   )
                 ) : (
                   <div className="block">
-                    <amenity.icon className="w-12 h-12 mx-auto mb-3 text-donatello-gold" />
+                    <amenity.icon className="w-12 h-12 mx-auto mb-3 text-neon" />
                     <h3 className="text-sm font-semibold text-foreground">{amenity.title}</h3>
                   </div>
                 )}
