@@ -38,41 +38,32 @@ const Index = () => {
         {/* Booking Widget Overlay */}
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 w-full max-w-6xl px-4">
           <div 
-            className="book-form-home bg-white/10 backdrop-blur-sm rounded-lg p-4" 
-            id="37316DCF-9BB6-4B80-BE26-7651D87C5F6B_outerRGdiv"
-          >
-            <div 
-              dangerouslySetInnerHTML={{
-                __html: `
-                  <div data-brandID='51252208-2987-4e7b-a5bc-faa6c7e9d739' 
-                       data-chainID='fcae71fb-0983-4ac8-b48c-f4ce8ea72d05' 
-                       data-backgroundprimarycolor='#17202B' 
-                       data-backgroundsecondarycolor='#17202B' 
-                       data-widgetFontColor='#ffffff' 
-                       data-widgetSearchFontColorButton='#ffffff' 
-                       data-widgetSearchColorButton='#9b7929' 
-                       data-widgetSearchFontColorHoverstate='#ffffff' 
-                       data-widgetSearchColorHoverState='#7e6428' 
-                       id='rg-booking-widget'>
-                  </div>
+            dangerouslySetInnerHTML={{
+              __html: `
+                <div class="book-form-home" id="37316DCF-9BB6-4B80-BE26-7651D87C5F6B_outerRGdiv" style="height:80px">
+                  <iframe srcdoc="
+                    &lt;html lang='en'&gt;
+                      &lt;head&gt;
+                        &lt;title&gt;Booking Engine Widget&lt;/title&gt;
+                        &lt;link href='https://ibe.rategain.com/widget/index.css' rel='stylesheet'/&gt;
+                      &lt;/head&gt;
+                      &lt;body&gt;            
+                        &lt;div data-brandID='51252208-2987-4e7b-a5bc-faa6c7e9d739'  data-chainID='fcae71fb-0983-4ac8-b48c-f4ce8ea72d05'  data-backgroundprimarycolor='#17202B' data-backgroundsecondarycolor='#17202B'   data-widgetFontColor='null'   data-widgetSearchFontColorButton='null'  data-widgetSearchColorButton='#9b7929'  data-widgetSearchFontColorHoverstate='null'   data-widgetSearchColorHoverState='#7e6428'   id='rg-booking-widget' &gt;
+                          &lt;script src='https://ibe.rategain.com/widget/index.js'&gt;&lt;/script&gt;
+                        &lt;/div&gt;
+                      &lt;/body&gt;
+                    &lt;/html&gt;
+                  " width="100%" style="border: none; overflow: hidden; height: 110px; position: absolute; z-index: 99;" id="86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe">
+                  </iframe>
                   <script>
-                    if (!document.querySelector('link[href*="rategain.com/widget/index.css"]')) {
-                      const link = document.createElement('link');
-                      link.href = 'https://ibe.rategain.com/widget/index.css';
-                      link.rel = 'stylesheet';
-                      document.head.appendChild(link);
-                    }
-                    if (!window.rgWidgetLoaded) {
-                      const script = document.createElement('script');
-                      script.src = 'https://ibe.rategain.com/widget/index.js';
-                      script.onload = function() { window.rgWidgetLoaded = true; };
-                      document.head.appendChild(script);
+                    function changeIframeHeight(newHeight) {
+                      document.getElementById('86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe').style.height = newHeight + 'px';
                     }
                   </script>
-                `
-              }}
-            />
-          </div>
+                </div>
+              `
+            }}
+          />
         </div>
       </section>
 
