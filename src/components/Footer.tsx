@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
@@ -18,37 +19,37 @@ const footerSections = [
   {
     title: "Hotel",
     links: [
-      { label: "Our Property", href: "#property" },
-      { label: "Rooms & Suites", href: "#rooms" },
-      { label: "Amenities", href: "#amenities" },
-      { label: "Gallery", href: "#gallery" },
+      { label: "Our Property", href: "/property" },
+      { label: "Rooms & Suites", href: "/rooms" },
+      { label: "Amenities", href: "/amenities" },
+      { label: "Gallery", href: "/gallery" },
     ],
   },
   {
     title: "Experience",
     links: [
-      { label: "Dining", href: "#dining" },
-      { label: "Wellness & Spa", href: "#wellness" },
-      { label: "Local Experiences", href: "#experiences" },
-      { label: "Events & Meetings", href: "#events" },
+      { label: "Dining", href: "/dining" },
+      { label: "Wellness & Spa", href: "/wellness" },
+      { label: "Local Experiences", href: "/experiences" },
+      { label: "Events & Meetings", href: "/events" },
     ],
   },
   {
     title: "Services",
     links: [
-      { label: "Concierge", href: "#concierge" },
-      { label: "Business Center", href: "#business" },
-      { label: "Valet Parking", href: "#parking" },
-      { label: "Transportation", href: "#transport" },
+      { label: "Concierge", href: "/concierge" },
+      { label: "Business Center", href: "/business" },
+      { label: "Valet Parking", href: "/parking" },
+      { label: "Transportation", href: "/transport" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About Us", href: "#about" },
-      { label: "Press & Awards", href: "#press" },
-      { label: "Careers", href: "#careers" },
-      { label: "Sustainability", href: "#sustainability" },
+      { label: "About Us", href: "/about" },
+      { label: "Press & Awards", href: "/press" },
+      { label: "Careers", href: "/careers" },
+      { label: "Sustainability", href: "/sustainability" },
     ],
   },
 ];
@@ -109,12 +110,12 @@ export function Footer() {
                   <ul className="space-y-3">
                     {section.links.map((link) => (
                       <li key={link.href}>
-                        <a
-                          href={link.href}
+                        <Link
+                          to={link.href}
                           className="text-primary-foreground/70 hover:text-neon transition-colors text-sm"
                         >
                           {link.label}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>

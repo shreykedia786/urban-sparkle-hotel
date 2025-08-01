@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Switch } from "@/components/ui/switch";
@@ -6,18 +7,18 @@ import { Menu, Moon, Sun, Globe, MapPin, Calendar } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navigationItems = [
-  { label: "Home", href: "#home" },
-  { label: "Our Property", href: "#property" },
-  { label: "Rooms", href: "#rooms" },
-  { label: "Dining", href: "#dining" },
-  { label: "Wellness", href: "#wellness" },
-  { label: "Amenities", href: "#amenities" },
-  { label: "Experiences", href: "#experiences" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Offers", href: "#offers" },
-  { label: "Events", href: "#events" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Our Property", href: "/property" },
+  { label: "Rooms", href: "/rooms" },
+  { label: "Dining", href: "/dining" },
+  { label: "Wellness", href: "/wellness" },
+  { label: "Amenities", href: "/amenities" },
+  { label: "Experiences", href: "/experiences" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Offers", href: "/offers" },
+  { label: "Events", href: "/events" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function Navigation() {
@@ -51,13 +52,13 @@ export function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {navigationItems.slice(0, 6).map((item) => (
-              <a
+              <Link
                 key={item.href}
-                href={item.href}
+                to={item.href}
                 className="text-sm font-medium text-foreground hover:text-neon transition-colors"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
             
             {/* More dropdown - simplified for now */}
@@ -125,14 +126,14 @@ export function Navigation() {
                   {/* Mobile Navigation */}
                   <div className="flex flex-col space-y-4">
                     {navigationItems.map((item) => (
-                      <a
+                      <Link
                         key={item.href}
-                        href={item.href}
+                        to={item.href}
                         onClick={() => setIsOpen(false)}
                         className="text-lg font-medium text-foreground hover:text-neon transition-colors py-2"
                       >
                         {item.label}
-                      </a>
+                      </Link>
                     ))}
                   </div>
 
