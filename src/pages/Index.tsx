@@ -37,7 +37,26 @@ const Index = () => {
         
         {/* Booking Widget Overlay */}
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 w-full max-w-6xl px-4">
-          <BookingWidget />
+          <div id="37316DCF-9BB6-4B80-BE26-7651D87C5F6B_outerRGdiv" style={{height:'80px'}}>
+            <iframe 
+              srcDoc={`
+                <html lang='en'>
+                  <head>
+                  <title>Booking Engine Widget</title>
+                  <link href='https://ibe.rategain.com/widget/index.css' rel='stylesheet'/>
+                  </head>
+                  <body>            
+                    <div data-brandID='7b3fcece-9b92-46d0-b5b1-8ad7dc52ed77'  data-chainID='f1c6c3f5-04d5-4180-9895-7f3e3f6b240c'  data-backgroundprimarycolor='#3b4c58' data-backgroundsecondarycolor='#3b4c58'   data-widgetFontColor='#ffffff'   data-widgetSearchFontColorButton='#ffffff'  data-widgetSearchColorButton='#f0c868'  data-widgetSearchFontColorHoverstate='#FFFFFF'   data-widgetSearchColorHoverState='#d6d5d5'   id='rg-booking-widget' >
+                      <script src='https://ibe.rategain.com/widget/index.js'></script>
+                    </div>
+                  </body>
+                </html>
+              `}
+              width="100%" 
+              style={{border:'none', overflow: 'hidden', height: '600px'}} 
+              id="86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe" 
+            />
+          </div>
         </div>
       </section>
 
