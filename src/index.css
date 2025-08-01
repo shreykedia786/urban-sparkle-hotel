@@ -20,15 +20,15 @@ All colors MUST be HSL for perfect theme consistency.
     --popover: 0 0% 100%;
     --popover-foreground: 220 13% 18%;
 
-    /* Brand Colors - Urban Sophistication */
-    --primary: 220 13% 18%;           /* Deep charcoal - main brand */
-    --primary-foreground: 0 0% 98%;
-    --primary-hover: 220 13% 25%;     /* Lighter charcoal for hover */
+    /* Brand Colors - Donatello Hotel Palette */
+    --primary: 25 30% 8%;             /* Deep brown/charcoal */
+    --primary-foreground: 40 100% 97%; /* Warm white */
+    --primary-hover: 25 30% 12%;       /* Lighter brown */
     
-    /* Neon Accent - Electric Energy */
-    --neon: 172 100% 50%;             /* Bright cyan for CTA */
-    --neon-foreground: 220 13% 18%;
-    --neon-glow: 172 100% 50%;        /* Glow effect */
+    /* Gold Accent - Luxury & Elegance */
+    --neon: 35 85% 55%;               /* Donatello gold */
+    --neon-foreground: 25 30% 8%;     /* Dark text on gold */
+    --neon-glow: 35 85% 65%;          /* Lighter gold for glow */
     
     /* Urban Neutrals */
     --secondary: 220 9% 46%;          /* Medium gray */

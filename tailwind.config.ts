@@ -91,8 +91,8 @@ export default {
 				'card': 'var(--shadow-card)'
 			},
 			fontFamily: {
-				'sans': ['Inter', 'system-ui', 'sans-serif'],
-				'display': ['Outfit', 'Inter', 'system-ui', 'sans-serif']
+				'sans': ['Roboto', 'Open Sans', 'system-ui', 'sans-serif'],
+				'display': ['Roboto', 'Open Sans', 'system-ui', 'sans-serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

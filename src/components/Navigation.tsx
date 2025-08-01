@@ -3,22 +3,19 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Switch } from "@/components/ui/switch";
-import { Menu, Moon, Sun, Globe, MapPin, Calendar } from "lucide-react";
+import { Menu, Moon, Sun, Globe, Calendar, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import donatelloLogo from "@/assets/donatello-logo.png";
 
 const navigationItems = [
-  { label: "Home", href: "/" },
-  { label: "Our Property", href: "/property" },
-  { label: "Rooms", href: "/rooms" },
-  { label: "Dining", href: "/dining" },
-  { label: "Wellness", href: "/wellness" },
-  { label: "Amenities", href: "/amenities" },
-  { label: "Experiences", href: "/experiences" },
-  { label: "Gallery", href: "/gallery" },
-  { label: "Offers", href: "/offers" },
-  { label: "Events", href: "/events" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: { en: "Home", es: "Inicio" }, href: "/" },
+  { label: { en: "Rooms & Suites", es: "Habitaciones y Suites" }, href: "/rooms" },
+  { label: { en: "Dining", es: "Restaurantes" }, href: "/dining" },
+  { label: { en: "Leisure & Fitness", es: "Ocio y Fitness" }, href: "/leisure" },
+  { label: { en: "Meetings & Events", es: "Reuniones y Eventos" }, href: "/meetings" },
+  { label: { en: "Promotions", es: "Promociones" }, href: "/promotions" },
+  { label: { en: "Gallery", es: "Galería" }, href: "/gallery" },
+  { label: { en: "Contact", es: "Contacto" }, href: "/contact" },
 ];
 
 export function Navigation() {
@@ -40,33 +37,33 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-neon rounded-lg flex items-center justify-center">
-              <MapPin className="w-5 h-5 text-neon-foreground" />
+          <div className="flex items-center space-x-3">
+            <img 
+              src={donatelloLogo} 
+              alt="Donatello Hotel Dubai" 
+              className="h-8 w-auto"
+            />
+            <div className="flex flex-col">
+              <span className="font-display font-bold text-lg text-foreground leading-tight">
+                DONATELLO
+              </span>
+              <span className="text-xs text-muted-foreground -mt-1">
+                Hotel-Dubai
+              </span>
             </div>
-            <span className="font-display font-bold text-xl text-foreground">
-              Urban Sparkle
-            </span>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            {navigationItems.slice(0, 6).map((item) => (
+            {navigationItems.map((item) => (
               <Link
                 key={item.href}
                 to={item.href}
-                className="text-sm font-medium text-foreground hover:text-neon transition-colors"
+                className="text-sm font-medium text-foreground hover:text-neon transition-colors uppercase tracking-wide"
               >
-                {item.label}
+                {item.label[language.toLowerCase() as 'en' | 'es']}
               </Link>
             ))}
-            
-            {/* More dropdown - simplified for now */}
-            <div className="relative group">
-              <button className="text-sm font-medium text-foreground hover:text-neon transition-colors">
-                More
-              </button>
-            </div>
           </div>
 
           {/* Controls */}
@@ -92,7 +89,7 @@ export function Navigation() {
             {/* Book Now Button */}
             <Button variant="neon" size="sm" className="hidden sm:flex">
               <Calendar className="w-4 h-4" />
-              Book Now
+              {language === "EN" ? "BOOK NOW" : "RESERVAR"}
             </Button>
 
             {/* Mobile Menu */}
@@ -130,9 +127,9 @@ export function Navigation() {
                         key={item.href}
                         to={item.href}
                         onClick={() => setIsOpen(false)}
-                        className="text-lg font-medium text-foreground hover:text-neon transition-colors py-2"
+                        className="text-lg font-medium text-foreground hover:text-neon transition-colors py-2 uppercase tracking-wide"
                       >
-                        {item.label}
+                        {item.label[language.toLowerCase() as 'en' | 'es']}
                       </Link>
                     ))}
                   </div>
@@ -140,7 +137,7 @@ export function Navigation() {
                   {/* Mobile CTA */}
                   <Button variant="neon" size="lg" className="w-full">
                     <Calendar className="w-5 h-5" />
-                    Book Your Stay
+                    {language === "EN" ? "BOOK YOUR STAY" : "RESERVA TU ESTANCIA"}
                   </Button>
                 </div>
               </SheetContent>

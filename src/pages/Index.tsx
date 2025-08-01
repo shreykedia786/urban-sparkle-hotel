@@ -1,19 +1,22 @@
+import { useState } from "react";
 import { Navigation } from "@/components/Navigation";
-import { HeroSection } from "@/components/HeroSection";
+import { DonatelloHero } from "@/components/DonatelloHero";
 import { BookingWidget } from "@/components/BookingWidget";
 import { FeaturesSection } from "@/components/FeaturesSection";
 import { RoomsPreview } from "@/components/RoomsPreview";
-import { OffersSection } from "@/components/OffersSection";
+import { DonatelloOffers } from "@/components/DonatelloOffers";
 import { Footer } from "@/components/Footer";
 
 const Index = () => {
+  const [language, setLanguage] = useState("EN");
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
       <Navigation />
       
       {/* Hero Section */}
-      <HeroSection />
+      <DonatelloHero language={language} />
       
       {/* Persistent Booking Widget - Fixed Position */}
       <div className="fixed bottom-4 right-4 z-40 hidden lg:block">
@@ -34,7 +37,7 @@ const Index = () => {
       <RoomsPreview />
       
       {/* Offers Section */}
-      <OffersSection />
+      <DonatelloOffers language={language} />
       
       {/* Footer */}
       <Footer />
