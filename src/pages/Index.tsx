@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Footer } from "@/components/Footer";
 import { Phone, Wifi, Car, Users, Shield, Building2, Utensils, Waves, Heart, Coffee } from "lucide-react";
 import { Link } from "react-router-dom";
+import heroHotelImage from "@/assets/hero-hotel-exterior.jpg";
 
 const Index = () => {
   const [language, setLanguage] = useState("EN");
@@ -20,7 +21,7 @@ const Index = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('https://donatellodubai.com/wp-content/uploads/2024/12/donatello-logo-Copy.png')"
+            backgroundImage: `url(${heroHotelImage})`
           }}
         />
         <div className="absolute inset-0 bg-black/50" />
