@@ -30,7 +30,7 @@ export function BookingWidget({ className }: { className?: string }) {
   const isLuxury = className?.includes('luxury');
 
   return (
-    <div className={cn("w-full max-w-none mx-auto", className)}>
+    <div className={cn("w-full max-w-8xl mx-auto", className)}>
       <div className="relative">
         {/* Elegant luxury frame */}
         <div className="absolute -inset-1 bg-gradient-to-r from-neon/5 via-neon/10 to-neon/5 rounded-3xl blur-xl"></div>
@@ -46,13 +46,13 @@ export function BookingWidget({ className }: { className?: string }) {
           <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-white/5 pointer-events-none"></div>
           
           {/* Main content */}
-          <div className="relative z-10 p-8 lg:p-12">
+          <div className="relative z-10 p-8 lg:p-16 xl:p-20">
             
             {/* Spacious booking form - Better proportions */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-10">
+            <div className="grid grid-cols-1 lg:grid-cols-10 gap-8 lg:gap-12 xl:gap-16">
               
-              {/* Destination - More space (4 columns) */}
-              <div className="lg:col-span-4">
+              {/* Destination - More space (3 columns) */}
+              <div className="lg:col-span-3">
                 <div className="space-y-4">
                   <Label className={cn(
                     "text-sm font-medium tracking-[0.5px] uppercase flex items-center gap-2.5",
@@ -65,15 +65,15 @@ export function BookingWidget({ className }: { className?: string }) {
                   </Label>
                   <Select value={destination} onValueChange={setDestination}>
                     <SelectTrigger className={cn(
-                      "h-18 rounded-2xl border-0 text-lg font-medium transition-all duration-500 group px-6",
+                      "h-20 rounded-2xl border-0 text-lg font-medium transition-all duration-500 group px-8",
                       isLuxury 
                         ? "bg-white/80 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.12)] hover:bg-white/90 text-foreground" 
                         : "bg-white/10 backdrop-blur-2xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.4)] hover:bg-white/15 text-white"
                     )}>
-                      <SelectValue placeholder="Select your destination" className="text-left truncate" />
+                      <SelectValue placeholder="Select your destination" className="text-left" />
                     </SelectTrigger>
                     <SelectContent className={cn(
-                      "rounded-2xl border-0 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15)] backdrop-blur-3xl min-w-[300px]",
+                      "rounded-2xl border-0 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15)] backdrop-blur-3xl min-w-[400px]",
                       isLuxury ? "bg-white/98" : "bg-black/95"
                     )}>
                       {destinations.map((dest) => (
@@ -108,21 +108,21 @@ export function BookingWidget({ className }: { className?: string }) {
                       <Button
                         variant="ghost"
                         className={cn(
-                          "h-18 w-full rounded-2xl border-0 text-lg font-medium transition-all duration-500 text-left justify-start px-6 min-w-0",
+                          "h-20 w-full rounded-2xl border-0 text-lg font-medium transition-all duration-500 text-left justify-start px-8",
                           isLuxury 
                             ? "bg-white/80 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.12)] hover:bg-white/90 text-foreground" 
                             : "bg-white/10 backdrop-blur-2xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.4)] hover:bg-white/15 text-white",
                           !checkIn && (isLuxury ? "text-muted-foreground" : "text-white/60")
                         )}
                       >
-                        <div className="flex flex-col items-start min-w-0 w-full">
+                        <div className="flex flex-col items-start w-full">
                           {checkIn ? (
                             <>
-                              <span className="text-lg font-semibold truncate">{format(checkIn, "MMM dd")}</span>
-                              <span className="text-sm opacity-70 truncate">{format(checkIn, "yyyy")}</span>
+                              <span className="text-lg font-semibold">{format(checkIn, "MMM dd")}</span>
+                              <span className="text-sm opacity-70">{format(checkIn, "yyyy")}</span>
                             </>
                           ) : (
-                            <span className="truncate">Select date</span>
+                            <span>Select date</span>
                           )}
                         </div>
                       </Button>
@@ -164,21 +164,21 @@ export function BookingWidget({ className }: { className?: string }) {
                       <Button
                         variant="ghost"
                         className={cn(
-                          "h-18 w-full rounded-2xl border-0 text-lg font-medium transition-all duration-500 text-left justify-start px-6 min-w-0",
+                          "h-20 w-full rounded-2xl border-0 text-lg font-medium transition-all duration-500 text-left justify-start px-8",
                           isLuxury 
                             ? "bg-white/80 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.12)] hover:bg-white/90 text-foreground" 
                             : "bg-white/10 backdrop-blur-2xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.4)] hover:bg-white/15 text-white",
                           !checkOut && (isLuxury ? "text-muted-foreground" : "text-white/60")
                         )}
                       >
-                        <div className="flex flex-col items-start min-w-0 w-full">
+                        <div className="flex flex-col items-start w-full">
                           {checkOut ? (
                             <>
-                              <span className="text-lg font-semibold truncate">{format(checkOut, "MMM dd")}</span>
-                              <span className="text-sm opacity-70 truncate">{format(checkOut, "yyyy")}</span>
+                              <span className="text-lg font-semibold">{format(checkOut, "MMM dd")}</span>
+                              <span className="text-sm opacity-70">{format(checkOut, "yyyy")}</span>
                             </>
                           ) : (
-                            <span className="truncate">Select date</span>
+                            <span>Select date</span>
                           )}
                         </div>
                       </Button>
@@ -220,17 +220,17 @@ export function BookingWidget({ className }: { className?: string }) {
                       <Button
                         variant="ghost"
                         className={cn(
-                          "h-18 w-full rounded-2xl border-0 text-lg font-medium transition-all duration-500 text-left justify-between px-6 min-w-0",
+                          "h-20 w-full rounded-2xl border-0 text-lg font-medium transition-all duration-500 text-left justify-between px-8",
                           isLuxury 
                             ? "bg-white/80 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.12)] hover:bg-white/90 text-foreground" 
                             : "bg-white/10 backdrop-blur-2xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.4)] hover:bg-white/15 text-white"
                         )}
                       >
-                        <div className="flex flex-col items-start min-w-0 flex-1">
-                          <span className="text-lg font-semibold truncate w-full">{rooms} Room{parseInt(rooms) > 1 ? 's' : ''}</span>
-                          <span className="text-sm opacity-70 truncate w-full">{adults} Adult{parseInt(adults) > 1 ? 's' : ''}{parseInt(children) > 0 ? `, ${children} Child${parseInt(children) > 1 ? 'ren' : ''}` : ''}</span>
+                        <div className="flex flex-col items-start flex-1">
+                          <span className="text-lg font-semibold w-full">{rooms} Room{parseInt(rooms) > 1 ? 's' : ''}</span>
+                          <span className="text-sm opacity-70 w-full">{adults} Adult{parseInt(adults) > 1 ? 's' : ''}{parseInt(children) > 0 ? `, ${children} Child${parseInt(children) > 1 ? 'ren' : ''}` : ''}</span>
                         </div>
-                        <ChevronDown className="w-5 h-5 opacity-50 flex-shrink-0 ml-2" />
+                        <ChevronDown className="w-5 h-5 opacity-50 flex-shrink-0 ml-4" />
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent className={cn(
@@ -303,12 +303,12 @@ export function BookingWidget({ className }: { className?: string }) {
                 <div className="flex flex-col justify-end h-full">
                   <Button 
                     size="lg"
-                    className="h-18 bg-gradient-to-r from-neon via-neon-glow to-neon hover:from-neon-glow hover:via-neon hover:to-neon-glow text-neon-foreground font-bold rounded-2xl transition-all duration-700 hover:scale-[1.02] shadow-[0_12px_32px_-8px_rgba(147,126,39,0.4)] hover:shadow-[0_20px_48px_-8px_rgba(147,126,39,0.6)] relative overflow-hidden group text-base xl:text-lg tracking-wide px-6 whitespace-nowrap"
+                    className="h-20 bg-gradient-to-r from-neon via-neon-glow to-neon hover:from-neon-glow hover:via-neon hover:to-neon-glow text-neon-foreground font-bold rounded-2xl transition-all duration-700 hover:scale-[1.02] shadow-[0_12px_32px_-8px_rgba(147,126,39,0.4)] hover:shadow-[0_20px_48px_-8px_rgba(147,126,39,0.6)] relative overflow-hidden group text-base xl:text-lg tracking-wide px-8"
                   >
                     {/* Luxury shine effect */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -skew-x-12 animate-pulse"></div>
                     <Search className="w-5 h-5 mr-3 relative z-10 flex-shrink-0" />
-                    <span className="relative z-10 font-bold tracking-wider">SEARCH LUXURY STAYS</span>
+                    <span className="relative z-10 font-bold tracking-wider">SEARCH</span>
                   </Button>
                 </div>
               </div>
@@ -335,7 +335,7 @@ export function BookingWidget({ className }: { className?: string }) {
                     value={promoCode}
                     onChange={(e) => setPromoCode(e.target.value)}
                     className={cn(
-                      "h-16 rounded-2xl border-0 text-lg font-medium transition-all duration-500 px-6",
+                      "h-20 rounded-2xl border-0 text-lg font-medium transition-all duration-500 px-8",
                       isLuxury 
                         ? "bg-white/80 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.12)] focus:shadow-[0_16px_40px_-8px_rgba(0,0,0,0.15)] hover:bg-white/90 text-foreground placeholder:text-muted-foreground/70"
                         : "bg-white/10 backdrop-blur-2xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.4)] focus:shadow-[0_16px_40px_-8px_rgba(0,0,0,0.5)] hover:bg-white/15 text-white placeholder:text-white/60"
@@ -345,7 +345,7 @@ export function BookingWidget({ className }: { className?: string }) {
                 <Button 
                   variant="outline"
                   className={cn(
-                    "h-16 px-12 rounded-2xl border-0 text-lg font-semibold transition-all duration-500 tracking-wide whitespace-nowrap",
+                    "h-20 px-12 rounded-2xl border-0 text-lg font-semibold transition-all duration-500 tracking-wide whitespace-nowrap",
                     isLuxury 
                       ? "bg-white/60 text-neon hover:bg-neon/15 hover:text-neon shadow-[0_8px_24px_-6px_rgba(147,126,39,0.15)] hover:shadow-[0_12px_32px_-6px_rgba(147,126,39,0.25)]"
                       : "bg-white/10 text-neon hover:bg-neon/15 hover:text-white shadow-[0_8px_24px_-6px_rgba(147,126,39,0.2)] hover:shadow-[0_12px_32px_-6px_rgba(147,126,39,0.3)]"
