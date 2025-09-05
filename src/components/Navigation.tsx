@@ -38,13 +38,11 @@ export function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="p-1.5 rounded-md bg-foreground/90 dark:bg-transparent">
-              <img 
-                src={donatelloLogo} 
-                alt="Donatello Hotel Dubai Logo" 
-                className="h-10 w-auto"
-              />
-            </div>
+            <img 
+              src={donatelloLogo} 
+              alt="Donatello Hotel Dubai" 
+              className="h-10 w-auto"
+            />
           </div>
 
           {/* Desktop Navigation */}
