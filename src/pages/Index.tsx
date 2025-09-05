@@ -156,65 +156,60 @@ const Index = () => {
           </div>
         </div>
         
-        {/* Luxury Booking Experience - Seamlessly Integrated */}
+        {/* Compact Luxury Booking Experience */}
         <div className="absolute bottom-0 left-0 right-0 z-20">
-          {/* Gradient transition from hero to booking */}
-          <div className="h-32 bg-gradient-to-b from-transparent via-black/20 to-black/40"></div>
+          {/* Reduced gradient transition */}
+          <div className="h-16 bg-gradient-to-b from-transparent via-black/10 to-black/30"></div>
           
-          <div className="relative bg-gradient-to-b from-black/20 to-black/60 backdrop-blur-xl">
+          <div className="relative bg-gradient-to-b from-black/30 to-black/50 backdrop-blur-xl">
             {/* Luxury accent elements */}
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/60 to-transparent"></div>
-            <div className="absolute top-1 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/40 to-transparent"></div>
             
-            <div className="max-w-8xl mx-auto px-6 lg:px-8 py-8">
-              {/* Premium header */}
-              <div className="text-center mb-8">
-                <div className="inline-flex items-center gap-3 mb-4">
-                  <div className="w-12 h-px bg-gradient-to-r from-transparent to-neon"></div>
+            <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
+              {/* Compact header */}
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center gap-2 mb-3">
                   <div className="flex text-neon">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-current" />
+                      <Star key={i} className="w-3 h-3 fill-current" />
                     ))}
                   </div>
-                  <div className="w-12 h-px bg-gradient-to-l from-transparent to-neon"></div>
                 </div>
-                <h3 className="text-3xl md:text-4xl font-bold text-white mb-3 tracking-wide">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 tracking-wide">
                   Reserve Your 
                   <span className="bg-gradient-to-r from-neon via-neon-glow to-neon bg-clip-text text-transparent"> Luxury Experience</span>
                 </h3>
-                <p className="text-white/80 text-lg font-light tracking-wide">
+                <p className="text-white/70 text-base font-light">
                   Secure your stay with instant confirmation
                 </p>
               </div>
 
-              {/* Enhanced Booking Widget */}
-              <div className="relative">
-                {/* Luxury frame effects */}
-                <div className="absolute -inset-2 bg-gradient-to-r from-neon/20 via-neon-glow/30 to-neon/20 rounded-3xl blur-xl opacity-60"></div>
-                <div className="absolute -inset-1 bg-gradient-to-r from-neon/30 via-transparent to-neon/30 rounded-3xl blur-sm"></div>
+              {/* Compact Booking Widget */}
+              <div className="relative max-w-5xl mx-auto">
+                {/* Reduced luxury frame effects */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-neon/15 via-neon-glow/25 to-neon/15 rounded-2xl blur-lg opacity-40"></div>
                 
-                <div className="relative bg-white/10 backdrop-blur-3xl border border-white/20 rounded-3xl p-8 shadow-[0_25px_60px_-12px_rgba(0,0,0,0.8)]">
-                  {/* Premium glass effects */}
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
-                  <div className="absolute top-0 left-0 bottom-0 w-px bg-gradient-to-b from-white/40 via-transparent to-transparent"></div>
+                <div className="relative bg-white/8 backdrop-blur-2xl border border-white/15 rounded-2xl p-5 shadow-[0_15px_35px_-10px_rgba(0,0,0,0.6)]">
+                  {/* Minimal glass effects */}
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"></div>
                   
                   <BookingWidget />
-                </div>
-              </div>
-
-              {/* Luxury trust indicators */}
-              <div className="flex items-center justify-center gap-8 mt-8 text-white/60 text-sm">
-                <div className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-neon" />
-                  <span>Secure Booking</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-neon" />
-                  <span>Instant Confirmation</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Award className="w-4 h-4 text-neon" />
-                  <span>Best Rate Guarantee</span>
+                  
+                  {/* Inline compact trust indicators */}
+                  <div className="flex items-center justify-center gap-6 mt-4 pt-3 border-t border-white/10 text-white/50 text-xs">
+                    <div className="flex items-center gap-1.5">
+                      <Shield className="w-3 h-3 text-neon" />
+                      <span>Secure Booking</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <Clock className="w-3 h-3 text-neon" />
+                      <span>Instant Confirmation</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <Award className="w-3 h-3 text-neon" />
+                      <span>Best Rate Guarantee</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

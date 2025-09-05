@@ -30,20 +30,20 @@ export function BookingWidget({ className }: { className?: string }) {
   return (
     <div className={cn("w-full", className)}>
       <div className="relative">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {/* Destination */}
-          <div className="lg:col-span-1">
-            <Label htmlFor="destination" className="text-sm font-semibold text-white/90 mb-3 flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-neon" />
+          <div className="col-span-2 md:col-span-1 lg:col-span-1">
+            <Label htmlFor="destination" className="text-xs font-medium text-white/80 mb-2 flex items-center gap-1.5">
+              <MapPin className="w-3 h-3 text-neon" />
               Destination
             </Label>
             <Select value={destination} onValueChange={setDestination}>
-              <SelectTrigger className="h-14 bg-white/15 backdrop-blur-md border border-white/30 hover:border-neon/50 focus:border-neon/70 transition-all duration-300 rounded-2xl shadow-inner text-white placeholder:text-white/60">
+              <SelectTrigger className="h-11 bg-white/12 backdrop-blur-md border border-white/25 hover:border-neon/40 focus:border-neon/60 transition-all duration-300 rounded-xl text-white placeholder:text-white/50 text-sm">
                 <SelectValue placeholder="Select destination" />
               </SelectTrigger>
-              <SelectContent className="bg-black/90 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl">
+              <SelectContent className="bg-black/90 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl">
                 {destinations.map((dest) => (
-                  <SelectItem key={dest} value={dest} className="text-white hover:bg-neon/20 focus:bg-neon/30 rounded-xl">
+                  <SelectItem key={dest} value={dest} className="text-white hover:bg-neon/20 focus:bg-neon/30 rounded-lg text-sm">
                     {dest}
                   </SelectItem>
                 ))}
@@ -52,9 +52,9 @@ export function BookingWidget({ className }: { className?: string }) {
           </div>
 
           {/* Check-in Date */}
-          <div className="lg:col-span-1">
-            <Label className="text-sm font-semibold text-white/90 mb-3 flex items-center gap-2">
-              <CalendarDays className="w-4 h-4 text-neon" />
+          <div className="col-span-1">
+            <Label className="text-xs font-medium text-white/80 mb-2 flex items-center gap-1.5">
+              <CalendarDays className="w-3 h-3 text-neon" />
               Check-in
             </Label>
             <Popover>
@@ -62,30 +62,30 @@ export function BookingWidget({ className }: { className?: string }) {
                 <Button
                   variant="outline"
                   className={cn(
-                    "h-14 w-full justify-start text-left font-normal bg-white/15 backdrop-blur-md border border-white/30 hover:border-neon/50 focus:border-neon/70 transition-all duration-300 rounded-2xl shadow-inner text-white",
-                    !checkIn && "text-white/60"
+                    "h-11 w-full justify-start text-left font-normal bg-white/12 backdrop-blur-md border border-white/25 hover:border-neon/40 focus:border-neon/60 transition-all duration-300 rounded-xl text-white text-sm",
+                    !checkIn && "text-white/50"
                   )}
                 >
-                  {checkIn ? format(checkIn, "MMM dd, yyyy") : "Select date"}
+                  {checkIn ? format(checkIn, "MMM dd") : "Select"}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0 bg-black/90 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl" align="start">
+              <PopoverContent className="w-auto p-0 bg-black/90 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl" align="start">
                 <Calendar
                   mode="single"
                   selected={checkIn}
                   onSelect={setCheckIn}
                   disabled={(date) => date < new Date()}
                   initialFocus
-                  className="p-3 pointer-events-auto text-white"
+                  className="p-2 pointer-events-auto text-white"
                 />
               </PopoverContent>
             </Popover>
           </div>
 
           {/* Check-out Date */}
-          <div className="lg:col-span-1">
-            <Label className="text-sm font-semibold text-white/90 mb-3 flex items-center gap-2">
-              <CalendarDays className="w-4 h-4 text-neon" />
+          <div className="col-span-1">
+            <Label className="text-xs font-medium text-white/80 mb-2 flex items-center gap-1.5">
+              <CalendarDays className="w-3 h-3 text-neon" />
               Check-out
             </Label>
             <Popover>
@@ -93,47 +93,47 @@ export function BookingWidget({ className }: { className?: string }) {
                 <Button
                   variant="outline"
                   className={cn(
-                    "h-14 w-full justify-start text-left font-normal bg-white/15 backdrop-blur-md border border-white/30 hover:border-neon/50 focus:border-neon/70 transition-all duration-300 rounded-2xl shadow-inner text-white",
-                    !checkOut && "text-white/60"
+                    "h-11 w-full justify-start text-left font-normal bg-white/12 backdrop-blur-md border border-white/25 hover:border-neon/40 focus:border-neon/60 transition-all duration-300 rounded-xl text-white text-sm",
+                    !checkOut && "text-white/50"
                   )}
                 >
-                  {checkOut ? format(checkOut, "MMM dd, yyyy") : "Select date"}
+                  {checkOut ? format(checkOut, "MMM dd") : "Select"}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0 bg-black/90 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl" align="start">
+              <PopoverContent className="w-auto p-0 bg-black/90 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl" align="start">
                 <Calendar
                   mode="single"
                   selected={checkOut}
                   onSelect={setCheckOut}
                   disabled={(date) => date < (checkIn || new Date())}
                   initialFocus
-                  className="p-3 pointer-events-auto text-white"
+                  className="p-2 pointer-events-auto text-white"
                 />
               </PopoverContent>
             </Popover>
           </div>
 
           {/* Rooms & Guests */}
-          <div className="lg:col-span-1">
-            <Label className="text-sm font-semibold text-muted-foreground mb-2 flex items-center gap-2">
-              <Users className="w-4 h-4 text-neon" />
+          <div className="col-span-2 md:col-span-1 lg:col-span-1">
+            <Label className="text-xs font-medium text-white/80 mb-2 flex items-center gap-1.5">
+              <Users className="w-3 h-3 text-neon" />
               Rooms & Guests
             </Label>
             <Popover>
               <PopoverTrigger asChild>
                 <Button
                   variant="outline"
-                  className="h-12 w-full justify-between bg-white/20 backdrop-blur-md border border-white/30 hover:border-white/50 focus:border-neon/60 transition-all duration-300 rounded-xl shadow-inner"
+                  className="h-11 w-full justify-start text-left bg-white/12 backdrop-blur-md border border-white/25 hover:border-neon/40 focus:border-neon/60 transition-all duration-300 rounded-xl text-white text-sm"
                 >
-                  <span>{rooms} Room{parseInt(rooms) > 1 ? 's' : ''}, {adults} Adult{parseInt(adults) > 1 ? 's' : ''}{parseInt(children) > 0 ? `, ${children} Child${parseInt(children) > 1 ? 'ren' : ''}` : ''}</span>
+                  <span className="truncate">{rooms}R, {adults}A{parseInt(children) > 0 ? `, ${children}C` : ''}</span>
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-80 p-4 bg-white/90 backdrop-blur-xl border border-white/30 rounded-xl shadow-2xl">
-                <div className="space-y-4">
+              <PopoverContent className="w-64 p-3 bg-black/90 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl">
+                <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <Label className="font-medium">Rooms</Label>
+                    <Label className="font-medium text-white text-sm">Rooms</Label>
                     <Select value={rooms} onValueChange={setRooms}>
-                      <SelectTrigger className="w-20">
+                      <SelectTrigger className="w-16 h-8 text-xs">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -146,9 +146,9 @@ export function BookingWidget({ className }: { className?: string }) {
                     </Select>
                   </div>
                   <div className="flex items-center justify-between">
-                    <Label className="font-medium">Adults</Label>
+                    <Label className="font-medium text-white text-sm">Adults</Label>
                     <Select value={adults} onValueChange={setAdults}>
-                      <SelectTrigger className="w-20">
+                      <SelectTrigger className="w-16 h-8 text-xs">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -161,9 +161,9 @@ export function BookingWidget({ className }: { className?: string }) {
                     </Select>
                   </div>
                   <div className="flex items-center justify-between">
-                    <Label className="font-medium">Children</Label>
+                    <Label className="font-medium text-white text-sm">Children</Label>
                     <Select value={children} onValueChange={setChildren}>
-                      <SelectTrigger className="w-20">
+                      <SelectTrigger className="w-16 h-8 text-xs">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -181,37 +181,37 @@ export function BookingWidget({ className }: { className?: string }) {
           </div>
 
           {/* Search Button */}
-          <div className="lg:col-span-1 flex flex-col justify-end">
+          <div className="col-span-2 md:col-span-1 lg:col-span-1 flex flex-col justify-end">
             <Button 
               size="lg"
-              className="h-14 bg-gradient-to-r from-neon via-neon-glow to-neon hover:from-neon-glow hover:via-neon hover:to-neon-glow text-neon-foreground font-bold rounded-2xl transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_-12px_rgba(147,126,39,0.8)] border border-neon/30 hover:border-neon/60 relative overflow-hidden group"
+              className="h-11 bg-gradient-to-r from-neon via-neon-glow to-neon hover:from-neon-glow hover:via-neon hover:to-neon-glow text-neon-foreground font-semibold rounded-xl transition-all duration-500 hover:scale-105 hover:shadow-[0_15px_30px_-8px_rgba(147,126,39,0.6)] border border-neon/30 hover:border-neon/60 relative overflow-hidden group"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 -skew-x-12"></div>
-              <Search className="w-6 h-6 mr-3 relative z-10" />
-              <span className="relative z-10 text-lg tracking-wide font-bold">Search</span>
+              <Search className="w-4 h-4 mr-2 relative z-10" />
+              <span className="relative z-10 text-sm tracking-wide font-semibold">Search</span>
             </Button>
           </div>
         </div>
 
-        {/* Promo Code Row */}
-        <div className="relative z-10 mt-8 pt-6 border-t border-white/20">
-          <div className="flex flex-col sm:flex-row gap-6 items-end">
+        {/* Compact Promo Code Row */}
+        <div className="relative z-10 mt-4 pt-4 border-t border-white/10">
+          <div className="flex flex-col sm:flex-row gap-3 items-end">
             <div className="flex-1 max-w-xs">
-              <Label htmlFor="promo" className="text-sm font-semibold text-white/90 mb-3 flex items-center gap-2">
-                <Tag className="w-4 h-4 text-neon" />
+              <Label htmlFor="promo" className="text-xs font-medium text-white/80 mb-2 flex items-center gap-1.5">
+                <Tag className="w-3 h-3 text-neon" />
                 Promo Code
               </Label>
               <Input
                 id="promo"
-                placeholder="Enter promo code"
+                placeholder="Enter code"
                 value={promoCode}
                 onChange={(e) => setPromoCode(e.target.value)}
-                className="h-12 bg-white/15 backdrop-blur-md border border-white/30 hover:border-neon/50 focus:border-neon/70 transition-all duration-300 rounded-2xl shadow-inner placeholder:text-white/50 text-white"
+                className="h-9 bg-white/10 backdrop-blur-md border border-white/25 hover:border-neon/40 focus:border-neon/60 transition-all duration-300 rounded-lg placeholder:text-white/40 text-white text-sm"
               />
             </div>
             <Button 
               variant="outline"
-              className="h-12 px-8 bg-white/10 backdrop-blur-md border border-neon/60 text-neon hover:bg-neon/20 hover:border-neon transition-all duration-300 rounded-2xl shadow-inner font-semibold"
+              className="h-9 px-4 bg-white/5 backdrop-blur-md border border-neon/40 text-neon hover:bg-neon/15 hover:border-neon transition-all duration-300 rounded-lg font-medium text-sm"
             >
               Apply
             </Button>
