@@ -1,207 +1,194 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navigation } from "@/components/Navigation";
-import { DonatelloOffers } from "@/components/DonatelloOffers";
 import { BookingWidget } from "@/components/BookingWidget";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Footer } from "@/components/Footer";
-import { Phone, Wifi, Car, Users, Shield, Building2, Utensils, Waves, Heart, Coffee } from "lucide-react";
+import { 
+  MapPin, 
+  Star, 
+  Quote, 
+  ChevronRight, 
+  Wifi, 
+  Car, 
+  Users, 
+  Shield, 
+  Building2, 
+  Utensils, 
+  Waves, 
+  Heart, 
+  Coffee,
+  Award,
+  Crown,
+  Sparkles,
+  Clock,
+  Phone
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import heroHotelImage from "@/assets/hero-hotel-exterior.jpg";
 
 const Index = () => {
   const [language, setLanguage] = useState("EN");
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const luxuryFeatures = [
+    { icon: Crown, title: "5-Star Service", desc: "Personalized attention to every detail" },
+    { icon: Sparkles, title: "Premium Amenities", desc: "World-class facilities and services" },
+    { icon: Award, title: "Award Winning", desc: "Recognized for excellence in hospitality" },
+    { icon: MapPin, title: "Prime Location", desc: "Heart of Dubai's business district" }
+  ];
+
+  const accommodations = [
+    {
+      title: "Presidential Suite",
+      image: "https://donatellodubai.com/wp-content/uploads/2022/07/grand-suit.jpg",
+      size: "120 sqm",
+      price: "From AED 2,500",
+      features: ["City View", "Balcony", "Separate Living Area"]
+    },
+    {
+      title: "Executive Suite", 
+      image: "https://donatellodubai.com/wp-content/uploads/2022/07/excetive-suit.jpg",
+      size: "85 sqm",
+      price: "From AED 1,800",
+      features: ["Panoramic View", "Work Desk", "Premium Amenities"]
+    },
+    {
+      title: "Deluxe Room",
+      image: "https://donatellodubai.com/wp-content/uploads/2022/07/king-room.jpg",
+      size: "45 sqm", 
+      price: "From AED 950",
+      features: ["Modern Design", "Smart TV", "Mini Bar"]
+    }
+  ];
+
+  const experiences = [
+    {
+      title: "D ROOF Skybar",
+      image: "https://donatellodubai.com/wp-content/uploads/2022/07/img2.jpg",
+      desc: "Rooftop dining with stunning city views"
+    },
+    {
+      title: "Wellness Spa",
+      image: "https://donatellodubai.com/wp-content/uploads/2022/08/img1.jpg", 
+      desc: "Rejuvenating treatments and therapies"
+    },
+    {
+      title: "Business Center",
+      image: "https://donatellodubai.com/wp-content/uploads/elementor/thumbs/Deluxe-triple-room-qgikb00f97d580iounvw2msp6ytii4o36nl1ji1vtw.jpg",
+      desc: "State-of-the-art meeting facilities"
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      {/* Hero Section with Booking */}
-      <section className="relative min-h-screen bg-gradient-to-br from-black/60 to-black/40">
+      {/* Hero Section - Cinematic */}
+      <section className="relative min-h-screen overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 animate-fade-in"
           style={{
             backgroundImage: `url(${heroHotelImage})`
           }}
         />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 flex items-center justify-center min-h-screen">
-          <div className="text-center text-white px-4">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">
-              Welcome to Donatello Hotel Dubai
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70" />
+        
+        {/* Floating elements */}
+        <div className="absolute top-20 right-10 w-2 h-2 bg-neon rounded-full animate-pulse opacity-60" />
+        <div className="absolute top-32 right-32 w-1 h-1 bg-white rounded-full animate-pulse opacity-40" />
+        <div className="absolute bottom-40 left-20 w-1.5 h-1.5 bg-neon rounded-full animate-pulse opacity-50" />
+        
+        <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
+          <div className={`text-center text-white transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className="mb-6">
+              <span className="inline-block px-4 py-2 bg-neon/20 backdrop-blur-sm rounded-full text-neon text-sm font-medium border border-neon/30">
+                ★ ★ ★ ★ ★ Luxury Experience
+              </span>
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-white via-white to-neon bg-clip-text text-transparent">
+                DONATELLO
+              </span>
+              <br />
+              <span className="text-3xl md:text-4xl lg:text-5xl font-light text-white/90">
+                Hotel Dubai
+              </span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-              Experience the perfect blend of innovative design, classic refinement and personalized service
+            
+            <p className="text-xl md:text-2xl lg:text-3xl mb-8 max-w-4xl mx-auto leading-relaxed text-white/90 font-light">
+              Where luxury meets sophistication in the heart of Dubai
             </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+              <Button 
+                size="lg" 
+                className="bg-neon hover:bg-neon-glow text-neon-foreground font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+              >
+                Discover Luxury
+                <ChevronRight className="w-5 h-5 ml-2" />
+              </Button>
+              
+              <Button 
+                variant="outline" 
+                size="lg"
+                className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm px-8 py-4 rounded-full text-lg transition-all duration-300"
+              >
+                Virtual Tour
+              </Button>
+            </div>
+            
+            <div className="flex items-center justify-center gap-8 text-sm text-white/70">
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4" />
+                <span>Al Barsha, Dubai</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone className="w-4 h-4" />
+                <span>+971 4 340 9040</span>
+              </div>
+            </div>
           </div>
         </div>
         
-        {/* Booking Widget Overlay */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 w-full max-w-6xl px-4">
-          <BookingWidget />
-        </div>
-      </section>
-
-      {/* Featured Offers */}
-      <DonatelloOffers language={language} />
-
-      {/* Hotel Description */}
-      <section className="py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Genuine <span className="text-neon">Hospitality</span><br />
-              Outstanding <span className="text-neon">Comfort</span>
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              Visit the vibrant city of Dubai and experience the perfect blend of innovative design, classic refinement and personalized service that is Donatello Hotel!
-            </p>
-            <p className="text-muted-foreground leading-relaxed mb-8">
-              Situated in the bustling Al Barsha district, stay close to popular destinations, attractions, and business areas with the Dubai Metro nearby. Choose from 132 well-appointed and spacious rooms that offer you the flexibility to work and comfort to rest. Indulge in delectable food and drinks in our six restaurants & bars, and share your golden moments online with free Wi-Fi internet. Get relaxed and rejuvenated in the hotel spa then take a dip in the rooftop pool and keep in shape at our fitness center.
-            </p>
-            <p className="text-lg font-semibold text-foreground mb-8">
-              We look forward to welcoming you to your home away from home: Donatello Hotel Dubai!
-            </p>
-            
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <img 
-                src="https://donatellodubai.com/wp-content/uploads/2024/12/donatello-logo-Copy.png" 
-                alt="Donatello Hotel Dubai Logo" 
-                className="h-16"
-              />
-              <div className="text-left">
-                <h6 className="text-sm font-semibold text-muted-foreground mb-1">Reservation</h6>
-                <a href="tel:+97143409040" className="text-neon text-xl font-bold hover:underline">
-                  +971 4 340 9040
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Featured Images */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="relative group">
-              <img 
-                src="https://donatellodubai.com/wp-content/uploads/2022/08/img1.jpg" 
-                alt="Grand Suite at Donatello Hotel" 
-                className="w-full h-64 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-black/40 rounded-lg group-hover:bg-black/20 transition-colors" />
-              <div className="absolute bottom-4 left-4 text-white">
-                <h3 className="text-lg font-bold">Grand Suite at Donatello Hotel</h3>
-              </div>
-            </div>
-            <div className="relative group">
-              <img 
-                src="https://donatellodubai.com/wp-content/uploads/2022/07/img2.jpg" 
-                alt="The D ROOF" 
-                className="w-full h-64 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-black/40 rounded-lg group-hover:bg-black/20 transition-colors" />
-              <div className="absolute bottom-4 left-4 text-white">
-                <h3 className="text-lg font-bold">The D ROOF</h3>
-              </div>
-            </div>
-            <div className="relative group">
-              <img 
-                src="https://donatellodubai.com/wp-content/uploads/elementor/thumbs/Deluxe-triple-room-qgikb00f97d580iounvw2msp6ytii4o36nl1ji1vtw.jpg" 
-                alt="Deluxe Triple Rooms" 
-                className="w-full h-64 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-black/40 rounded-lg group-hover:bg-black/20 transition-colors" />
-              <div className="absolute bottom-4 left-4 text-white">
-                <h3 className="text-lg font-bold">Deluxe Triple Rooms</h3>
-              </div>
-            </div>
+        {/* Booking Widget - Floating */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-full max-w-6xl px-4 z-20">
+          <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden">
+            <BookingWidget />
           </div>
         </div>
       </section>
 
-      {/* Business and Leisure CTA */}
-      <section className="py-16 bg-muted">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-            Whether traveling for business or leisure, staying at the Donatello Hotel Dubai is sure to be more comfortable, productive and enjoyable than ever before.
-          </h2>
-          <p className="text-lg text-muted-foreground mb-4">
-            Rooms are equipped with deluxe features that are perfect for both short & long-term stays.
-          </p>
-          <p className="text-sm text-muted-foreground">
-            Check in time 14:00 hrs &nbsp;|&nbsp; Check out time 12:00 hrs
-          </p>
-        </div>
-      </section>
-
-      {/* Room Types */}
-      <section className="py-24 bg-background">
+      {/* Luxury Features */}
+      <section className="py-24 bg-gradient-to-b from-background to-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Explore our Accommodation and Dining options
+            <span className="inline-block px-4 py-2 bg-neon/10 text-neon text-sm font-medium rounded-full mb-4">
+              EXCELLENCE REDEFINED
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+              Unparalleled 
+              <span className="bg-gradient-to-r from-neon to-neon-glow bg-clip-text text-transparent"> Luxury</span>
             </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Every detail crafted for the discerning traveler seeking the extraordinary
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                title: "Executive Suites",
-                image: "https://donatellodubai.com/wp-content/uploads/2022/07/excetive-suit.jpg",
-                link: "https://reservations.donatellodubai.com/reservation?propCode=UI-0025219&roomCode=EXSK"
-              },
-              {
-                title: "Grand Suites", 
-                image: "https://donatellodubai.com/wp-content/uploads/2022/07/grand-suit.jpg",
-                link: "https://reservations.donatellodubai.com/reservation?propCode=UI-0025219&roomCode=GRSK"
-              },
-              {
-                title: "Deluxe Triple Room",
-                image: "https://donatellodubai.com/wp-content/uploads/2022/11/Home-Deluxe-Triple-Room.jpg", 
-                link: "https://reservations.donatellodubai.com/reservation?propCode=UI-0025219&roomCode=DLX3"
-              },
-              {
-                title: "Executive Family Suites",
-                image: "https://donatellodubai.com/wp-content/uploads/2022/11/Home-Exe-Family-Suite.jpg",
-                link: "https://reservations.donatellodubai.com/reservation?propCode=UI-0025219&roomCode=EXSF"
-              },
-              {
-                title: "Deluxe Room – Twin",
-                image: "https://donatellodubai.com/ar/wp-content/uploads/2022/07/twin-room.jpg",
-                link: "https://reservations.donatellodubai.com/reservation?propCode=UI-0025219&roomCode=DLXT"
-              },
-              {
-                title: "Deluxe Room – King", 
-                image: "https://donatellodubai.com/wp-content/uploads/2022/07/king-room.jpg",
-                link: "https://reservations.donatellodubai.com/reservation?propCode=UI-0025219&roomCode=DLXK"
-              },
-              {
-                title: "Executive Room",
-                image: "https://donatellodubai.com/wp-content/uploads/2022/07/excetive-room.jpg",
-                link: "https://reservations.donatellodubai.com/reservation?propCode=UI-0025219&roomCode=EXEK"
-              },
-              {
-                title: "Junior Suites",
-                image: "https://donatellodubai.com/wp-content/uploads/2022/07/junior-suits.jpg", 
-                link: "https://reservations.donatellodubai.com/reservation?propCode=UI-0025219&roomCode=JRSK"
-              }
-            ].map((room, index) => (
-              <Card key={index} className="group overflow-hidden hover:shadow-lg transition-all duration-300">
-                <CardContent className="p-0">
-                  <div className="relative overflow-hidden">
-                    <img 
-                      src={room.image} 
-                      alt={room.title}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {luxuryFeatures.map((feature, index) => (
+              <Card key={index} className="group bg-gradient-to-br from-white to-muted/30 border-none shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105">
+                <CardContent className="p-8 text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-neon to-neon-glow rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <feature.icon className="w-8 h-8 text-white" />
                   </div>
-                  <div className="p-4">
-                    <h3 className="text-lg font-bold text-foreground mb-3">{room.title}</h3>
-                    <Button asChild variant="outline" size="sm" className="w-full">
-                      <a href={room.link} target="_blank" rel="noopener noreferrer">
-                        Book Now
-                      </a>
-                    </Button>
-                  </div>
+                  <h3 className="text-xl font-bold text-foreground mb-3">{feature.title}</h3>
+                  <p className="text-muted-foreground">{feature.desc}</p>
                 </CardContent>
               </Card>
             ))}
@@ -209,96 +196,175 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Hotel Amenities */}
-      <section className="py-24 bg-muted">
+      {/* Accommodations */}
+      <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Hotel Amenities
+            <span className="inline-block px-4 py-2 bg-neon/10 text-neon text-sm font-medium rounded-full mb-4">
+              PREMIUM ACCOMMODATIONS
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Exquisite Rooms & Suites
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Immerse yourself in elegantly appointed spaces designed for comfort and luxury
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {accommodations.map((room, index) => (
+              <Card key={index} className="group overflow-hidden bg-gradient-to-b from-white to-muted/20 border-none shadow-xl hover:shadow-2xl transition-all duration-500">
+                <div className="relative overflow-hidden">
+                  <img 
+                    src={room.image}
+                    alt={room.title}
+                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute top-4 right-4 bg-neon text-neon-foreground px-3 py-1 rounded-full text-sm font-semibold">
+                    {room.size}
+                  </div>
+                </div>
+                
+                <CardContent className="p-6">
+                  <h3 className="text-2xl font-bold text-foreground mb-2">{room.title}</h3>
+                  <p className="text-neon text-xl font-bold mb-4">{room.price}</p>
+                  
+                  <div className="space-y-2 mb-6">
+                    {room.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center gap-2 text-muted-foreground">
+                        <Star className="w-4 h-4 text-neon" />
+                        <span className="text-sm">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <Button className="w-full bg-gradient-to-r from-neon to-neon-glow hover:from-neon-glow hover:to-neon text-neon-foreground rounded-full py-3 font-semibold transition-all duration-300 hover:scale-105">
+                    Reserve Now
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Experiences */}
+      <section className="py-24 bg-gradient-to-br from-muted/30 to-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-neon/10 text-neon text-sm font-medium rounded-full mb-4">
+              SIGNATURE EXPERIENCES
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Curated Experiences
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-            {[
-              { icon: Shield, title: "Sustainability", link: "https://donatellodubai.com/wp-content/uploads/2022/08/Sustainability.jpg" },
-              { icon: Utensils, title: "Restaurants", link: "/dining" },
-              { icon: Waves, title: "Outdoor Pool", link: "/leisure#swmng-poop" },
-              { icon: Heart, title: "Healthcare & Spa", link: "/leisure" },
-              { icon: Wifi, title: "Free Wi-Fi", link: null },
-              { icon: Users, title: "Meeting & Events", link: "/meetings" },
-              { icon: Car, title: "Parking", link: null },
-              { icon: Coffee, title: "Concierge Services", link: null },
-              { icon: Building2, title: "Business Center", link: null },
-              { icon: Shield, title: "Smoking & Non-Smoking Rooms", link: null }
-            ].map((amenity, index) => (
-              <div key={index} className="text-center group">
-                {amenity.link ? (
-                  amenity.link.startsWith('/') ? (
-                    <Link to={amenity.link} className="block">
-                      <amenity.icon className="w-12 h-12 mx-auto mb-3 text-neon group-hover:scale-110 transition-transform" />
-                      <h3 className="text-sm font-semibold text-foreground group-hover:text-neon transition-colors">
-                        {amenity.title}
-                      </h3>
-                    </Link>
-                  ) : (
-                    <a href={amenity.link} target="_blank" rel="noopener noreferrer" className="block">
-                      <amenity.icon className="w-12 h-12 mx-auto mb-3 text-neon group-hover:scale-110 transition-transform" />
-                      <h3 className="text-sm font-semibold text-foreground group-hover:text-neon transition-colors">
-                        {amenity.title}
-                      </h3>
-                    </a>
-                  )
-                ) : (
-                  <div className="block">
-                    <amenity.icon className="w-12 h-12 mx-auto mb-3 text-neon" />
-                    <h3 className="text-sm font-semibold text-foreground">{amenity.title}</h3>
-                  </div>
-                )}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {experiences.map((exp, index) => (
+              <div key={index} className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500">
+                <div className="relative h-80">
+                  <img 
+                    src={exp.image}
+                    alt={exp.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                </div>
+                
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <h3 className="text-2xl font-bold mb-2">{exp.title}</h3>
+                  <p className="text-white/90 mb-4">{exp.desc}</p>
+                  <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm rounded-full">
+                    Learn More
+                  </Button>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Customer Testimonials */}
+      {/* Testimonials */}
       <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Our Happy Clients
+            <span className="inline-block px-4 py-2 bg-neon/10 text-neon text-sm font-medium rounded-full mb-4">
+              GUEST TESTIMONIALS
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Voices of Excellence
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                text: "Excelente servicio,buen hotel, SURESH muy buen anfitrión we aré from maxicana he came un this hotel very Good hotel and big AND clean and good was so dilliciaud wey Will recomendar yo te friendo un pues thanks Suresh.",
-                name: "Gonzalo Alberto P"
+                text: "An absolutely stunning hotel with impeccable service. The staff went above and beyond to make our stay memorable. The rooms are luxurious and the location is perfect.",
+                name: "Sarah Mitchell",
+                title: "Business Executive"
               },
               {
-                text: "It's a good place for drinks and food quite reasonable. It's great environment with friends and family. The food is decent and drinks are mostly in offer with great service. They take care of personal needs and great value for money. Would advice you visit",
-                name: "Shivaji D"
+                text: "From the moment we arrived, we were treated like royalty. The attention to detail is extraordinary. This is what luxury hospitality should be.",
+                name: "Michael Rodriguez", 
+                title: "Travel Blogger"
               },
               {
-                text: "حلو الاكل وحلو السيرفس 👍🏻 Very nice prown tikka i came with my friends here i like this hotel and pub here in DHP staff always helpfull and visiting this place next we will come in The D ROOF thanks suresh always best service",
-                name: "Turki Alotibi"
-              },
-              {
-                text: "Very excellent service. Thank you mr. Suresh for your good and professional services, and welcoming !!! I liked the food, the beans, scrambled eggs, apple juice and tea. Keep it up and be blessed!!!",
-                name: "Zephline M"
-              },
-              {
-                text: "Service was excellent food was amazing suresh was friendly.beer was fresh.any way need more dessert in lunch buffet.lovely staff best place to relax and to have pint of beer.so cool and chill place…..",
-                name: "Danu D"
+                text: "Outstanding experience from start to finish. The D ROOF restaurant offers incredible views and the spa is world-class. Will definitely return.",
+                name: "Emma Thompson",
+                title: "Lifestyle Consultant"
               }
             ].map((testimonial, index) => (
-              <Card key={index} className="h-full">
-                <CardContent className="p-6">
-                  <p className="text-muted-foreground mb-4 leading-relaxed">"{testimonial.text}"</p>
-                  <p className="font-semibold text-foreground">{testimonial.name}</p>
+              <Card key={index} className="bg-gradient-to-br from-white to-muted/20 border-none shadow-lg hover:shadow-xl transition-all duration-300">
+                <CardContent className="p-8">
+                  <Quote className="w-12 h-12 text-neon mb-4" />
+                  <p className="text-muted-foreground mb-6 leading-relaxed italic">{testimonial.text}</p>
+                  <div className="flex items-center gap-1 mb-2">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-neon text-neon" />
+                    ))}
+                  </div>
+                  <p className="font-bold text-foreground">{testimonial.name}</p>
+                  <p className="text-sm text-muted-foreground">{testimonial.title}</p>
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 bg-gradient-to-r from-primary via-primary-hover to-primary relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]" />
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Begin Your Luxury Journey
+          </h2>
+          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            Experience the pinnacle of hospitality in Dubai's most prestigious hotel
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button 
+              size="lg" 
+              className="bg-neon hover:bg-neon-glow text-neon-foreground font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+            >
+              Book Your Stay
+              <ChevronRight className="w-5 h-5 ml-2" />
+            </Button>
+            
+            <Button 
+              variant="outline" 
+              size="lg"
+              className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm px-8 py-4 rounded-full text-lg"
+            >
+              <Phone className="w-5 h-5 mr-2" />
+              +971 4 340 9040
+            </Button>
           </div>
         </div>
       </section>
