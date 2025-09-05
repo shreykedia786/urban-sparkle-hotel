@@ -54,12 +54,12 @@ export function Navigation() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {navigationItems.map((item) => (
               <Link
                 key={item.href}
                 to={item.href}
-                className="text-sm font-medium text-foreground hover:text-neon transition-colors uppercase tracking-wide"
+                className="text-xs xl:text-sm font-medium text-foreground hover:text-neon transition-colors uppercase tracking-wider whitespace-nowrap"
               >
                 {item.label[language.toLowerCase() as 'en' | 'es']}
               </Link>
@@ -87,7 +87,11 @@ export function Navigation() {
             </div>
 
             {/* Book Now Button */}
-            <Button variant="neon" size="sm" className="hidden sm:flex">
+            <Button 
+              variant="default" 
+              size="sm" 
+              className="hidden sm:flex items-center gap-2 bg-neon hover:bg-neon-glow text-neon-foreground font-semibold px-6 py-2 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105"
+            >
               <Calendar className="w-4 h-4" />
               {language === "EN" ? "BOOK NOW" : "RESERVAR"}
             </Button>
