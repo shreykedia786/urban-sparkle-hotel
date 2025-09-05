@@ -158,7 +158,7 @@ const Index = () => {
         
         {/* Booking Widget - Premium White Band */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-full max-w-7xl px-6 z-20">
-          <div className="bg-white/98 backdrop-blur-lg rounded-3xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] border border-white/20 overflow-hidden">
+          <div className="bg-white/98 backdrop-blur-lg rounded-3xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] border border-white/20">
             <div className="p-6 bg-gradient-to-r from-white to-white/95">
               <div className="text-center mb-4">
                 <h3 className="text-xl font-bold text-foreground mb-1">Reserve Your Luxury Experience</h3>

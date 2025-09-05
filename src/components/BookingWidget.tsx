@@ -4,8 +4,7 @@ export function BookingWidget({ className }: { className?: string }) {
   return (
     <div className={cn("w-full", className)}>
       <div 
-        id="37316DCF-9BB6-4B80-BE26-7651D87C5F6B_outerRGdiv" 
-        style={{ height: '80px' }}
+        id="37316DCF-9BB6-4B80-BE26-7651D87C5F6B_outerRGdiv"
       >
         <iframe 
           srcDoc={`
