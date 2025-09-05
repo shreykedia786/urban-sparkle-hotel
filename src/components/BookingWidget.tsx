@@ -29,27 +29,21 @@ export function BookingWidget({ className }: { className?: string }) {
 
   return (
     <div className={cn("w-full", className)}>
-      <div className="relative bg-white/10 backdrop-blur-2xl border border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] p-6 rounded-3xl before:absolute before:inset-0 before:rounded-3xl before:bg-gradient-to-br before:from-white/20 before:via-white/10 before:to-transparent before:opacity-50 before:pointer-events-none overflow-hidden">
-        {/* Glass shine effect */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent"></div>
-        <div className="absolute top-0 left-0 bottom-0 w-px bg-gradient-to-b from-white/60 via-transparent to-transparent"></div>
-        
-        {/* Content wrapper with relative positioning */}
-        <div className="relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+      <div className="relative">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
           {/* Destination */}
           <div className="lg:col-span-1">
-            <Label htmlFor="destination" className="text-sm font-semibold text-muted-foreground mb-2 flex items-center gap-2">
+            <Label htmlFor="destination" className="text-sm font-semibold text-white/90 mb-3 flex items-center gap-2">
               <MapPin className="w-4 h-4 text-neon" />
               Destination
             </Label>
             <Select value={destination} onValueChange={setDestination}>
-              <SelectTrigger className="h-12 bg-white/20 backdrop-blur-md border border-white/30 hover:border-white/50 focus:border-neon/60 transition-all duration-300 rounded-xl shadow-inner">
+              <SelectTrigger className="h-14 bg-white/15 backdrop-blur-md border border-white/30 hover:border-neon/50 focus:border-neon/70 transition-all duration-300 rounded-2xl shadow-inner text-white placeholder:text-white/60">
                 <SelectValue placeholder="Select destination" />
               </SelectTrigger>
-              <SelectContent className="bg-white/90 backdrop-blur-xl border border-white/30 rounded-xl shadow-2xl">
+              <SelectContent className="bg-black/90 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl">
                 {destinations.map((dest) => (
-                  <SelectItem key={dest} value={dest} className="hover:bg-neon/10">
+                  <SelectItem key={dest} value={dest} className="text-white hover:bg-neon/20 focus:bg-neon/30 rounded-xl">
                     {dest}
                   </SelectItem>
                 ))}
@@ -59,7 +53,7 @@ export function BookingWidget({ className }: { className?: string }) {
 
           {/* Check-in Date */}
           <div className="lg:col-span-1">
-            <Label className="text-sm font-semibold text-muted-foreground mb-2 flex items-center gap-2">
+            <Label className="text-sm font-semibold text-white/90 mb-3 flex items-center gap-2">
               <CalendarDays className="w-4 h-4 text-neon" />
               Check-in
             </Label>
@@ -68,21 +62,21 @@ export function BookingWidget({ className }: { className?: string }) {
                 <Button
                   variant="outline"
                   className={cn(
-                    "h-12 w-full justify-start text-left font-normal bg-white/20 backdrop-blur-md border border-white/30 hover:border-white/50 focus:border-neon/60 transition-all duration-300 rounded-xl shadow-inner",
-                    !checkIn && "text-muted-foreground"
+                    "h-14 w-full justify-start text-left font-normal bg-white/15 backdrop-blur-md border border-white/30 hover:border-neon/50 focus:border-neon/70 transition-all duration-300 rounded-2xl shadow-inner text-white",
+                    !checkIn && "text-white/60"
                   )}
                 >
                   {checkIn ? format(checkIn, "MMM dd, yyyy") : "Select date"}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0 bg-white/90 backdrop-blur-xl border border-white/30 rounded-xl shadow-2xl" align="start">
+              <PopoverContent className="w-auto p-0 bg-black/90 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl" align="start">
                 <Calendar
                   mode="single"
                   selected={checkIn}
                   onSelect={setCheckIn}
                   disabled={(date) => date < new Date()}
                   initialFocus
-                  className="p-3 pointer-events-auto"
+                  className="p-3 pointer-events-auto text-white"
                 />
               </PopoverContent>
             </Popover>
@@ -90,7 +84,7 @@ export function BookingWidget({ className }: { className?: string }) {
 
           {/* Check-out Date */}
           <div className="lg:col-span-1">
-            <Label className="text-sm font-semibold text-muted-foreground mb-2 flex items-center gap-2">
+            <Label className="text-sm font-semibold text-white/90 mb-3 flex items-center gap-2">
               <CalendarDays className="w-4 h-4 text-neon" />
               Check-out
             </Label>
@@ -99,21 +93,21 @@ export function BookingWidget({ className }: { className?: string }) {
                 <Button
                   variant="outline"
                   className={cn(
-                    "h-12 w-full justify-start text-left font-normal bg-white/20 backdrop-blur-md border border-white/30 hover:border-white/50 focus:border-neon/60 transition-all duration-300 rounded-xl shadow-inner",
-                    !checkOut && "text-muted-foreground"
+                    "h-14 w-full justify-start text-left font-normal bg-white/15 backdrop-blur-md border border-white/30 hover:border-neon/50 focus:border-neon/70 transition-all duration-300 rounded-2xl shadow-inner text-white",
+                    !checkOut && "text-white/60"
                   )}
                 >
                   {checkOut ? format(checkOut, "MMM dd, yyyy") : "Select date"}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0 bg-white/90 backdrop-blur-xl border border-white/30 rounded-xl shadow-2xl" align="start">
+              <PopoverContent className="w-auto p-0 bg-black/90 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl" align="start">
                 <Calendar
                   mode="single"
                   selected={checkOut}
                   onSelect={setCheckOut}
                   disabled={(date) => date < (checkIn || new Date())}
                   initialFocus
-                  className="p-3 pointer-events-auto"
+                  className="p-3 pointer-events-auto text-white"
                 />
               </PopoverContent>
             </Popover>
@@ -190,21 +184,20 @@ export function BookingWidget({ className }: { className?: string }) {
           <div className="lg:col-span-1 flex flex-col justify-end">
             <Button 
               size="lg"
-              className="h-12 bg-gradient-to-r from-neon to-neon-glow hover:from-neon-glow hover:to-neon text-neon-foreground font-bold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl shadow-lg backdrop-blur-sm"
+              className="h-14 bg-gradient-to-r from-neon via-neon-glow to-neon hover:from-neon-glow hover:via-neon hover:to-neon-glow text-neon-foreground font-bold rounded-2xl transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_-12px_rgba(147,126,39,0.8)] border border-neon/30 hover:border-neon/60 relative overflow-hidden group"
             >
-              <Search className="w-5 h-5 mr-2" />
-              Search
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 -skew-x-12"></div>
+              <Search className="w-6 h-6 mr-3 relative z-10" />
+              <span className="relative z-10 text-lg tracking-wide font-bold">Search</span>
             </Button>
           </div>
         </div>
 
-        </div>
-        
         {/* Promo Code Row */}
-        <div className="relative z-10 mt-4 pt-4 border-t border-white/20">
-          <div className="flex flex-col sm:flex-row gap-4 items-end">
+        <div className="relative z-10 mt-8 pt-6 border-t border-white/20">
+          <div className="flex flex-col sm:flex-row gap-6 items-end">
             <div className="flex-1 max-w-xs">
-              <Label htmlFor="promo" className="text-sm font-semibold text-muted-foreground mb-2 flex items-center gap-2">
+              <Label htmlFor="promo" className="text-sm font-semibold text-white/90 mb-3 flex items-center gap-2">
                 <Tag className="w-4 h-4 text-neon" />
                 Promo Code
               </Label>
@@ -213,12 +206,12 @@ export function BookingWidget({ className }: { className?: string }) {
                 placeholder="Enter promo code"
                 value={promoCode}
                 onChange={(e) => setPromoCode(e.target.value)}
-                className="h-10 bg-white/20 backdrop-blur-md border border-white/30 hover:border-white/50 focus:border-neon/60 transition-all duration-300 rounded-xl shadow-inner placeholder:text-white/60"
+                className="h-12 bg-white/15 backdrop-blur-md border border-white/30 hover:border-neon/50 focus:border-neon/70 transition-all duration-300 rounded-2xl shadow-inner placeholder:text-white/50 text-white"
               />
             </div>
             <Button 
               variant="outline"
-              className="h-10 px-6 bg-white/10 backdrop-blur-md border border-neon/60 text-neon hover:bg-neon/20 hover:border-neon transition-all duration-300 rounded-xl shadow-inner"
+              className="h-12 px-8 bg-white/10 backdrop-blur-md border border-neon/60 text-neon hover:bg-neon/20 hover:border-neon transition-all duration-300 rounded-2xl shadow-inner font-semibold"
             >
               Apply
             </Button>

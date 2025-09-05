@@ -156,15 +156,67 @@ const Index = () => {
           </div>
         </div>
         
-        {/* Booking Widget - Premium White Band */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-full max-w-7xl px-6 z-20">
-          <div className="bg-white/98 backdrop-blur-lg rounded-3xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] border border-white/20">
-            <div className="p-6 bg-gradient-to-r from-white to-white/95">
-              <div className="text-center mb-4">
-                <h3 className="text-xl font-bold text-foreground mb-1">Reserve Your Luxury Experience</h3>
-                <p className="text-sm text-muted-foreground">Secure your stay with instant confirmation</p>
+        {/* Luxury Booking Experience - Seamlessly Integrated */}
+        <div className="absolute bottom-0 left-0 right-0 z-20">
+          {/* Gradient transition from hero to booking */}
+          <div className="h-32 bg-gradient-to-b from-transparent via-black/20 to-black/40"></div>
+          
+          <div className="relative bg-gradient-to-b from-black/20 to-black/60 backdrop-blur-xl">
+            {/* Luxury accent elements */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/60 to-transparent"></div>
+            <div className="absolute top-1 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+            
+            <div className="max-w-8xl mx-auto px-6 lg:px-8 py-8">
+              {/* Premium header */}
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center gap-3 mb-4">
+                  <div className="w-12 h-px bg-gradient-to-r from-transparent to-neon"></div>
+                  <div className="flex text-neon">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-current" />
+                    ))}
+                  </div>
+                  <div className="w-12 h-px bg-gradient-to-l from-transparent to-neon"></div>
+                </div>
+                <h3 className="text-3xl md:text-4xl font-bold text-white mb-3 tracking-wide">
+                  Reserve Your 
+                  <span className="bg-gradient-to-r from-neon via-neon-glow to-neon bg-clip-text text-transparent"> Luxury Experience</span>
+                </h3>
+                <p className="text-white/80 text-lg font-light tracking-wide">
+                  Secure your stay with instant confirmation
+                </p>
               </div>
-              <BookingWidget />
+
+              {/* Enhanced Booking Widget */}
+              <div className="relative">
+                {/* Luxury frame effects */}
+                <div className="absolute -inset-2 bg-gradient-to-r from-neon/20 via-neon-glow/30 to-neon/20 rounded-3xl blur-xl opacity-60"></div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-neon/30 via-transparent to-neon/30 rounded-3xl blur-sm"></div>
+                
+                <div className="relative bg-white/10 backdrop-blur-3xl border border-white/20 rounded-3xl p-8 shadow-[0_25px_60px_-12px_rgba(0,0,0,0.8)]">
+                  {/* Premium glass effects */}
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
+                  <div className="absolute top-0 left-0 bottom-0 w-px bg-gradient-to-b from-white/40 via-transparent to-transparent"></div>
+                  
+                  <BookingWidget />
+                </div>
+              </div>
+
+              {/* Luxury trust indicators */}
+              <div className="flex items-center justify-center gap-8 mt-8 text-white/60 text-sm">
+                <div className="flex items-center gap-2">
+                  <Shield className="w-4 h-4 text-neon" />
+                  <span>Secure Booking</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-neon" />
+                  <span>Instant Confirmation</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Award className="w-4 h-4 text-neon" />
+                  <span>Best Rate Guarantee</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
