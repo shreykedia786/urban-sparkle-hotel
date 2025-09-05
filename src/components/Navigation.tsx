@@ -37,20 +37,12 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center">
             <img 
               src={donatelloLogo} 
               alt="Donatello Hotel Dubai" 
-              className="h-8 w-auto"
+              className="h-10 w-auto"
             />
-            <div className="flex flex-col">
-              <span className="font-display font-bold text-lg text-foreground leading-tight">
-                DONATELLO
-              </span>
-              <span className="text-xs text-muted-foreground -mt-1">
-                Hotel-Dubai
-              </span>
-            </div>
           </div>
 
           {/* Desktop Navigation */}
