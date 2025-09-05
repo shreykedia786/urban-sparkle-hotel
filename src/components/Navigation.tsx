@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Switch } from "@/components/ui/switch";
-import { Menu, Moon, Sun, Globe, Calendar, ChevronDown } from "lucide-react";
+import { Menu, Moon, Sun, Globe, Calendar, ChevronDown, Star, Crown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import donatelloLogo from "@/assets/donatello-logo.png";
 
@@ -22,6 +22,15 @@ export function Navigation() {
   const [isDark, setIsDark] = useState(false);
   const [language, setLanguage] = useState("EN");
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleTheme = () => {
     setIsDark(!isDark);
@@ -33,107 +42,182 @@ export function Navigation() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 gap-8">
-          {/* Logo */}
-          <div className="flex items-center flex-shrink-0 min-w-0">
-            <img 
-              src={donatelloLogo} 
-              alt="Donatello Hotel Dubai" 
-              className="h-6 w-auto max-w-[120px]"
-            />
+    <nav className={cn(
+      "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+      scrolled 
+        ? "bg-white/5 backdrop-blur-2xl border-b border-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]" 
+        : "bg-transparent"
+    )}>
+      {/* Glass shine effects */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+      <div className="absolute top-0 left-0 bottom-0 w-px bg-gradient-to-b from-white/30 via-transparent to-transparent"></div>
+      
+      {/* Luxury accent line */}
+      <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-neon/50 to-transparent"></div>
+      
+      <div className="relative max-w-8xl mx-auto px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20 gap-8">
+          {/* Logo with luxury frame */}
+          <div className="flex items-center flex-shrink-0 min-w-0 group">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-neon/20 to-neon-glow/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/20 hover:border-neon/30 transition-all duration-300">
+                <img 
+                  src={donatelloLogo} 
+                  alt="Donatello Hotel Dubai" 
+                  className="h-8 w-auto max-w-[140px] transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+            </div>
+            
+            {/* Luxury brand elements */}
+            <div className="hidden lg:flex items-center ml-4 space-x-2">
+              <div className="flex text-neon/60">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-3 h-3 fill-current" />
+                ))}
+              </div>
+              <span className="text-xs font-light text-white/60 tracking-[0.2em] uppercase">Dubai</span>
+            </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden xl:flex items-center space-x-4 flex-1 justify-center max-w-4xl">
-            {navigationItems.map((item) => (
-              <Link
-                key={item.href}
-                to={item.href}
-                className="text-xs font-medium text-foreground hover:text-neon transition-colors uppercase tracking-wider whitespace-nowrap px-2"
-              >
-                {item.label[language.toLowerCase() as 'en' | 'es']}
-              </Link>
+          {/* Desktop Navigation with luxury styling */}
+          <div className="hidden xl:flex items-center space-x-1 flex-1 justify-center max-w-5xl">
+            {navigationItems.map((item, index) => (
+              <div key={item.href} className="relative group">
+                <Link
+                  to={item.href}
+                  className="relative block px-4 py-3 text-sm font-medium text-white/80 hover:text-white transition-all duration-300 uppercase tracking-[0.1em] whitespace-nowrap"
+                >
+                  <span className="relative z-10">
+                    {item.label[language.toLowerCase() as 'en' | 'es']}
+                  </span>
+                  
+                  {/* Luxury hover background */}
+                  <div className="absolute inset-0 bg-white/5 backdrop-blur-sm rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 scale-95 group-hover:scale-100"></div>
+                  
+                  {/* Luxury underline effect */}
+                  <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-neon to-neon-glow group-hover:w-3/4 group-hover:left-1/8 transition-all duration-500"></div>
+                  
+                  {/* Shine effect on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 -skew-x-12 group-hover:animate-pulse"></div>
+                </Link>
+              </div>
             ))}
           </div>
 
-          {/* Controls */}
-          <div className="flex items-center space-x-4">
-            {/* Language Toggle */}
+          {/* Premium Controls */}
+          <div className="flex items-center space-x-6">
+            {/* Language Toggle with luxury styling */}
             <Button
               variant="ghost"
               size="sm"
               onClick={toggleLanguage}
-              className="hidden sm:flex items-center space-x-1"
+              className="hidden sm:flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 hover:border-white/40 rounded-xl px-4 py-2 text-white hover:bg-white/15 transition-all duration-300"
             >
-              <Globe className="w-4 h-4" />
-              <span className="text-xs font-medium">{language}</span>
+              <Globe className="w-4 h-4 text-neon" />
+              <span className="text-sm font-medium tracking-wide">{language}</span>
+              <ChevronDown className="w-3 h-3 opacity-60" />
             </Button>
 
-            {/* Theme Toggle */}
-            <div className="hidden sm:flex items-center space-x-2">
-              <Sun className="w-4 h-4 text-muted-foreground" />
-              <Switch checked={isDark} onCheckedChange={toggleTheme} />
-              <Moon className="w-4 h-4 text-muted-foreground" />
+            {/* Premium Theme Toggle */}
+            <div className="hidden sm:flex items-center space-x-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-4 py-2">
+              <Sun className="w-4 h-4 text-white/60" />
+              <Switch 
+                checked={isDark} 
+                onCheckedChange={toggleTheme}
+                className="data-[state=checked]:bg-neon"
+              />
+              <Moon className="w-4 h-4 text-white/60" />
             </div>
 
-            {/* Book Now Button */}
+            {/* Luxury Book Now Button */}
             <Button 
-              variant="default" 
-              size="sm" 
-              className="hidden sm:flex items-center gap-2 bg-neon hover:bg-neon-glow text-neon-foreground font-semibold px-6 py-2 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105"
+              className="hidden sm:flex items-center gap-3 bg-gradient-to-r from-neon via-neon-glow to-neon hover:from-neon-glow hover:via-neon hover:to-neon-glow text-neon-foreground font-bold px-8 py-3 rounded-2xl transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_-12px_rgba(147,126,39,0.6)] border border-neon/30 hover:border-neon/60 relative overflow-hidden group"
             >
-              <Calendar className="w-4 h-4" />
-              {language === "EN" ? "BOOK NOW" : "RESERVAR"}
+              {/* Button shine effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 -skew-x-12 animate-pulse"></div>
+              
+              <Crown className="w-5 h-5 relative z-10" />
+              <span className="relative z-10 tracking-wide">
+                {language === "EN" ? "RESERVE NOW" : "RESERVAR"}
+              </span>
             </Button>
 
-            {/* Mobile Menu */}
+            {/* Premium Mobile Menu */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="xl:hidden">
-                  <Menu className="w-5 h-5" />
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="xl:hidden bg-white/10 backdrop-blur-md border border-white/20 hover:border-white/40 rounded-xl w-12 h-12 text-white hover:bg-white/15 transition-all duration-300"
+                >
+                  <Menu className="w-6 h-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-80">
-                <div className="flex flex-col space-y-6 mt-8">
-                  {/* Mobile Controls */}
-                  <div className="flex items-center justify-between">
+              <SheetContent 
+                side="right" 
+                className="w-80 bg-black/40 backdrop-blur-2xl border-l border-white/10 text-white"
+              >
+                <div className="flex flex-col space-y-8 mt-12">
+                  {/* Mobile header with luxury styling */}
+                  <div className="flex items-center justify-center pb-6 border-b border-white/10">
+                    <div className="flex text-neon">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-current" />
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Mobile Controls with luxury styling */}
+                  <div className="flex items-center justify-between bg-white/5 backdrop-blur-md rounded-2xl p-4 border border-white/10">
                     <Button
                       variant="ghost"
                       size="sm"
                       onClick={toggleLanguage}
-                      className="flex items-center space-x-2"
+                      className="flex items-center space-x-3 text-white hover:text-neon"
                     >
-                      <Globe className="w-4 h-4" />
-                      <span>{language}</span>
+                      <Globe className="w-5 h-5 text-neon" />
+                      <span className="font-medium">{language}</span>
                     </Button>
                     
-                    <div className="flex items-center space-x-2">
-                      <Sun className="w-4 h-4 text-muted-foreground" />
-                      <Switch checked={isDark} onCheckedChange={toggleTheme} />
-                      <Moon className="w-4 h-4 text-muted-foreground" />
+                    <div className="flex items-center space-x-3">
+                      <Sun className="w-4 h-4 text-white/60" />
+                      <Switch 
+                        checked={isDark} 
+                        onCheckedChange={toggleTheme}
+                        className="data-[state=checked]:bg-neon"
+                      />
+                      <Moon className="w-4 h-4 text-white/60" />
                     </div>
                   </div>
 
-                  {/* Mobile Navigation */}
-                  <div className="flex flex-col space-y-4">
-                    {navigationItems.map((item) => (
+                  {/* Mobile Navigation with luxury styling */}
+                  <div className="flex flex-col space-y-2">
+                    {navigationItems.map((item, index) => (
                       <Link
                         key={item.href}
                         to={item.href}
                         onClick={() => setIsOpen(false)}
-                        className="text-lg font-medium text-foreground hover:text-neon transition-colors py-2 uppercase tracking-wide"
+                        className="group relative block p-4 text-lg font-medium text-white/80 hover:text-white transition-all duration-300 uppercase tracking-[0.1em] bg-white/5 hover:bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 hover:border-white/20"
                       >
-                        {item.label[language.toLowerCase() as 'en' | 'es']}
+                        <span className="relative z-10">
+                          {item.label[language.toLowerCase() as 'en' | 'es']}
+                        </span>
+                        <div className="absolute left-0 top-1/2 w-0 h-0.5 bg-gradient-to-r from-neon to-neon-glow group-hover:w-8 -translate-y-1/2 transition-all duration-500"></div>
                       </Link>
                     ))}
                   </div>
 
-                  {/* Mobile CTA */}
-                  <Button variant="neon" size="lg" className="w-full">
-                    <Calendar className="w-5 h-5" />
-                    {language === "EN" ? "BOOK YOUR STAY" : "RESERVA TU ESTANCIA"}
+                  {/* Mobile Luxury CTA */}
+                  <Button 
+                    className="w-full bg-gradient-to-r from-neon via-neon-glow to-neon hover:from-neon-glow hover:via-neon hover:to-neon-glow text-neon-foreground font-bold py-4 rounded-2xl transition-all duration-500 hover:scale-105 hover:shadow-2xl border border-neon/30 hover:border-neon/60 relative overflow-hidden group"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 -skew-x-12"></div>
+                    <Crown className="w-6 h-6 mr-3 relative z-10" />
+                    <span className="relative z-10 text-lg tracking-wide">
+                      {language === "EN" ? "RESERVE YOUR STAY" : "RESERVA TU ESTANCIA"}
+                    </span>
                   </Button>
                 </div>
               </SheetContent>
