@@ -4,7 +4,6 @@ export function BookingWidget({ className }: { className?: string }) {
   return (
     <div className={cn("w-full", className)}>
       <div 
-        className="book-form-home relative" 
         id="37316DCF-9BB6-4B80-BE26-7651D87C5F6B_outerRGdiv" 
         style={{ height: '80px' }}
       >
@@ -16,7 +15,7 @@ export function BookingWidget({ className }: { className?: string }) {
                 <link href='https://ibe.rategain.com/widget/index.css' rel='stylesheet'/>
               </head>
               <body>            
-                <div data-brandID='51252208-2987-4e7b-a5bc-faa6c7e9d739' data-chainID='fcae71fb-0983-4ac8-b48c-f4ce8ea72d05' data-backgroundprimarycolor='#17202B' data-backgroundsecondarycolor='#17202B' data-widgetFontColor='null' data-widgetSearchFontColorButton='null' data-widgetSearchColorButton='#9b7929' data-widgetSearchFontColorHoverstate='null' data-widgetSearchColorHoverState='#7e6428' id='rg-booking-widget'>
+                <div data-brandID='937bf5e9-7f12-4e04-be25-5e3e823242b7' data-chainID='d9c3cc24-da05-4697-a759-3bcea2872153' data-backgroundprimarycolor='#937e27' data-backgroundsecondarycolor='#937e27' data-widgetFontColor='#fff' data-widgetSearchFontColorButton='#100d0d' data-widgetSearchColorButton='#dcd135' data-widgetSearchFontColorHoverstate='null' data-widgetSearchColorHoverState='#896551' id='rg-booking-widget'>
                   <script src='https://ibe.rategain.com/widget/index.js'></script>
                 </div>
               </body>
@@ -26,11 +25,23 @@ export function BookingWidget({ className }: { className?: string }) {
           style={{ 
             border: 'none', 
             overflow: 'hidden', 
-            height: '110px', 
-            position: 'absolute', 
-            zIndex: 99 
+            height: '600px' 
           }} 
           id="86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe"
+        />
+        <script 
+          dangerouslySetInnerHTML={{
+            __html: `
+              function changeIframeHeight(newHeight) {
+                document.getElementById('86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe').style.height = newHeight + 'px';
+              }
+              window.addEventListener('message', (event) => {
+                if (event.data === 'GET_DLYX') {
+                  event.source.postMessage({ dlyx: window.dlyx }, event.origin);
+                }
+              });
+            `
+          }}
         />
       </div>
     </div>
