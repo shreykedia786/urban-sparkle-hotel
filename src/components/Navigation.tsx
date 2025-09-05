@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Switch } from "@/components/ui/switch";
@@ -23,13 +23,21 @@ export function Navigation() {
   const [language, setLanguage] = useState("EN");
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [onWhiteBackground, setOnWhiteBackground] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const scrollY = window.scrollY;
+      setScrolled(scrollY > 50);
+      
+      // Check if we're over the white booking widget section (approximately)
+      const heroHeight = window.innerHeight * 0.8; // Approximate hero height
+      setOnWhiteBackground(scrollY > heroHeight - 100);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const toggleTheme = () => {
@@ -87,14 +95,23 @@ export function Navigation() {
               <div key={item.href} className="relative group">
                 <Link
                   to={item.href}
-                  className="relative block px-4 py-3 text-sm font-medium text-white/80 hover:text-white transition-all duration-300 uppercase tracking-[0.1em] whitespace-nowrap"
+                  className={cn(
+                    "relative block px-4 py-3 text-sm font-medium transition-all duration-300 uppercase tracking-[0.1em] whitespace-nowrap",
+                    onWhiteBackground 
+                      ? "text-foreground/80 hover:text-foreground" 
+                      : "text-white/80 hover:text-white",
+                    location.pathname === item.href && (onWhiteBackground ? "text-foreground" : "text-white")
+                  )}
                 >
                   <span className="relative z-10">
                     {item.label[language.toLowerCase() as 'en' | 'es']}
                   </span>
                   
                   {/* Luxury hover background */}
-                  <div className="absolute inset-0 bg-white/5 backdrop-blur-sm rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 scale-95 group-hover:scale-100"></div>
+                  <div className={cn(
+                    "absolute inset-0 backdrop-blur-sm rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 scale-95 group-hover:scale-100",
+                    onWhiteBackground ? "bg-white/20" : "bg-white/5"
+                  )}></div>
                   
                   {/* Luxury underline effect */}
                   <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-neon to-neon-glow group-hover:w-3/4 group-hover:left-1/8 transition-all duration-500"></div>

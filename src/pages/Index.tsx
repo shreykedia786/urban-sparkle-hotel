@@ -156,58 +156,79 @@ const Index = () => {
           </div>
         </div>
         
-        {/* Compact Luxury Booking Experience */}
-        <div className="absolute bottom-0 left-0 right-0 z-20">
-          {/* Reduced gradient transition */}
-          <div className="h-16 bg-gradient-to-b from-transparent via-black/10 to-black/30"></div>
-          
-          <div className="relative bg-gradient-to-b from-black/30 to-black/50 backdrop-blur-xl">
-            {/* Luxury accent elements */}
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/40 to-transparent"></div>
-            
-            <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
-              {/* Compact header */}
-              <div className="text-center mb-6">
-                <div className="inline-flex items-center gap-2 mb-3">
-                  <div className="flex text-neon">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3 h-3 fill-current" />
-                    ))}
-                  </div>
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 tracking-wide">
-                  Reserve Your 
-                  <span className="bg-gradient-to-r from-neon via-neon-glow to-neon bg-clip-text text-transparent"> Luxury Experience</span>
-                </h3>
-                <p className="text-white/70 text-base font-light">
-                  Secure your stay with instant confirmation
-                </p>
-              </div>
+      </section>
 
-              {/* Compact Booking Widget */}
-              <div className="relative max-w-5xl mx-auto">
-                {/* Reduced luxury frame effects */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-neon/15 via-neon-glow/25 to-neon/15 rounded-2xl blur-lg opacity-40"></div>
-                
-                <div className="relative bg-white/8 backdrop-blur-2xl border border-white/15 rounded-2xl p-5 shadow-[0_15px_35px_-10px_rgba(0,0,0,0.6)]">
-                  {/* Minimal glass effects */}
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"></div>
-                  
-                  <BookingWidget />
-                  
-                  {/* Inline compact trust indicators */}
-                  <div className="flex items-center justify-center gap-6 mt-4 pt-3 border-t border-white/10 text-white/50 text-xs">
-                    <div className="flex items-center gap-1.5">
-                      <Shield className="w-3 h-3 text-neon" />
-                      <span>Secure Booking</span>
+      {/* Overlapping Booking Widget Section */}
+      <section className="relative -mt-32 z-30 pb-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* World-class booking widget card */}
+          <div className="relative">
+            {/* Luxury glow effects */}
+            <div className="absolute -inset-4 bg-gradient-to-r from-neon/10 via-neon-glow/20 to-neon/10 rounded-3xl blur-2xl opacity-60"></div>
+            <div className="absolute -inset-2 bg-gradient-to-r from-neon/15 via-transparent to-neon/15 rounded-3xl blur-xl"></div>
+            
+            {/* Main card */}
+            <div className="relative bg-white/95 backdrop-blur-xl border border-white/40 rounded-3xl shadow-[0_32px_64px_-12px_rgba(0,0,0,0.25)] overflow-hidden">
+              {/* Premium glass overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-white/30 to-white/10 pointer-events-none"></div>
+              
+              {/* Luxury accent borders */}
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/60 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/40 to-transparent"></div>
+              
+              <div className="relative z-10 p-8 lg:p-12">
+                {/* Header */}
+                <div className="text-center mb-8">
+                  <div className="inline-flex items-center gap-3 mb-4">
+                    <div className="w-8 h-px bg-gradient-to-r from-transparent to-neon/60"></div>
+                    <div className="flex text-neon gap-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-current" />
+                      ))}
                     </div>
-                    <div className="flex items-center gap-1.5">
-                      <Clock className="w-3 h-3 text-neon" />
-                      <span>Instant Confirmation</span>
+                    <div className="w-8 h-px bg-gradient-to-l from-transparent to-neon/60"></div>
+                  </div>
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 tracking-tight">
+                    Reserve Your 
+                    <span className="bg-gradient-to-r from-neon via-neon-glow to-neon bg-clip-text text-transparent"> Luxury Stay</span>
+                  </h2>
+                  <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
+                    Experience unparalleled luxury with instant confirmation and our best rate guarantee
+                  </p>
+                </div>
+
+                {/* Enhanced booking widget */}
+                <div className="relative">
+                  <BookingWidget className="booking-widget-luxury" />
+                </div>
+
+                {/* Trust indicators */}
+                <div className="flex flex-wrap items-center justify-center gap-8 mt-8 pt-6 border-t border-border/50">
+                  <div className="flex items-center gap-3 text-muted-foreground">
+                    <div className="w-10 h-10 bg-gradient-to-br from-neon/20 to-neon-glow/30 rounded-full flex items-center justify-center">
+                      <Shield className="w-5 h-5 text-neon" />
                     </div>
-                    <div className="flex items-center gap-1.5">
-                      <Award className="w-3 h-3 text-neon" />
-                      <span>Best Rate Guarantee</span>
+                    <div>
+                      <div className="font-semibold text-foreground">Secure Booking</div>
+                      <div className="text-sm">SSL encrypted</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 text-muted-foreground">
+                    <div className="w-10 h-10 bg-gradient-to-br from-neon/20 to-neon-glow/30 rounded-full flex items-center justify-center">
+                      <Clock className="w-5 h-5 text-neon" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-foreground">Instant Confirmation</div>
+                      <div className="text-sm">Real-time booking</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 text-muted-foreground">
+                    <div className="w-10 h-10 bg-gradient-to-br from-neon/20 to-neon-glow/30 rounded-full flex items-center justify-center">
+                      <Award className="w-5 h-5 text-neon" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-foreground">Best Rate Guarantee</div>
+                      <div className="text-sm">Price match promise</div>
                     </div>
                   </div>
                 </div>
