@@ -48,33 +48,33 @@ export function BookingWidget({ className }: { className?: string }) {
           {/* Main content */}
           <div className="relative z-10 p-8 lg:p-16 xl:p-20">
             
-            {/* Spacious booking form - Better proportions */}
+            {/* Spacious booking form - Better proportions with improved visual hierarchy */}
             <div className="grid grid-cols-1 lg:grid-cols-10 gap-8 lg:gap-12 xl:gap-16">
               
-              {/* Destination - More space (3 columns) */}
+              {/* Destination - Prominent placement (3 columns) */}
               <div className="lg:col-span-3">
                 <div className="space-y-4">
                   <Label className={cn(
-                    "text-sm font-medium tracking-[0.5px] uppercase flex items-center gap-2.5",
-                    isLuxury ? "text-foreground/70" : "text-white/70"
+                    "text-sm font-semibold tracking-[0.5px] uppercase flex items-center gap-2.5",
+                    isLuxury ? "text-foreground/80" : "text-white/80"
                   )}>
-                    <div className="w-5 h-5 rounded-full bg-neon/20 flex items-center justify-center">
+                    <div className="w-5 h-5 rounded-full bg-neon/30 flex items-center justify-center">
                       <MapPin className="w-3 h-3 text-neon" />
                     </div>
                     Destination
                   </Label>
                   <Select value={destination} onValueChange={setDestination}>
                     <SelectTrigger className={cn(
-                      "h-20 rounded-2xl border-0 text-lg font-medium transition-all duration-500 group px-8",
+                      "h-20 rounded-2xl border-2 text-lg font-medium transition-all duration-500 group px-8 focus:ring-4",
                       isLuxury 
-                        ? "bg-white/80 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.12)] hover:bg-white/90 text-foreground" 
-                        : "bg-white/10 backdrop-blur-2xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.4)] hover:bg-white/15 text-white"
+                        ? "bg-white/90 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.12)] focus:shadow-[0_16px_40px_-8px_rgba(147,126,39,0.25)] hover:bg-white text-foreground border-neon/20 focus:border-neon/50 focus:ring-neon/20" 
+                        : "bg-white/15 backdrop-blur-2xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.4)] focus:shadow-[0_16px_40px_-8px_rgba(147,126,39,0.25)] hover:bg-white/20 text-white border-white/30 focus:border-neon/50 focus:ring-neon/20"
                     )}>
                       <SelectValue placeholder="Select your destination" className="text-left" />
                     </SelectTrigger>
                     <SelectContent className={cn(
-                      "rounded-2xl border-0 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15)] backdrop-blur-3xl min-w-[400px]",
-                      isLuxury ? "bg-white/98" : "bg-black/95"
+                      "rounded-2xl border-0 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15)] backdrop-blur-3xl min-w-[400px] z-50",
+                      isLuxury ? "bg-white shadow-[0_20px_40px_-8px_rgba(0,0,0,0.25)]" : "bg-black shadow-[0_20px_40px_-8px_rgba(255,255,255,0.1)]"
                     )}>
                       {destinations.map((dest) => (
                         <SelectItem key={dest} value={dest} className={cn(
@@ -108,10 +108,10 @@ export function BookingWidget({ className }: { className?: string }) {
                       <Button
                         variant="ghost"
                         className={cn(
-                          "h-20 w-full rounded-2xl border-0 text-lg font-medium transition-all duration-500 text-left justify-start px-8",
+                          "h-20 w-full rounded-2xl border-2 text-lg font-medium transition-all duration-500 text-left justify-start px-8 focus:ring-4 group",
                           isLuxury 
-                            ? "bg-white/80 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.12)] hover:bg-white/90 text-foreground" 
-                            : "bg-white/10 backdrop-blur-2xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.4)] hover:bg-white/15 text-white",
+                            ? "bg-white/90 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.12)] focus:shadow-[0_16px_40px_-8px_rgba(147,126,39,0.25)] hover:bg-white text-foreground border-neon/20 hover:border-neon/40 focus:border-neon/50 focus:ring-neon/20" 
+                            : "bg-white/15 backdrop-blur-2xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.4)] focus:shadow-[0_16px_40px_-8px_rgba(147,126,39,0.25)] hover:bg-white/20 text-white border-white/30 hover:border-white/50 focus:border-neon/50 focus:ring-neon/20",
                           !checkIn && (isLuxury ? "text-muted-foreground" : "text-white/60")
                         )}
                       >
@@ -128,8 +128,8 @@ export function BookingWidget({ className }: { className?: string }) {
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent className={cn(
-                      "w-auto p-0 rounded-2xl border-0 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15)] backdrop-blur-3xl",
-                      isLuxury ? "bg-white/98" : "bg-black/95"
+                      "w-auto p-0 rounded-2xl border-0 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.25)] z-50",
+                      isLuxury ? "bg-white shadow-[0_20px_40px_-8px_rgba(0,0,0,0.25)]" : "bg-black shadow-[0_20px_40px_-8px_rgba(255,255,255,0.1)]"
                     )} align="start">
                       <Calendar
                         mode="single"
@@ -164,10 +164,10 @@ export function BookingWidget({ className }: { className?: string }) {
                       <Button
                         variant="ghost"
                         className={cn(
-                          "h-20 w-full rounded-2xl border-0 text-lg font-medium transition-all duration-500 text-left justify-start px-8",
+                          "h-20 w-full rounded-2xl border-2 text-lg font-medium transition-all duration-500 text-left justify-start px-8 focus:ring-4 group",
                           isLuxury 
-                            ? "bg-white/80 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.12)] hover:bg-white/90 text-foreground" 
-                            : "bg-white/10 backdrop-blur-2xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.4)] hover:bg-white/15 text-white",
+                            ? "bg-white/90 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.12)] focus:shadow-[0_16px_40px_-8px_rgba(147,126,39,0.25)] hover:bg-white text-foreground border-neon/20 hover:border-neon/40 focus:border-neon/50 focus:ring-neon/20" 
+                            : "bg-white/15 backdrop-blur-2xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.4)] focus:shadow-[0_16px_40px_-8px_rgba(147,126,39,0.25)] hover:bg-white/20 text-white border-white/30 hover:border-white/50 focus:border-neon/50 focus:ring-neon/20",
                           !checkOut && (isLuxury ? "text-muted-foreground" : "text-white/60")
                         )}
                       >
@@ -184,8 +184,8 @@ export function BookingWidget({ className }: { className?: string }) {
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent className={cn(
-                      "w-auto p-0 rounded-2xl border-0 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15)] backdrop-blur-3xl",
-                      isLuxury ? "bg-white/98" : "bg-black/95"
+                      "w-auto p-0 rounded-2xl border-0 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.25)] z-50",
+                      isLuxury ? "bg-white shadow-[0_20px_40px_-8px_rgba(0,0,0,0.25)]" : "bg-black shadow-[0_20px_40px_-8px_rgba(255,255,255,0.1)]"
                     )} align="start">
                       <Calendar
                         mode="single"
@@ -220,10 +220,10 @@ export function BookingWidget({ className }: { className?: string }) {
                       <Button
                         variant="ghost"
                         className={cn(
-                          "h-20 w-full rounded-2xl border-0 text-lg font-medium transition-all duration-500 text-left justify-between px-8",
+                          "h-20 w-full rounded-2xl border-2 text-lg font-medium transition-all duration-500 text-left justify-between px-8 focus:ring-4 group",
                           isLuxury 
-                            ? "bg-white/80 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.12)] hover:bg-white/90 text-foreground" 
-                            : "bg-white/10 backdrop-blur-2xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.4)] hover:bg-white/15 text-white"
+                            ? "bg-white/90 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.12)] focus:shadow-[0_16px_40px_-8px_rgba(147,126,39,0.25)] hover:bg-white text-foreground border-neon/20 hover:border-neon/40 focus:border-neon/50 focus:ring-neon/20" 
+                            : "bg-white/15 backdrop-blur-2xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.4)] focus:shadow-[0_16px_40px_-8px_rgba(147,126,39,0.25)] hover:bg-white/20 text-white border-white/30 hover:border-white/50 focus:border-neon/50 focus:ring-neon/20"
                         )}
                       >
                         <div className="flex flex-col items-start flex-1">
@@ -234,8 +234,8 @@ export function BookingWidget({ className }: { className?: string }) {
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent className={cn(
-                      "w-80 p-8 rounded-2xl border-0 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15)] backdrop-blur-3xl",
-                      isLuxury ? "bg-white/98" : "bg-black/95"
+                      "w-80 p-8 rounded-2xl border-0 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.25)] z-50",
+                      isLuxury ? "bg-white shadow-[0_20px_40px_-8px_rgba(0,0,0,0.25)]" : "bg-black shadow-[0_20px_40px_-8px_rgba(255,255,255,0.1)]"
                     )}>
                       <div className="space-y-8">
                         <div className="flex items-center justify-between">
@@ -244,10 +244,16 @@ export function BookingWidget({ className }: { className?: string }) {
                             isLuxury ? "text-foreground" : "text-white"
                           )}>Rooms</Label>
                           <Select value={rooms} onValueChange={setRooms}>
-                            <SelectTrigger className="w-20 h-12 text-lg font-medium rounded-xl">
+                            <SelectTrigger className={cn(
+                              "w-20 h-12 text-lg font-medium rounded-xl",
+                              isLuxury ? "bg-white/90 text-foreground border-white/30" : "bg-white/10 text-white border-white/20"
+                            )}>
                               <SelectValue />
                             </SelectTrigger>
-                            <SelectContent>
+                            <SelectContent className={cn(
+                              "rounded-xl z-50",
+                              isLuxury ? "bg-white shadow-[0_8px_24px_-6px_rgba(0,0,0,0.15)]" : "bg-black shadow-[0_8px_24px_-6px_rgba(255,255,255,0.1)]"
+                            )}>
                               {[1, 2, 3, 4, 5].map((num) => (
                                 <SelectItem key={num} value={num.toString()} className="text-lg py-3">
                                   {num}
@@ -262,10 +268,16 @@ export function BookingWidget({ className }: { className?: string }) {
                             isLuxury ? "text-foreground" : "text-white"
                           )}>Adults</Label>
                           <Select value={adults} onValueChange={setAdults}>
-                            <SelectTrigger className="w-20 h-12 text-lg font-medium rounded-xl">
+                            <SelectTrigger className={cn(
+                              "w-20 h-12 text-lg font-medium rounded-xl",
+                              isLuxury ? "bg-white/90 text-foreground border-white/30" : "bg-white/10 text-white border-white/20"
+                            )}>
                               <SelectValue />
                             </SelectTrigger>
-                            <SelectContent>
+                            <SelectContent className={cn(
+                              "rounded-xl z-50",
+                              isLuxury ? "bg-white shadow-[0_8px_24px_-6px_rgba(0,0,0,0.15)]" : "bg-black shadow-[0_8px_24px_-6px_rgba(255,255,255,0.1)]"
+                            )}>
                               {[1, 2, 3, 4, 5, 6].map((num) => (
                                 <SelectItem key={num} value={num.toString()} className="text-lg py-3">
                                   {num}
@@ -280,10 +292,16 @@ export function BookingWidget({ className }: { className?: string }) {
                             isLuxury ? "text-foreground" : "text-white"
                           )}>Children</Label>
                           <Select value={children} onValueChange={setChildren}>
-                            <SelectTrigger className="w-20 h-12 text-lg font-medium rounded-xl">
+                            <SelectTrigger className={cn(
+                              "w-20 h-12 text-lg font-medium rounded-xl",
+                              isLuxury ? "bg-white/90 text-foreground border-white/30" : "bg-white/10 text-white border-white/20"
+                            )}>
                               <SelectValue />
                             </SelectTrigger>
-                            <SelectContent>
+                            <SelectContent className={cn(
+                              "rounded-xl z-50",
+                              isLuxury ? "bg-white shadow-[0_8px_24px_-6px_rgba(0,0,0,0.15)]" : "bg-black shadow-[0_8px_24px_-6px_rgba(255,255,255,0.1)]"
+                            )}>
                               {[0, 1, 2, 3, 4].map((num) => (
                                 <SelectItem key={num} value={num.toString()} className="text-lg py-3">
                                   {num}
@@ -303,7 +321,7 @@ export function BookingWidget({ className }: { className?: string }) {
                 <div className="flex flex-col justify-end h-full">
                   <Button 
                     size="lg"
-                    className="h-20 bg-gradient-to-r from-neon via-neon-glow to-neon hover:from-neon-glow hover:via-neon hover:to-neon-glow text-neon-foreground font-bold rounded-2xl transition-all duration-700 hover:scale-[1.02] shadow-[0_12px_32px_-8px_rgba(147,126,39,0.4)] hover:shadow-[0_20px_48px_-8px_rgba(147,126,39,0.6)] relative overflow-hidden group text-base xl:text-lg tracking-wide px-8"
+                    className="h-20 bg-gradient-to-r from-neon via-neon-glow to-neon hover:from-neon-glow hover:via-neon hover:to-neon-glow text-neon-foreground font-bold rounded-2xl transition-all duration-700 hover:scale-[1.02] focus:scale-[1.02] shadow-[0_12px_32px_-8px_rgba(147,126,39,0.4)] hover:shadow-[0_20px_48px_-8px_rgba(147,126,39,0.6)] focus:shadow-[0_20px_48px_-8px_rgba(147,126,39,0.6)] relative overflow-hidden group text-base xl:text-lg tracking-wide px-8 focus:ring-4 focus:ring-neon/30 focus:outline-none"
                   >
                     {/* Luxury shine effect */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -skew-x-12 animate-pulse"></div>
