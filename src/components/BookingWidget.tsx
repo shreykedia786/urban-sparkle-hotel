@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CalendarDays, MapPin, Users, Tag, Search, ChevronDown } from "lucide-react";
+import { CalendarDays, MapPin, Users, Tag, Search, ChevronDown, Star, Shield, Clock, DollarSign } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -27,351 +27,248 @@ export function BookingWidget({ className }: { className?: string }) {
     "Business Bay"
   ];
 
-  const isLuxury = className?.includes('luxury');
-
   return (
-    <div className={cn("w-full max-w-8xl mx-auto", className)}>
-      <div className="relative">
-        {/* Elegant luxury frame */}
-        <div className="absolute -inset-1 bg-gradient-to-r from-neon/5 via-neon/10 to-neon/5 rounded-3xl blur-xl"></div>
-        
-        <div className={cn(
-          "relative backdrop-blur-3xl rounded-3xl overflow-hidden",
-          isLuxury 
-            ? "bg-white/95 border border-white/60 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)]"
-            : "bg-black/40 border border-white/20 shadow-[0_30px_60px_-12px_rgba(0,0,0,0.8)]"
-        )}>
+    <div className={cn("w-full max-w-6xl mx-auto", className)}>
+      <div className="bg-white rounded-3xl shadow-2xl p-12 border border-gray-100">
+        {/* Header Section */}
+        <div className="text-center mb-12">
+          {/* 5-Star Rating */}
+          <div className="flex justify-center gap-1 mb-6">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-6 h-6 fill-amber-400 text-amber-400" />
+            ))}
+          </div>
           
-          {/* Premium glass overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-white/5 pointer-events-none"></div>
+          {/* Main Title */}
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            Reserve Your <span className="text-amber-500">Luxury Stay</span>
+          </h2>
           
-          {/* Main content */}
-          <div className="relative z-10 p-8 lg:p-16 xl:p-20">
-            
-            {/* Spacious booking form - Better proportions with improved visual hierarchy */}
-            <div className="grid grid-cols-1 lg:grid-cols-10 gap-8 lg:gap-12 xl:gap-16">
-              
-              {/* Destination - Prominent placement (3 columns) */}
-              <div className="lg:col-span-3">
-                <div className="space-y-4">
-                  <Label className={cn(
-                    "text-sm font-semibold tracking-[0.5px] uppercase flex items-center gap-2.5",
-                    isLuxury ? "text-foreground/80" : "text-white/80"
-                  )}>
-                    <div className="w-5 h-5 rounded-full bg-neon/30 flex items-center justify-center">
-                      <MapPin className="w-3 h-3 text-neon" />
-                    </div>
-                    Destination
-                  </Label>
-                  <Select value={destination} onValueChange={setDestination}>
-                    <SelectTrigger className={cn(
-                      "h-20 rounded-2xl border-2 text-lg font-medium transition-all duration-500 group px-8 focus:ring-4",
-                      isLuxury 
-                        ? "bg-white/90 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.12)] focus:shadow-[0_16px_40px_-8px_rgba(147,126,39,0.25)] hover:bg-white text-foreground border-neon/20 focus:border-neon/50 focus:ring-neon/20" 
-                        : "bg-white/15 backdrop-blur-2xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.4)] focus:shadow-[0_16px_40px_-8px_rgba(147,126,39,0.25)] hover:bg-white/20 text-white border-white/30 focus:border-neon/50 focus:ring-neon/20"
-                    )}>
-                      <SelectValue placeholder="Select your destination" className="text-left" />
-                    </SelectTrigger>
-                    <SelectContent className={cn(
-                      "rounded-2xl border-0 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15)] backdrop-blur-3xl min-w-[400px] z-50",
-                      isLuxury ? "bg-white shadow-[0_20px_40px_-8px_rgba(0,0,0,0.25)]" : "bg-black shadow-[0_20px_40px_-8px_rgba(255,255,255,0.1)]"
-                    )}>
-                      {destinations.map((dest) => (
-                        <SelectItem key={dest} value={dest} className={cn(
-                          "rounded-xl text-lg font-medium py-4 px-6 my-1",
-                          isLuxury 
-                            ? "text-foreground hover:bg-neon/10 focus:bg-neon/15" 
-                            : "text-white hover:bg-neon/15 focus:bg-neon/20"
-                        )}>
-                          {dest}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
+          {/* Subtitle */}
+          <p className="text-xl text-gray-600 font-medium">
+            Experience unparalleled luxury with instant confirmation and our best rate guarantee
+          </p>
+        </div>
 
-              {/* Check-in - Better proportions (2 columns) */}
-              <div className="lg:col-span-2">
-                <div className="space-y-4">
-                  <Label className={cn(
-                    "text-sm font-medium tracking-[0.5px] uppercase flex items-center gap-2.5",
-                    isLuxury ? "text-foreground/70" : "text-white/70"
-                  )}>
-                    <div className="w-5 h-5 rounded-full bg-neon/20 flex items-center justify-center">
-                      <CalendarDays className="w-3 h-3 text-neon" />
-                    </div>
-                    Arrival
-                  </Label>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button
-                        variant="ghost"
-                        className={cn(
-                          "h-20 w-full rounded-2xl border-2 text-lg font-medium transition-all duration-500 text-left justify-start px-8 focus:ring-4 group",
-                          isLuxury 
-                            ? "bg-white/90 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.12)] focus:shadow-[0_16px_40px_-8px_rgba(147,126,39,0.25)] hover:bg-white text-foreground border-neon/20 hover:border-neon/40 focus:border-neon/50 focus:ring-neon/20" 
-                            : "bg-white/15 backdrop-blur-2xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.4)] focus:shadow-[0_16px_40px_-8px_rgba(147,126,39,0.25)] hover:bg-white/20 text-white border-white/30 hover:border-white/50 focus:border-neon/50 focus:ring-neon/20",
-                          !checkIn && (isLuxury ? "text-muted-foreground" : "text-white/60")
-                        )}
-                      >
-                        <div className="flex flex-col items-start w-full">
-                          {checkIn ? (
-                            <>
-                              <span className="text-lg font-semibold">{format(checkIn, "MMM dd")}</span>
-                              <span className="text-sm opacity-70">{format(checkIn, "yyyy")}</span>
-                            </>
-                          ) : (
-                            <span>Select date</span>
-                          )}
-                        </div>
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className={cn(
-                      "w-auto p-0 rounded-2xl border-0 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.25)] z-50",
-                      isLuxury ? "bg-white shadow-[0_20px_40px_-8px_rgba(0,0,0,0.25)]" : "bg-black shadow-[0_20px_40px_-8px_rgba(255,255,255,0.1)]"
-                    )} align="start">
-                      <Calendar
-                        mode="single"
-                        selected={checkIn}
-                        onSelect={setCheckIn}
-                        disabled={(date) => date < new Date()}
-                        initialFocus
-                        className={cn(
-                          "p-6 pointer-events-auto",
-                          isLuxury ? "text-foreground" : "text-white"
-                        )}
-                      />
-                    </PopoverContent>
-                  </Popover>
-                </div>
-              </div>
+        {/* Booking Form */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-8">
+          
+          {/* Destination */}
+          <div className="space-y-3">
+            <Label className="text-amber-600 text-sm font-semibold uppercase tracking-wider flex items-center gap-2">
+              <MapPin className="w-4 h-4" />
+              Destination
+            </Label>
+            <Select value={destination} onValueChange={setDestination}>
+              <SelectTrigger className="h-16 bg-gray-50 border-2 border-gray-200 rounded-xl text-lg font-medium hover:border-amber-300 focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition-all">
+                <SelectValue placeholder="Donatello Hot..." className="text-gray-900" />
+              </SelectTrigger>
+              <SelectContent className="bg-white border-0 shadow-xl rounded-xl z-[9999]">
+                {destinations.map((dest) => (
+                  <SelectItem key={dest} value={dest} className="text-lg py-3 px-4 hover:bg-amber-50 focus:bg-amber-50">
+                    {dest}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
 
-              {/* Check-out - Better proportions (2 columns) */}
-              <div className="lg:col-span-2">
-                <div className="space-y-4">
-                  <Label className={cn(
-                    "text-sm font-medium tracking-[0.5px] uppercase flex items-center gap-2.5",
-                    isLuxury ? "text-foreground/70" : "text-white/70"
-                  )}>
-                    <div className="w-5 h-5 rounded-full bg-neon/20 flex items-center justify-center">
-                      <CalendarDays className="w-3 h-3 text-neon" />
-                    </div>
-                    Departure
-                  </Label>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button
-                        variant="ghost"
-                        className={cn(
-                          "h-20 w-full rounded-2xl border-2 text-lg font-medium transition-all duration-500 text-left justify-start px-8 focus:ring-4 group",
-                          isLuxury 
-                            ? "bg-white/90 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.12)] focus:shadow-[0_16px_40px_-8px_rgba(147,126,39,0.25)] hover:bg-white text-foreground border-neon/20 hover:border-neon/40 focus:border-neon/50 focus:ring-neon/20" 
-                            : "bg-white/15 backdrop-blur-2xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.4)] focus:shadow-[0_16px_40px_-8px_rgba(147,126,39,0.25)] hover:bg-white/20 text-white border-white/30 hover:border-white/50 focus:border-neon/50 focus:ring-neon/20",
-                          !checkOut && (isLuxury ? "text-muted-foreground" : "text-white/60")
-                        )}
-                      >
-                        <div className="flex flex-col items-start w-full">
-                          {checkOut ? (
-                            <>
-                              <span className="text-lg font-semibold">{format(checkOut, "MMM dd")}</span>
-                              <span className="text-sm opacity-70">{format(checkOut, "yyyy")}</span>
-                            </>
-                          ) : (
-                            <span>Select date</span>
-                          )}
-                        </div>
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className={cn(
-                      "w-auto p-0 rounded-2xl border-0 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.25)] z-50",
-                      isLuxury ? "bg-white shadow-[0_20px_40px_-8px_rgba(0,0,0,0.25)]" : "bg-black shadow-[0_20px_40px_-8px_rgba(255,255,255,0.1)]"
-                    )} align="start">
-                      <Calendar
-                        mode="single"
-                        selected={checkOut}
-                        onSelect={setCheckOut}
-                        disabled={(date) => date < (checkIn || new Date())}
-                        initialFocus
-                        className={cn(
-                          "p-6 pointer-events-auto",
-                          isLuxury ? "text-foreground" : "text-white"
-                        )}
-                      />
-                    </PopoverContent>
-                  </Popover>
-                </div>
-              </div>
-
-              {/* Guests - Better proportions (2 columns) */}
-              <div className="lg:col-span-2">
-                <div className="space-y-4">
-                  <Label className={cn(
-                    "text-sm font-medium tracking-[0.5px] uppercase flex items-center gap-2.5",
-                    isLuxury ? "text-foreground/70" : "text-white/70"
-                  )}>
-                    <div className="w-5 h-5 rounded-full bg-neon/20 flex items-center justify-center">
-                      <Users className="w-3 h-3 text-neon" />
-                    </div>
-                    Guests
-                  </Label>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button
-                        variant="ghost"
-                        className={cn(
-                          "h-20 w-full rounded-2xl border-2 text-lg font-medium transition-all duration-500 text-left justify-between px-8 focus:ring-4 group",
-                          isLuxury 
-                            ? "bg-white/90 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.12)] focus:shadow-[0_16px_40px_-8px_rgba(147,126,39,0.25)] hover:bg-white text-foreground border-neon/20 hover:border-neon/40 focus:border-neon/50 focus:ring-neon/20" 
-                            : "bg-white/15 backdrop-blur-2xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.4)] focus:shadow-[0_16px_40px_-8px_rgba(147,126,39,0.25)] hover:bg-white/20 text-white border-white/30 hover:border-white/50 focus:border-neon/50 focus:ring-neon/20"
-                        )}
-                      >
-                        <div className="flex flex-col items-start flex-1">
-                          <span className="text-lg font-semibold w-full">{rooms} Room{parseInt(rooms) > 1 ? 's' : ''}</span>
-                          <span className="text-sm opacity-70 w-full">{adults} Adult{parseInt(adults) > 1 ? 's' : ''}{parseInt(children) > 0 ? `, ${children} Child${parseInt(children) > 1 ? 'ren' : ''}` : ''}</span>
-                        </div>
-                        <ChevronDown className="w-5 h-5 opacity-50 flex-shrink-0 ml-4" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className={cn(
-                      "w-80 p-8 rounded-2xl border-0 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.25)] z-50",
-                      isLuxury ? "bg-white shadow-[0_20px_40px_-8px_rgba(0,0,0,0.25)]" : "bg-black shadow-[0_20px_40px_-8px_rgba(255,255,255,0.1)]"
-                    )}>
-                      <div className="space-y-8">
-                        <div className="flex items-center justify-between">
-                          <Label className={cn(
-                            "text-lg font-medium",
-                            isLuxury ? "text-foreground" : "text-white"
-                          )}>Rooms</Label>
-                          <Select value={rooms} onValueChange={setRooms}>
-                            <SelectTrigger className={cn(
-                              "w-20 h-12 text-lg font-medium rounded-xl",
-                              isLuxury ? "bg-white/90 text-foreground border-white/30" : "bg-white/10 text-white border-white/20"
-                            )}>
-                              <SelectValue />
-                            </SelectTrigger>
-                            <SelectContent className={cn(
-                              "rounded-xl z-50",
-                              isLuxury ? "bg-white shadow-[0_8px_24px_-6px_rgba(0,0,0,0.15)]" : "bg-black shadow-[0_8px_24px_-6px_rgba(255,255,255,0.1)]"
-                            )}>
-                              {[1, 2, 3, 4, 5].map((num) => (
-                                <SelectItem key={num} value={num.toString()} className="text-lg py-3">
-                                  {num}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <Label className={cn(
-                            "text-lg font-medium",
-                            isLuxury ? "text-foreground" : "text-white"
-                          )}>Adults</Label>
-                          <Select value={adults} onValueChange={setAdults}>
-                            <SelectTrigger className={cn(
-                              "w-20 h-12 text-lg font-medium rounded-xl",
-                              isLuxury ? "bg-white/90 text-foreground border-white/30" : "bg-white/10 text-white border-white/20"
-                            )}>
-                              <SelectValue />
-                            </SelectTrigger>
-                            <SelectContent className={cn(
-                              "rounded-xl z-50",
-                              isLuxury ? "bg-white shadow-[0_8px_24px_-6px_rgba(0,0,0,0.15)]" : "bg-black shadow-[0_8px_24px_-6px_rgba(255,255,255,0.1)]"
-                            )}>
-                              {[1, 2, 3, 4, 5, 6].map((num) => (
-                                <SelectItem key={num} value={num.toString()} className="text-lg py-3">
-                                  {num}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <Label className={cn(
-                            "text-lg font-medium",
-                            isLuxury ? "text-foreground" : "text-white"
-                          )}>Children</Label>
-                          <Select value={children} onValueChange={setChildren}>
-                            <SelectTrigger className={cn(
-                              "w-20 h-12 text-lg font-medium rounded-xl",
-                              isLuxury ? "bg-white/90 text-foreground border-white/30" : "bg-white/10 text-white border-white/20"
-                            )}>
-                              <SelectValue />
-                            </SelectTrigger>
-                            <SelectContent className={cn(
-                              "rounded-xl z-50",
-                              isLuxury ? "bg-white shadow-[0_8px_24px_-6px_rgba(0,0,0,0.15)]" : "bg-black shadow-[0_8px_24px_-6px_rgba(255,255,255,0.1)]"
-                            )}>
-                              {[0, 1, 2, 3, 4].map((num) => (
-                                <SelectItem key={num} value={num.toString()} className="text-lg py-3">
-                                  {num}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                        </div>
-                      </div>
-                    </PopoverContent>
-                  </Popover>
-                </div>
-              </div>
-
-              {/* Search Button - Proper width (2 columns) */}
-              <div className="lg:col-span-2">
-                <div className="flex flex-col justify-end h-full">
-                  <Button 
-                    size="lg"
-                    className="h-20 bg-gradient-to-r from-neon via-neon-glow to-neon hover:from-neon-glow hover:via-neon hover:to-neon-glow text-neon-foreground font-bold rounded-2xl transition-all duration-700 hover:scale-[1.02] focus:scale-[1.02] shadow-[0_12px_32px_-8px_rgba(147,126,39,0.4)] hover:shadow-[0_20px_48px_-8px_rgba(147,126,39,0.6)] focus:shadow-[0_20px_48px_-8px_rgba(147,126,39,0.6)] relative overflow-hidden group text-base xl:text-lg tracking-wide px-8 focus:ring-4 focus:ring-neon/30 focus:outline-none"
-                  >
-                    {/* Luxury shine effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -skew-x-12 animate-pulse"></div>
-                    <Search className="w-5 h-5 mr-3 relative z-10 flex-shrink-0" />
-                    <span className="relative z-10 font-bold tracking-wider">SEARCH</span>
-                  </Button>
-                </div>
-              </div>
-            </div>
-
-            {/* Refined Promo Code Section */}
-            <div className={cn(
-              "mt-12 pt-8",
-              "border-t border-gradient-to-r from-transparent via-border/30 to-transparent"
-            )}>
-              <div className="flex flex-col lg:flex-row gap-6 items-end">
-                <div className="flex-1 max-w-2xl">
-                  <Label className={cn(
-                    "text-sm font-medium tracking-[0.5px] uppercase flex items-center gap-2.5 mb-4",
-                    isLuxury ? "text-foreground/70" : "text-white/70"
-                  )}>
-                    <div className="w-5 h-5 rounded-full bg-neon/20 flex items-center justify-center">
-                      <Tag className="w-3 h-3 text-neon" />
-                    </div>
-                    Promotional Code (Optional)
-                  </Label>
-                  <Input
-                    placeholder="Enter your promotional code for exclusive offers"
-                    value={promoCode}
-                    onChange={(e) => setPromoCode(e.target.value)}
-                    className={cn(
-                      "h-20 rounded-2xl border-0 text-lg font-medium transition-all duration-500 px-8",
-                      isLuxury 
-                        ? "bg-white/80 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.12)] focus:shadow-[0_16px_40px_-8px_rgba(0,0,0,0.15)] hover:bg-white/90 text-foreground placeholder:text-muted-foreground/70"
-                        : "bg-white/10 backdrop-blur-2xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_32px_-6px_rgba(0,0,0,0.4)] focus:shadow-[0_16px_40px_-8px_rgba(0,0,0,0.5)] hover:bg-white/15 text-white placeholder:text-white/60"
-                    )}
-                  />
-                </div>
-                <Button 
+          {/* Check-in */}
+          <div className="space-y-3">
+            <Label className="text-amber-600 text-sm font-semibold uppercase tracking-wider flex items-center gap-2">
+              <CalendarDays className="w-4 h-4" />
+              Arrival
+            </Label>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
                   variant="outline"
                   className={cn(
-                    "h-20 px-12 rounded-2xl border-0 text-lg font-semibold transition-all duration-500 tracking-wide whitespace-nowrap",
-                    isLuxury 
-                      ? "bg-white/60 text-neon hover:bg-neon/15 hover:text-neon shadow-[0_8px_24px_-6px_rgba(147,126,39,0.15)] hover:shadow-[0_12px_32px_-6px_rgba(147,126,39,0.25)]"
-                      : "bg-white/10 text-neon hover:bg-neon/15 hover:text-white shadow-[0_8px_24px_-6px_rgba(147,126,39,0.2)] hover:shadow-[0_12px_32px_-6px_rgba(147,126,39,0.3)]"
+                    "h-16 w-full bg-gray-50 border-2 border-gray-200 rounded-xl text-lg font-medium hover:border-amber-300 focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition-all justify-start text-left",
+                    !checkIn && "text-gray-500"
                   )}
                 >
-                  APPLY CODE
+                  {checkIn ? format(checkIn, "MMM dd, yyyy") : "Select date"}
                 </Button>
-              </div>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0 bg-white border-0 shadow-xl rounded-xl z-[9999]" align="start">
+                <Calendar
+                  mode="single"
+                  selected={checkIn}
+                  onSelect={setCheckIn}
+                  disabled={(date) => date < new Date()}
+                  initialFocus
+                  className="p-4 pointer-events-auto"
+                />
+              </PopoverContent>
+            </Popover>
+          </div>
+
+          {/* Check-out */}
+          <div className="space-y-3">
+            <Label className="text-amber-600 text-sm font-semibold uppercase tracking-wider flex items-center gap-2">
+              <CalendarDays className="w-4 h-4" />
+              Departure
+            </Label>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="outline"
+                  className={cn(
+                    "h-16 w-full bg-gray-50 border-2 border-gray-200 rounded-xl text-lg font-medium hover:border-amber-300 focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition-all justify-start text-left",
+                    !checkOut && "text-gray-500"
+                  )}
+                >
+                  {checkOut ? format(checkOut, "MMM dd, yyyy") : "Select date"}
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0 bg-white border-0 shadow-xl rounded-xl z-[9999]" align="start">
+                <Calendar
+                  mode="single"
+                  selected={checkOut}
+                  onSelect={setCheckOut}
+                  disabled={(date) => date < (checkIn || new Date())}
+                  initialFocus
+                  className="p-4 pointer-events-auto"
+                />
+              </PopoverContent>
+            </Popover>
+          </div>
+
+          {/* Guests */}
+          <div className="space-y-3">
+            <Label className="text-amber-600 text-sm font-semibold uppercase tracking-wider flex items-center gap-2">
+              <Users className="w-4 h-4" />
+              Guests
+            </Label>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="h-16 w-full bg-gray-50 border-2 border-gray-200 rounded-xl text-lg font-medium hover:border-amber-300 focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition-all justify-between"
+                >
+                  <div className="text-left">
+                    <div className="font-semibold text-gray-900">{rooms} Room</div>
+                    <div className="text-sm text-gray-600">{adults} Adults</div>
+                  </div>
+                  <ChevronDown className="w-5 h-5 text-gray-400" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-80 p-6 bg-white border-0 shadow-xl rounded-xl z-[9999]">
+                <div className="space-y-6">
+                  <div className="flex items-center justify-between">
+                    <Label className="text-lg font-medium text-gray-900">Rooms</Label>
+                    <Select value={rooms} onValueChange={setRooms}>
+                      <SelectTrigger className="w-20 h-12 text-lg font-medium rounded-lg">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent className="bg-white shadow-lg z-[9999]">
+                        {[1, 2, 3, 4, 5].map((num) => (
+                          <SelectItem key={num} value={num.toString()} className="text-lg py-3">
+                            {num}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <Label className="text-lg font-medium text-gray-900">Adults</Label>
+                    <Select value={adults} onValueChange={setAdults}>
+                      <SelectTrigger className="w-20 h-12 text-lg font-medium rounded-lg">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent className="bg-white shadow-lg z-[9999]">
+                        {[1, 2, 3, 4, 5, 6].map((num) => (
+                          <SelectItem key={num} value={num.toString()} className="text-lg py-3">
+                            {num}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <Label className="text-lg font-medium text-gray-900">Children</Label>
+                    <Select value={children} onValueChange={setChildren}>
+                      <SelectTrigger className="w-20 h-12 text-lg font-medium rounded-lg">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent className="bg-white shadow-lg z-[9999]">
+                        {[0, 1, 2, 3, 4].map((num) => (
+                          <SelectItem key={num} value={num.toString()} className="text-lg py-3">
+                            {num}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
+          </div>
+        </div>
+
+        {/* Search Button */}
+        <div className="mb-8">
+          <Button 
+            size="lg"
+            className="w-64 h-16 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 mx-auto block"
+          >
+            <Search className="w-5 h-5 mr-3" />
+            SEARCH
+          </Button>
+        </div>
+
+        {/* Promo Code Section */}
+        <div className="border-t border-gray-200 pt-8 mb-8">
+          <div className="flex flex-col lg:flex-row gap-4 items-end max-w-4xl mx-auto">
+            <div className="flex-1">
+              <Label className="text-amber-600 text-sm font-semibold uppercase tracking-wider flex items-center gap-2 mb-3">
+                <Tag className="w-4 h-4" />
+                Promotional Code (Optional)
+              </Label>
+              <Input
+                placeholder="Enter your promotional code for exclusive offers"
+                value={promoCode}
+                onChange={(e) => setPromoCode(e.target.value)}
+                className="h-14 bg-gray-50 border-2 border-gray-200 rounded-xl text-lg font-medium hover:border-amber-300 focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition-all"
+              />
+            </div>
+            <Button 
+              variant="outline"
+              className="h-14 px-8 bg-amber-50 border-2 border-amber-200 text-amber-700 hover:bg-amber-100 hover:border-amber-300 font-semibold text-lg rounded-xl transition-all"
+            >
+              APPLY CODE
+            </Button>
+          </div>
+        </div>
+
+        {/* Trust Badges */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div className="flex flex-col items-center space-y-3">
+            <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center">
+              <Shield className="w-6 h-6 text-amber-600" />
+            </div>
+            <div>
+              <h3 className="font-bold text-gray-900 text-lg">Secure Booking</h3>
+              <p className="text-gray-600">SSL encrypted</p>
+            </div>
+          </div>
+          <div className="flex flex-col items-center space-y-3">
+            <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center">
+              <Clock className="w-6 h-6 text-amber-600" />
+            </div>
+            <div>
+              <h3 className="font-bold text-gray-900 text-lg">Instant Confirmation</h3>
+              <p className="text-gray-600">Real-time booking</p>
+            </div>
+          </div>
+          <div className="flex flex-col items-center space-y-3">
+            <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center">
+              <DollarSign className="w-6 h-6 text-amber-600" />
+            </div>
+            <div>
+              <h3 className="font-bold text-gray-900 text-lg">Best Rate Guarantee</h3>
+              <p className="text-gray-600">Price match promise</p>
             </div>
           </div>
         </div>
