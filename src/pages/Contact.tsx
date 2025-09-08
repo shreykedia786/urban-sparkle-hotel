@@ -1,5 +1,27 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { 
+  MapPin, 
+  Phone, 
+  Mail, 
+  Clock,
+  Plane,
+  Car,
+  Train,
+  MessageCircle,
+  Send,
+  ChevronRight,
+  Star,
+  Users,
+  Calendar,
+  Heart
+} from "lucide-react";
 
 export default function Contact() {
   return (
@@ -7,266 +29,327 @@ export default function Contact() {
       <Navigation />
       
       <main className="pt-16">
-        <section className="py-24 bg-gradient-hero text-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="font-display font-bold text-5xl mb-6">
-              Contact Us
-              <span className="block text-neon text-4xl mt-2">Get In Touch</span>
+        {/* Hero Section */}
+        <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+          {/* Background with cinematic gradient overlay */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: "linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.7) 100%), url('/src/assets/lobby-interior.jpg')"
+            }}
+          />
+          
+          {/* Luxury floating elements */}
+          <div className="absolute inset-0">
+            <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-neon/10 to-neon-glow/20 rounded-full blur-xl animate-float"></div>
+            <div className="absolute bottom-32 right-16 w-32 h-32 bg-gradient-to-r from-neon-glow/10 to-neon/20 rounded-full blur-2xl animate-float-delayed"></div>
+            <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-neon/10 rounded-full blur-lg animate-pulse"></div>
+          </div>
+
+          <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+            {/* Luxury badge */}
+            <div className="inline-flex items-center gap-2 px-6 py-3 bg-card/20 backdrop-blur-md border border-neon/20 rounded-full mb-8">
+              <Star className="w-4 h-4 text-neon" />
+              <span className="text-white text-sm font-medium">5-Star Luxury Service</span>
+            </div>
+
+            <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl mb-6 bg-gradient-to-r from-white via-white to-neon bg-clip-text text-transparent leading-tight">
+              Contact Our
+              <span className="block text-neon">Concierge Team</span>
             </h1>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Our concierge team is available 24/7 to assist with reservations, 
-              special requests, and local recommendations.
+            
+            <p className="text-xl md:text-2xl lg:text-3xl mb-8 max-w-4xl mx-auto leading-relaxed text-white/90 font-light">
+              Available 24/7 to create exceptional experiences
             </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+              <Button 
+                size="lg" 
+                className="bg-neon hover:bg-neon-glow text-neon-foreground font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+              >
+                <Phone className="w-5 h-5 mr-2" />
+                Call Reception
+                <ChevronRight className="w-5 h-5 ml-2" />
+              </Button>
+              
+              <Button 
+                variant="outline" 
+                size="lg"
+                className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm px-8 py-4 rounded-full text-lg transition-all duration-300"
+              >
+                <MessageCircle className="w-5 h-5 mr-2" />
+                WhatsApp Chat
+              </Button>
+            </div>
+            
+            <div className="flex items-center justify-center gap-8 text-sm text-white/70">
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4" />
+                <span>Al Barsha, Dubai</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4" />
+                <span>24/7 Service</span>
+              </div>
+            </div>
           </div>
         </section>
-        
-        <section className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Contact Information & Form Section */}
+        <section className="py-24 relative">
+          {/* Luxury background gradient */}
+          <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/20 to-background"></div>
+          
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16">
+              
               {/* Contact Information */}
-              <div>
-                <h2 className="text-3xl font-bold text-foreground mb-8">Get in Touch</h2>
-                <p className="text-lg text-muted-foreground mb-12">
-                  Experience the perfect blend of innovative design, relaxing inspiration and gracious hospitality that is Donatello Hotel Dubai!
-                </p>
+              <div className="space-y-8">
+                <div className="space-y-4">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-neon/10 text-neon rounded-full text-sm font-medium">
+                    <Heart className="w-4 h-4" />
+                    Premium Service
+                  </div>
+                  <h2 className="text-4xl lg:text-5xl font-bold text-foreground">
+                    Get in <span className="text-neon">Touch</span>
+                  </h2>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    Experience the perfect blend of innovative design, relaxing inspiration and gracious hospitality that is Donatello Hotel Dubai!
+                  </p>
+                </div>
                 
                 {/* Quick Contact Actions */}
-                <div className="grid sm:grid-cols-2 gap-6 mb-12">
-                  <a href="tel:+97143409040" className="flex items-center p-6 bg-card rounded-lg border hover:shadow-md transition-shadow">
-                    <div className="p-3 bg-primary/10 rounded-full mr-4">
-                      <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground">Call Reception</h3>
-                      <p className="text-muted-foreground">+971 4 340 9040</p>
-                    </div>
-                  </a>
+                <div className="grid gap-6">
+                  <Card className="group hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-border/50 hover:border-neon/30">
+                    <CardContent className="p-6">
+                      <a href="tel:+97143409040" className="flex items-center">
+                        <div className="p-4 bg-gradient-to-br from-neon/20 to-neon-glow/30 rounded-2xl mr-4 group-hover:scale-110 transition-transform">
+                          <Phone className="w-6 h-6 text-neon" />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-foreground text-lg">Call Reception</h3>
+                          <p className="text-muted-foreground font-medium">+971 4 340 9040</p>
+                        </div>
+                      </a>
+                    </CardContent>
+                  </Card>
                   
-                  <a href="mailto:info@donatello-hoteldubai.com" className="flex items-center p-6 bg-card rounded-lg border hover:shadow-md transition-shadow">
-                    <div className="p-3 bg-primary/10 rounded-full mr-4">
-                      <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground">Email Us</h3>
-                      <p className="text-muted-foreground">info@donatello-hoteldubai.com</p>
-                    </div>
-                  </a>
+                  <Card className="group hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-border/50 hover:border-neon/30">
+                    <CardContent className="p-6">
+                      <a href="mailto:info@donatello-hoteldubai.com" className="flex items-center">
+                        <div className="p-4 bg-gradient-to-br from-neon/20 to-neon-glow/30 rounded-2xl mr-4 group-hover:scale-110 transition-transform">
+                          <Mail className="w-6 h-6 text-neon" />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-foreground text-lg">Email Us</h3>
+                          <p className="text-muted-foreground font-medium">info@donatello-hoteldubai.com</p>
+                        </div>
+                      </a>
+                    </CardContent>
+                  </Card>
                 </div>
 
                 {/* Department Contacts */}
-                <div className="space-y-8">
-                  <div>
-                    <h3 className="text-xl font-semibold text-foreground mb-4">Department Contacts</h3>
+                <Card className="border-border/50">
+                  <CardContent className="p-8">
+                    <h3 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-2">
+                      <Users className="w-6 h-6 text-neon" />
+                      Department Contacts
+                    </h3>
                     <div className="space-y-6">
-                      <div className="border-l-4 border-primary pl-6">
-                        <h4 className="font-semibold text-foreground">Reservations</h4>
-                        <p className="text-muted-foreground">Tel: +971 4 314 6810</p>
-                        <p className="text-muted-foreground">Email: reservations@donatello-hoteldubai.com</p>
-                      </div>
-                      
-                      <div className="border-l-4 border-primary pl-6">
-                        <h4 className="font-semibold text-foreground">Sales & Marketing</h4>
-                        <p className="text-muted-foreground">Tel: +971 504 740 622 / +971 4 314 6810</p>
-                        <p className="text-muted-foreground">Email: sales@donatello-hoteldubai.com</p>
-                      </div>
-                      
-                      <div className="border-l-4 border-primary pl-6">
-                        <h4 className="font-semibold text-foreground">F&B Services</h4>
-                        <p className="text-muted-foreground">Tel: +974 05 0481 6822</p>
-                        <p className="text-muted-foreground">Email: asstfnbmanager@donatello-hoteldubai.com</p>
-                      </div>
-                      
-                      <div className="border-l-4 border-primary pl-6">
-                        <h4 className="font-semibold text-foreground">Lost & Found</h4>
-                        <p className="text-muted-foreground">Tel: +971 4 340 6760</p>
-                        <p className="text-muted-foreground">Email: info@donatello-hoteldubai.com</p>
-                      </div>
+                      {[
+                        { title: "Reservations", phone: "+971 4 314 6810", email: "reservations@donatello-hoteldubai.com" },
+                        { title: "Sales & Marketing", phone: "+971 504 740 622", email: "sales@donatello-hoteldubai.com" },
+                        { title: "F&B Services", phone: "+974 05 0481 6822", email: "asstfnbmanager@donatello-hoteldubai.com" },
+                        { title: "Lost & Found", phone: "+971 4 340 6760", email: "info@donatello-hoteldubai.com" }
+                      ].map((dept, index) => (
+                        <div key={index} className="border-l-4 border-neon pl-6 py-2">
+                          <h4 className="font-semibold text-foreground text-lg">{dept.title}</h4>
+                          <p className="text-muted-foreground">Tel: {dept.phone}</p>
+                          <p className="text-muted-foreground">Email: {dept.email}</p>
+                        </div>
+                      ))}
                     </div>
-                  </div>
-                </div>
+                  </CardContent>
+                </Card>
               </div>
 
               {/* Contact Form */}
-              <div>
-                <div className="bg-card p-8 rounded-lg border">
-                  <h3 className="text-2xl font-semibold text-foreground mb-6">Send us a Message</h3>
-                  <form className="space-y-6">
-                    <div className="grid sm:grid-cols-2 gap-6">
-                      <div>
-                        <label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-2">
-                          First Name
-                        </label>
-                        <input
-                          type="text"
-                          id="firstName"
-                          className="w-full px-4 py-3 border border-input rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                          placeholder="Your first name"
+              <div className="space-y-8">
+                <Card className="border-border/50 shadow-xl">
+                  <CardContent className="p-8">
+                    <div className="space-y-4 mb-8">
+                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-neon/10 text-neon rounded-full text-sm font-medium">
+                        <Send className="w-4 h-4" />
+                        Message Us
+                      </div>
+                      <h3 className="text-3xl font-semibold text-foreground">Send us a Message</h3>
+                      <p className="text-muted-foreground">Share your inquiry and we'll respond within 24 hours</p>
+                    </div>
+                    
+                    <form className="space-y-6">
+                      <div className="grid sm:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <Label htmlFor="firstName" className="text-foreground font-medium">First Name</Label>
+                          <Input
+                            id="firstName"
+                            placeholder="Your first name"
+                            className="h-12 border-border/50 focus:border-neon focus:ring-neon/20"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="lastName" className="text-foreground font-medium">Last Name</Label>
+                          <Input
+                            id="lastName"
+                            placeholder="Your last name"
+                            className="h-12 border-border/50 focus:border-neon focus:ring-neon/20"
+                          />
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="email" className="text-foreground font-medium">Email Address</Label>
+                        <Input
+                          type="email"
+                          id="email"
+                          placeholder="your.email@example.com"
+                          className="h-12 border-border/50 focus:border-neon focus:ring-neon/20"
                         />
                       </div>
-                      <div>
-                        <label htmlFor="lastName" className="block text-sm font-medium text-foreground mb-2">
-                          Last Name
-                        </label>
-                        <input
-                          type="text"
-                          id="lastName"
-                          className="w-full px-4 py-3 border border-input rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                          placeholder="Your last name"
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="phone" className="text-foreground font-medium">Phone Number</Label>
+                        <Input
+                          type="tel"
+                          id="phone"
+                          placeholder="+971 XXX XXX XXX"
+                          className="h-12 border-border/50 focus:border-neon focus:ring-neon/20"
                         />
                       </div>
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                        Email Address
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        className="w-full px-4 py-3 border border-input rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                        placeholder="your.email@example.com"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                        Phone Number
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        className="w-full px-4 py-3 border border-input rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                        placeholder="+971 XXX XXX XXX"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
-                        Subject
-                      </label>
-                      <select
-                        id="subject"
-                        className="w-full px-4 py-3 border border-input rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="subject" className="text-foreground font-medium">Subject</Label>
+                        <Select>
+                          <SelectTrigger className="h-12 border-border/50 focus:border-neon focus:ring-neon/20">
+                            <SelectValue placeholder="Select a subject" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="reservation">Room Reservation</SelectItem>
+                            <SelectItem value="group">Group Booking</SelectItem>
+                            <SelectItem value="dining">Dining Reservation</SelectItem>
+                            <SelectItem value="events">Events & Meetings</SelectItem>
+                            <SelectItem value="general">General Inquiry</SelectItem>
+                            <SelectItem value="feedback">Feedback</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="message" className="text-foreground font-medium">Message</Label>
+                        <Textarea
+                          id="message"
+                          rows={5}
+                          placeholder="Please share your message or inquiry..."
+                          className="border-border/50 focus:border-neon focus:ring-neon/20 resize-none"
+                        />
+                      </div>
+                      
+                      <Button
+                        type="submit"
+                        className="w-full h-12 bg-gradient-to-r from-neon to-neon-glow hover:from-neon-glow hover:to-neon text-neon-foreground font-semibold text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
                       >
-                        <option value="">Select a subject</option>
-                        <option value="reservation">Room Reservation</option>
-                        <option value="group">Group Booking</option>
-                        <option value="dining">Dining Reservation</option>
-                        <option value="events">Events & Meetings</option>
-                        <option value="general">General Inquiry</option>
-                        <option value="feedback">Feedback</option>
-                      </select>
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                        Message
-                      </label>
-                      <textarea
-                        id="message"
-                        rows={5}
-                        className="w-full px-4 py-3 border border-input rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-none"
-                        placeholder="Please share your message or inquiry..."
-                      ></textarea>
-                    </div>
-                    
-                    <button
-                      type="submit"
-                      className="w-full bg-primary text-primary-foreground font-semibold py-3 px-6 rounded-md hover:bg-primary/90 transition-colors"
-                    >
-                      Send Message
-                    </button>
-                  </form>
-                </div>
+                        <Send className="w-5 h-5 mr-2" />
+                        Send Message
+                      </Button>
+                    </form>
+                  </CardContent>
+                </Card>
                 
                 {/* WhatsApp Contact */}
-                <div className="mt-8 p-6 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
-                  <div className="flex items-center">
-                    <div className="p-3 bg-green-100 dark:bg-green-800/30 rounded-full mr-4">
-                      <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.487"/>
-                      </svg>
+                <Card className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border-green-200 dark:border-green-800">
+                  <CardContent className="p-6">
+                    <div className="flex items-center">
+                      <div className="p-4 bg-green-100 dark:bg-green-800/30 rounded-2xl mr-4">
+                        <MessageCircle className="w-6 h-6 text-green-600 dark:text-green-400" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-green-800 dark:text-green-200 text-lg">Start a WhatsApp Chat</h4>
+                        <p className="text-green-600 dark:text-green-300">Get instant assistance from our team</p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="font-semibold text-green-800 dark:text-green-200">Start a WhatsApp Chat</h4>
-                      <p className="text-green-600 dark:text-green-300 text-sm">Get instant assistance from our team</p>
-                    </div>
-                  </div>
-                </div>
+                  </CardContent>
+                </Card>
               </div>
             </div>
           </div>
         </section>
 
         {/* Location Section */}
-        <section className="py-16 bg-muted/50">
+        <section className="py-24 bg-gradient-to-br from-muted/30 via-muted/10 to-muted/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Our Location</h2>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-neon/10 text-neon rounded-full text-sm font-medium mb-6">
+                <MapPin className="w-4 h-4" />
+                Prime Location
+              </div>
+              <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+                Our <span className="text-neon">Location</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
                 Donatello Hotel is a 5-minute walk to/from the Mall of the Emirates & Ski Dubai. 
                 The Mall of Emirates Metro Stop is less than 450 metres from the hotel, and the Mashreq Metro Station is just 200 metres away.
               </p>
             </div>
             
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h3 className="text-xl font-semibold text-foreground mb-6">Getting Here</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start">
-                    <div className="p-2 bg-primary/10 rounded-full mr-4 mt-1">
-                      <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-foreground">Hotel Address</h4>
-                      <p className="text-muted-foreground">Al Barsha 1, Dubai, United Arab Emirates</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="p-2 bg-primary/10 rounded-full mr-4 mt-1">
-                      <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-foreground">Metro Access</h4>
-                      <p className="text-muted-foreground">Mall of Emirates Metro (450m) • Mashreq Metro (200m)</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="p-2 bg-primary/10 rounded-full mr-4 mt-1">
-                      <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-foreground">Shopping</h4>
-                      <p className="text-muted-foreground">Mall of the Emirates & Ski Dubai (5-minute walk)</p>
-                    </div>
-                  </div>
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div className="space-y-8">
+                <h3 className="text-2xl font-semibold text-foreground flex items-center gap-2">
+                  <Calendar className="w-6 h-6 text-neon" />
+                  Getting Here
+                </h3>
+                <div className="grid gap-6">
+                  {[
+                    { icon: MapPin, title: "Hotel Address", desc: "Al Barsha 1, Dubai, United Arab Emirates" },
+                    { icon: Train, title: "Metro Access", desc: "Mall of Emirates Metro (450m) • Mashreq Metro (200m)" },
+                    { icon: Car, title: "By Car", desc: "Free valet parking available for guests" },
+                    { icon: Plane, title: "From Airport", desc: "25 minutes from Dubai International Airport" }
+                  ].map((item, index) => (
+                    <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-border/50">
+                      <CardContent className="p-6">
+                        <div className="flex items-start">
+                          <div className="p-3 bg-gradient-to-br from-neon/20 to-neon-glow/30 rounded-xl mr-4 group-hover:scale-110 transition-transform">
+                            <item.icon className="w-5 h-5 text-neon" />
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-foreground text-lg">{item.title}</h4>
+                            <p className="text-muted-foreground">{item.desc}</p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
                 </div>
               </div>
               
-              <div className="relative">
-                <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                  <div className="text-center">
-                    <svg className="w-16 h-16 text-muted-foreground mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-1.447-.894L15 4m0 13V4m0 0L9 7" />
-                    </svg>
-                    <p className="text-muted-foreground">Interactive Map Coming Soon</p>
-                    <p className="text-sm text-muted-foreground mt-2">Google Maps integration in development</p>
+              <Card className="border-border/50 shadow-xl">
+                <CardContent className="p-8">
+                  <div className="aspect-video bg-gradient-to-br from-muted/50 to-muted/20 rounded-2xl flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="w-20 h-20 bg-gradient-to-br from-neon/20 to-neon-glow/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <MapPin className="w-10 h-10 text-neon" />
+                      </div>
+                      <h4 className="text-xl font-semibold text-foreground mb-2">Interactive Map</h4>
+                      <p className="text-muted-foreground">Google Maps integration coming soon</p>
+                      <Button 
+                        variant="outline" 
+                        className="mt-4 border-neon/30 text-neon hover:bg-neon/10"
+                      >
+                        View on Google Maps
+                      </Button>
+                    </div>
                   </div>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
