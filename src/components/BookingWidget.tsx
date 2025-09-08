@@ -1,18 +1,36 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
 export function BookingWidget({ className }: { className?: string }) {
   const isMobile = useIsMobile();
-  const defaultHeight = isMobile ? 420 : 160;
+  const defaultHeight = isMobile ? 720 : 260;
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [scale, setScale] = useState(1);
+  const [iframeHeightRaw, setIframeHeightRaw] = useState<number>(defaultHeight);
+
+  // Compute scale to fit RateGain's ~1024px layout into current width
+  useEffect(() => {
+    const TARGET_WIDTH = 1024;
+    const compute = () => {
+      const width = containerRef.current?.clientWidth ?? window.innerWidth;
+      const next = Math.min(1, Math.max(0.3, width / TARGET_WIDTH));
+      setScale(next);
+    };
+    compute();
+    window.addEventListener('resize', compute);
+    return () => window.removeEventListener('resize', compute);
+  }, []);
 
   useEffect(() => {
     // Expose the height change function expected by RateGain
     (window as any).changeIframeHeight = (newHeight: number) => {
+      const h = Math.max(newHeight, defaultHeight);
+      setIframeHeightRaw(h);
       const iframe = document.getElementById(
         "86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe"
       ) as HTMLIFrameElement | null;
       if (iframe) {
-        iframe.style.height = `${Math.max(newHeight, 80)}px`;
+        iframe.style.height = `${h}px`;
       }
     };
 
@@ -62,7 +80,7 @@ export function BookingWidget({ className }: { className?: string }) {
         <div className="absolute -inset-2 bg-gradient-to-r from-neon/15 via-transparent to-neon/15 rounded-3xl blur-xl"></div>
         
         {/* Premium glass container */}
-        <div className="relative bg-card/95 backdrop-blur-xl border border-neon/20 rounded-3xl shadow-2xl overflow-hidden">
+        <div className="relative bg-card/95 backdrop-blur-xl border border-neon/20 rounded-3xl shadow-2xl overflow-visible">
           {/* Luxury accent borders */}
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/60 to-transparent"></div>
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/40 to-transparent"></div>
@@ -86,32 +104,42 @@ export function BookingWidget({ className }: { className?: string }) {
             {/* RateGain Widget Container */}
             <div 
               id="37316DCF-9BB6-4B80-BE26-7651D87C5F6B_outerRGdiv" 
-              className="relative z-50 overflow-hidden w-full"
-              style={{ minHeight: '120px' }}
+              className="relative z-50 overflow-visible w-full"
+              style={{ minHeight: '120px', height: iframeHeightRaw * scale }}
+              ref={containerRef}
             >
-              <iframe 
-                srcDoc={`
+              <div
+                style={{
+                  width: 1024,
+                  transform: `scale(${scale})`,
+                  transformOrigin: 'top center',
+                  margin: '0 auto',
+                  pointerEvents: 'auto'
+                }}
+              >
+                <iframe 
+                  srcDoc={`
                   <html lang='en'>
                     <head>
                       <title>Booking Engine Widget</title>
                       <link href='https://ibe.rategain.com/widget/index.css' rel='stylesheet'/>
                     <style>
-                         html, body { 
-                           margin: 0; 
-                           padding: 0; 
-                           background: transparent; 
-                           overflow: visible !important;
-                           height: auto !important;
-                           min-height: 140px !important;
-                           width: 100% !important;
-                         }
-                         #rg-booking-widget {
-                           z-index: 9999 !important;
-                           position: relative !important;
-                           overflow: visible !important;
-                           min-height: 140px !important;
-                           width: 100% !important;
-                         }
+                        html, body { 
+                          margin: 0; 
+                          padding: 0; 
+                          background: transparent; 
+                          overflow: visible !important;
+                          height: auto !important;
+                          min-height: 140px !important;
+                          width: 100% !important;
+                        }
+                        #rg-booking-widget {
+                          z-index: 9999 !important;
+                          position: relative !important;
+                          overflow: visible !important;
+                          min-height: 140px !important;
+                          width: 100% !important;
+                        }
                         /* Ensure dropdowns appear above everything */
                         .rg-dropdown, .rg-calendar, .rg-popover, [class*="dropdown"], [class*="calendar"] {
                           z-index: 99999 !important;
@@ -138,22 +166,22 @@ export function BookingWidget({ className }: { className?: string }) {
                     </body>
                   </html>
                 `}
-                width="100%" 
-                style={{
-                  border: 'none', 
-                  overflow: 'hidden', 
-                  height: defaultHeight, 
-                  width: '100%',
-                  maxWidth: '100%',
-                  zIndex: 9999,
-                  background: 'transparent',
-                  minHeight: defaultHeight
-                }}
-                id="86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe"
-                allow="same-origin"
-                scrolling={isMobile ? "auto" : "no"}
-              />
-            </div>
+                  width={1024}
+                  style={{
+                    border: 'none', 
+                    overflow: 'hidden', 
+                    height: iframeHeightRaw, 
+                    width: 1024,
+                    zIndex: 9999,
+                    background: 'transparent',
+                    minHeight: iframeHeightRaw
+                  }} 
+                  id="86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe"
+                  allow="same-origin"
+                  scrolling="no"
+                />
+              </div>
+            </div]
           </div>
         </div>
       </div>
