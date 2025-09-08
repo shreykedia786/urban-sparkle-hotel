@@ -29,15 +29,43 @@
     id="rg-booking-widget"
     data-brandID="937bf5e9-7f12-4e04-be25-5e3e823242b7"
     data-chainID="d9c3cc24-da05-4697-a759-3bcea2872153"
-    data-backgroundprimarycolor="#937e27"
-    data-backgroundsecondarycolor="#937e27"
+    data-backgroundprimarycolor="#1e293b"
+    data-backgroundsecondarycolor="#334155"
     data-widgetFontColor="#ffffff"
-    data-widgetSearchFontColorButton="#1a1a1a"
-    data-widgetSearchColorButton="#d4c342"
-    data-widgetSearchFontColorHoverstate="#1a1a1a"
+    data-widgetSearchFontColorButton="#ffffff"
+    data-widgetSearchColorButton="#937e27"
+    data-widgetSearchFontColorHoverstate="#ffffff"
     data-widgetSearchColorHoverState="#b89f2a"
   >
     <script src="https://ibe.rategain.com/widget/index.js"></script>
   </div>
-</body>
-</html>
+  <script>
+    (function(){
+      function measure(){
+        var root = document.getElementById('rg-booking-widget');
+        if(!root) return 0;
+        var rect = root.getBoundingClientRect();
+        var h = Math.ceil(rect.height || 0);
+        if(!h || h < 80){
+          h = Math.max(
+            root.offsetHeight || 0,
+            root.scrollHeight || 0,
+            document.body.scrollHeight,
+            document.documentElement.scrollHeight
+          );
+        }
+        return h;
+      }
+      function send(){
+        var h = measure();
+        try { parent.postMessage({ newHeight: h }, '*'); } catch(e){}
+      }
+      var ro = new ResizeObserver(send);
+      ro.observe(document.body);
+      var mo = new MutationObserver(send);
+      mo.observe(document.body,{childList:true,subtree:true,attributes:true});
+      window.addEventListener('load', send);
+      setInterval(send, 1200);
+      send();
+    })();
+  </script>

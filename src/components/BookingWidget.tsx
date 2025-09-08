@@ -104,79 +104,7 @@ export function BookingWidget({ className }: { className?: string }) {
               ref={containerRef}
             >
               <iframe 
-                srcDoc={`
-                  <html lang='en'>
-                    <head>
-                      <title>Booking Engine Widget</title>
-                      <link href='https://ibe.rategain.com/widget/index.css' rel='stylesheet'/>
-                    <style>
-                        html, body { 
-                          margin: 0; 
-                          padding: 0; 
-                          background: transparent; 
-                          overflow: visible !important;
-                          height: auto !important;
-                          width: 100% !important;
-                        }
-                        #rg-booking-widget {
-                          z-index: 9999 !important;
-                          position: relative !important;
-                          overflow: visible !important;
-                          
-                          width: 100% !important;
-                          ${useVerticalLayout ? '' : 'min-width: 1024px !important;'}
-                        }
-                        /* Ensure dropdowns appear above everything */
-                        .rg-dropdown, .rg-calendar, .rg-popover, [class*="dropdown"], [class*="calendar"] {
-                          z-index: 99999 !important;
-                          position: relative !important;
-                          overflow: visible !important;
-                        }
-                    </style>
-                    </head>
-                    <body>            
-                      <div 
-                        data-brandID='937bf5e9-7f12-4e04-be25-5e3e823242b7'  
-                        data-chainID='d9c3cc24-da05-4697-a759-3bcea2872153'  
-                        data-backgroundprimarycolor='#1e293b' 
-                        data-backgroundsecondarycolor='#334155'   
-                        data-widgetFontColor='#ffffff'   
-                        data-widgetSearchFontColorButton='#ffffff'  
-                        data-widgetSearchColorButton='#937e27'  
-                        data-widgetSearchFontColorHoverstate='#ffffff'   
-                        data-widgetSearchColorHoverState='#b89f2a'   
-                        id='rg-booking-widget'
-                      >
-                        <script src='https://ibe.rategain.com/widget/index.js'></script>
-                      </div>
-                      <script>
-                        (function(){
-                          function measure(){
-                            var root = document.getElementById('rg-booking-widget');
-                            if(!root) return 0;
-                            var rect = root.getBoundingClientRect();
-                            var h = Math.ceil(rect.height || 0);
-                            if(!h || h < 60){
-                              h = Math.max(root.offsetHeight || 0, root.scrollHeight || 0);
-                            }
-                            return h;
-                          }
-                          function send(){
-                            var h = measure();
-                            try{ parent.postMessage({ newHeight: h }, '*'); }catch(e){}
-                          }
-                          var ro = new ResizeObserver(send);
-                          ro.observe(document.body);
-                          var mo = new MutationObserver(send);
-                          mo.observe(document.body,{childList:true,subtree:true,attributes:true});
-                          window.addEventListener('load',send);
-                          setInterval(send,1200);
-                          send();
-                        })();
-                      </script>
-                    </body>
-                  </html>
-                `}
+                src="/rg-widget.html"
                 width="100%" 
                 style={{
                   border: 'none', 
@@ -188,8 +116,9 @@ export function BookingWidget({ className }: { className?: string }) {
                   background: 'transparent'
                 }}
                 id="86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe"
-                allow="same-origin"
                 scrolling="no"
+                loading="lazy"
+                title="Booking Widget"
               />
             </div>
           </div>
