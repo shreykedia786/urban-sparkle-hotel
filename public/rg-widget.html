@@ -6,7 +6,22 @@
   <title>RateGain Booking Widget</title>
   <link href="https://ibe.rategain.com/widget/index.css" rel="stylesheet" />
   <style>
-    html, body { margin: 0; padding: 0; background: transparent; }
+    html, body { 
+      margin: 0; 
+      padding: 0; 
+      background: transparent; 
+      overflow: visible !important;
+      z-index: 9999 !important;
+    }
+    #rg-booking-widget {
+      z-index: 9999 !important;
+      position: relative !important;
+    }
+    /* Ensure dropdowns appear above everything */
+    .rg-dropdown, .rg-calendar, .rg-popover {
+      z-index: 99999 !important;
+      position: relative !important;
+    }
   </style>
 </head>
 <body>
