@@ -1,9 +1,28 @@
+import { useState, useEffect } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Wifi, Tv, Car, Coffee, Utensils, Bath, BedDouble, Users, Maximize } from "lucide-react";
+import { 
+  Wifi, 
+  Tv, 
+  Car, 
+  Coffee, 
+  Utensils, 
+  Bath, 
+  BedDouble, 
+  Users, 
+  Maximize, 
+  Star,
+  CheckCircle,
+  Crown,
+  Sparkles,
+  MapPin,
+  Phone,
+  Calendar
+} from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const roomTypes = [
   {
@@ -14,7 +33,9 @@ const roomTypes = [
     image: "https://donatellodubai.com/wp-content/uploads/2022/07/king-room.jpg",
     features: ["King Size Bed", "City View", "Free WiFi", "Mini Bar", "Safe", "32 sqm"],
     amenities: [Wifi, Tv, Coffee, Bath],
-    bookingCode: "DLXK"
+    bookingCode: "DLXK",
+    price: "From AED 450",
+    category: "classic"
   },
   {
     id: "deluxe-twin", 
@@ -24,7 +45,9 @@ const roomTypes = [
     image: "https://donatellodubai.com/ar/wp-content/uploads/2022/07/twin-room.jpg",
     features: ["Twin Beds", "City View", "Free WiFi", "Mini Bar", "Safe", "32 sqm"],
     amenities: [Wifi, Tv, Coffee, Bath],
-    bookingCode: "DLXT"
+    bookingCode: "DLXT",
+    price: "From AED 420",
+    category: "classic"
   },
   {
     id: "deluxe-triple",
@@ -34,7 +57,9 @@ const roomTypes = [
     image: "https://donatellodubai.com/wp-content/uploads/2022/11/Home-Deluxe-Triple-Room.jpg",
     features: ["Three Single Beds", "High-Speed Internet", "Work Desk", "Mini Bar", "Safe", "40 sqm"],
     amenities: [Wifi, Tv, Coffee, Bath, Users],
-    bookingCode: "DLX3"
+    bookingCode: "DLX3",
+    price: "From AED 650",
+    category: "family"
   },
   {
     id: "executive-room",
@@ -44,7 +69,9 @@ const roomTypes = [
     image: "https://donatellodubai.com/wp-content/uploads/2022/07/excetive-room.jpg",
     features: ["King Size Bed", "Separate Seating Area", "42\" TV", "Premium View", "Mini Bar", "35 sqm"],
     amenities: [Wifi, Tv, Coffee, Bath, Utensils],
-    bookingCode: "EXEK"
+    bookingCode: "EXEK",
+    price: "From AED 750",
+    category: "premium"
   },
   {
     id: "junior-suite",
@@ -54,7 +81,9 @@ const roomTypes = [
     image: "https://donatellodubai.com/wp-content/uploads/2022/07/junior-suits.jpg", 
     features: ["Spacious Living Area", "Coffee Table", "Arm Chair", "Comfortable Sofa", "King Size Bed", "45 sqm"],
     amenities: [Wifi, Tv, Coffee, Bath, BedDouble],
-    bookingCode: "JRSK"
+    bookingCode: "JRSK",
+    price: "From AED 950",
+    category: "suite"
   },
   {
     id: "executive-suite",
@@ -64,7 +93,9 @@ const roomTypes = [
     image: "https://donatellodubai.com/wp-content/uploads/2022/07/excetive-suit.jpg",
     features: ["Spacious Living Room", "Luxury Furniture", "Separate Dining", "Guest Bathroom", "Kitchenette", "55 sqm"],
     amenities: [Wifi, Tv, Coffee, Bath, BedDouble, Utensils],
-    bookingCode: "EXSK"
+    bookingCode: "EXSK",
+    price: "From AED 1,250",
+    category: "suite"
   },
   {
     id: "executive-family",
@@ -74,7 +105,9 @@ const roomTypes = [
     image: "https://donatellodubai.com/wp-content/uploads/2022/11/Home-Exe-Family-Suite.jpg",
     features: ["Separate Bedrooms", "Living Area", "Family Amenities", "Free WiFi", "Kitchenette", "65 sqm"],
     amenities: [Wifi, Tv, Coffee, Bath, Users, Utensils],
-    bookingCode: "EXSF"
+    bookingCode: "EXSF",
+    price: "From AED 1,650",
+    category: "family"
   },
   {
     id: "grand-suite",
@@ -84,72 +117,179 @@ const roomTypes = [
     image: "https://donatellodubai.com/wp-content/uploads/2022/07/grand-suit.jpg",
     features: ["Separate Living Room", "Private Jacuzzi", "Marble Bathroom", "Premium Service", "Full Kitchen", "85 sqm"],
     amenities: [Wifi, Tv, Coffee, Bath, BedDouble, Utensils, Maximize],
-    bookingCode: "GRSK"
+    bookingCode: "GRSK",
+    price: "From AED 2,500",
+    category: "presidential"
   }
 ];
 
+const categories = [
+  { id: "all", label: "All Rooms", count: roomTypes.length },
+  { id: "classic", label: "Classic Rooms", count: roomTypes.filter(r => r.category === "classic").length },
+  { id: "premium", label: "Premium Rooms", count: roomTypes.filter(r => r.category === "premium").length },
+  { id: "suite", label: "Suites", count: roomTypes.filter(r => r.category === "suite").length },
+  { id: "family", label: "Family Rooms", count: roomTypes.filter(r => r.category === "family").length },
+  { id: "presidential", label: "Presidential", count: roomTypes.filter(r => r.category === "presidential").length }
+];
+
+const amenitiesList = [
+  { icon: Wifi, title: "Complimentary Wi-Fi", desc: "High-speed internet throughout" },
+  { icon: Tv, title: "Smart Entertainment", desc: "55\" 4K TV with streaming" },
+  { icon: Coffee, title: "Premium Minibar", desc: "Curated selection of beverages" },
+  { icon: Bath, title: "Luxury Bathroom", desc: "Marble finishes & premium amenities" },
+  { icon: Car, title: "Valet Parking", desc: "Complimentary valet service" },
+  { icon: BedDouble, title: "Premium Bedding", desc: "Egyptian cotton & luxury linens" },
+  { icon: Utensils, title: "24/7 Room Service", desc: "Gourmet dining to your room" },
+  { icon: Crown, title: "Concierge Service", desc: "Personal assistance & recommendations" }
+];
+
 const Rooms = () => {
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setIsVisible(true), 100);
+  }, []);
+
+  const filteredRooms = selectedCategory === "all" 
+    ? roomTypes 
+    : roomTypes.filter(room => room.category === selectedCategory);
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-donatello-gold/10 to-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Rooms & <span className="text-donatello-gold">Suites</span>
+      {/* Hero Section - Matching homepage style */}
+      <section className="relative min-h-[70vh] overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
+          style={{
+            backgroundImage: `url('https://donatellodubai.com/wp-content/uploads/2022/07/grand-suit.jpg')`
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80" />
+        
+        {/* Floating elements */}
+        <div className="absolute top-20 right-10 w-2 h-2 bg-neon rounded-full animate-pulse opacity-60" />
+        <div className="absolute top-32 right-32 w-1 h-1 bg-white rounded-full animate-pulse opacity-40" />
+        <div className="absolute bottom-40 left-20 w-1.5 h-1.5 bg-neon rounded-full animate-pulse opacity-50" />
+        
+        <div className="relative z-10 flex items-center justify-center min-h-[70vh] px-4">
+          <div className={`text-center text-white transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className="mb-6">
+              <span className="inline-block px-4 py-2 bg-neon/20 backdrop-blur-sm rounded-full text-neon text-sm font-medium border border-neon/30">
+                ★ ★ ★ ★ ★ Luxury Accommodations
+              </span>
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-white via-white to-neon bg-clip-text text-transparent">
+                ROOMS &
+              </span>
+              <br />
+              <span className="text-3xl md:text-4xl lg:text-5xl font-light text-white/90">
+                Suites
+              </span>
             </h1>
-            <p className="text-lg text-muted-foreground mb-8">
-              Choose from 132 well-appointed and spacious rooms that offer you the flexibility to work and comfort to rest. 
-              Each room is designed with modern amenities and elegant touches to ensure your stay is memorable.
+            
+            <p className="text-xl md:text-2xl lg:text-3xl mb-8 max-w-4xl mx-auto leading-relaxed text-white/90 font-light">
+              Choose from 132 meticulously designed rooms and suites
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <p className="text-sm text-muted-foreground">
-                Check-in: 14:00 hrs • Check-out: 12:00 hrs
-              </p>
-              <Button asChild variant="neon">
-                <a href="tel:+97143409040">Call +971 4 340 9040</a>
-              </Button>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+              <div className="flex items-center gap-2 text-white/70">
+                <Calendar className="w-4 h-4" />
+                <span>Check-in: 14:00 • Check-out: 12:00</span>
+              </div>
+              <div className="flex items-center gap-2 text-white/70">
+                <Phone className="w-4 h-4" />
+                <span>+971 4 340 9040</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Room Types Grid */}
-      <section className="py-24 bg-background">
+      {/* Category Filter */}
+      <section className="relative -mt-16 z-30 pb-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-card/95 backdrop-blur-xl border border-border/40 rounded-2xl shadow-card p-6">
+            <div className="flex flex-wrap justify-center gap-3">
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => setSelectedCategory(category.id)}
+                  className={cn(
+                    "px-6 py-3 rounded-full text-sm font-medium transition-all duration-300",
+                    selectedCategory === category.id
+                      ? "bg-neon text-neon-foreground shadow-neon"
+                      : "bg-muted text-muted-foreground hover:bg-neon/10 hover:text-neon"
+                  )}
+                >
+                  {category.label}
+                  <span className="ml-2 opacity-60">({category.count})</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Rooms Grid */}
+      <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {roomTypes.map((room, index) => (
-              <Card key={room.id} className="overflow-hidden hover:shadow-lg transition-all duration-300 group">
+            {filteredRooms.map((room, index) => (
+              <Card key={room.id} className="group overflow-hidden bg-card border border-border shadow-card hover:shadow-neon transition-all duration-500 hover:scale-[1.02]">
                 <CardContent className="p-0">
                   {/* Room Image */}
-                  <div className="relative h-64 overflow-hidden">
+                  <div className="relative h-72 overflow-hidden">
                     <img
                       src={room.image}
                       alt={room.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                    <Badge className="absolute top-4 left-4 bg-donatello-gold text-white">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                    
+                    {/* Category Badge */}
+                    <Badge className={cn(
+                      "absolute top-4 left-4 text-white border-0",
+                      room.category === "presidential" ? "bg-gradient-to-r from-neon to-neon-glow" :
+                      room.category === "suite" ? "bg-gradient-to-r from-neon/80 to-neon" :
+                      room.category === "premium" ? "bg-gradient-to-r from-secondary to-secondary/80" :
+                      "bg-muted/80"
+                    )}>
+                      {room.category === "presidential" && <Crown className="w-3 h-3 mr-1" />}
+                      {room.category === "suite" && <Sparkles className="w-3 h-3 mr-1" />}
                       {room.subtitle}
                     </Badge>
+
+                    {/* Price Badge */}
+                    <div className="absolute bottom-4 right-4 bg-card/90 backdrop-blur-sm rounded-lg px-3 py-2">
+                      <span className="text-neon font-bold text-lg">{room.price}</span>
+                      <span className="text-muted-foreground text-sm ml-1">/ night</span>
+                    </div>
                   </div>
 
                   {/* Room Details */}
-                  <div className="p-6 space-y-4">
+                  <div className="p-6 space-y-6">
                     <div>
-                      <h3 className="text-xl font-bold text-foreground mb-2">{room.title}</h3>
-                      <p className="text-muted-foreground">{room.description}</p>
+                      <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-neon transition-colors">
+                        {room.title}
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed">{room.description}</p>
                     </div>
 
-                    {/* Features */}
-                    <div className="space-y-2">
-                      <h4 className="font-semibold text-foreground">Features:</h4>
-                      <div className="grid grid-cols-2 gap-2 text-sm text-muted-foreground">
+                    {/* Features Grid */}
+                    <div className="space-y-3">
+                      <h4 className="font-semibold text-foreground flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-neon" />
+                        Room Features
+                      </h4>
+                      <div className="grid grid-cols-2 gap-3">
                         {room.features.map((feature, idx) => (
-                          <div key={idx} className="flex items-center gap-1">
-                            <div className="w-1 h-1 bg-donatello-gold rounded-full" />
+                          <div key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <div className="w-1.5 h-1.5 bg-neon rounded-full" />
                             {feature}
                           </div>
                         ))}
@@ -157,23 +297,30 @@ const Rooms = () => {
                     </div>
 
                     {/* Amenities Icons */}
-                    <div className="flex gap-4 py-2">
-                      {room.amenities.map((Icon, idx) => (
-                        <Icon key={idx} className="w-5 h-5 text-donatello-gold" />
+                    <div className="flex gap-4 py-3 border-t border-border">
+                      {room.amenities.slice(0, 6).map((Icon, idx) => (
+                        <div key={idx} className="flex flex-col items-center gap-1 group-hover:scale-110 transition-transform">
+                          <Icon className="w-5 h-5 text-neon" />
+                        </div>
                       ))}
+                      {room.amenities.length > 6 && (
+                        <div className="flex items-center text-xs text-muted-foreground">
+                          +{room.amenities.length - 6} more
+                        </div>
+                      )}
                     </div>
 
                     {/* Booking Button */}
                     <Button 
                       asChild 
-                      className="w-full bg-donatello-gold hover:bg-donatello-gold/90 text-white"
+                      className="w-full bg-gradient-to-r from-neon to-neon-glow hover:from-neon-glow hover:to-neon text-neon-foreground font-semibold rounded-xl py-3 text-base transition-all duration-300 hover:scale-105 hover:shadow-neon"
                     >
                       <a 
                         href={`https://reservations.donatellodubai.com/reservation?propCode=UI-0025219&roomCode=${room.bookingCode}`}
                         target="_blank" 
                         rel="noopener noreferrer"
                       >
-                        Book Now
+                        Reserve This Room
                       </a>
                     </Button>
                   </div>
@@ -184,32 +331,68 @@ const Rooms = () => {
         </div>
       </section>
 
-      {/* Room Amenities Section */}
-      <section className="py-24 bg-muted">
+      {/* Luxury Amenities Section */}
+      <section className="py-24 bg-gradient-to-b from-background to-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Room Amenities
+            <span className="inline-block px-4 py-2 bg-neon/10 text-neon text-sm font-medium rounded-full mb-4">
+              WORLD-CLASS AMENITIES
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+              Luxury 
+              <span className="bg-gradient-to-r from-neon to-neon-glow bg-clip-text text-transparent"> Amenities</span>
             </h2>
-            <p className="text-lg text-muted-foreground">
-              Every room at Donatello Hotel Dubai is equipped with modern amenities for your comfort
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Every room features premium amenities designed for the modern luxury traveler
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-            {[
-              { icon: Wifi, title: "Free Wi-Fi" },
-              { icon: Tv, title: "LCD TV" },
-              { icon: Coffee, title: "Mini Bar" },
-              { icon: Bath, title: "Private Bathroom" },
-              { icon: Car, title: "Parking" },
-              { icon: BedDouble, title: "Premium Bedding" }
-            ].map((amenity, index) => (
-              <div key={index} className="text-center group">
-                <amenity.icon className="w-12 h-12 mx-auto mb-3 text-donatello-gold group-hover:scale-110 transition-transform" />
-                <h3 className="text-sm font-semibold text-foreground">{amenity.title}</h3>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {amenitiesList.map((amenity, index) => (
+              <Card key={index} className="group bg-card border border-border shadow-card hover:shadow-neon transition-all duration-500 hover:scale-105">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-neon to-neon-glow rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <amenity.icon className="w-8 h-8 text-neon-foreground" />
+                  </div>
+                  <h3 className="text-lg font-bold text-foreground mb-2">{amenity.title}</h3>
+                  <p className="text-muted-foreground text-sm">{amenity.desc}</p>
+                </CardContent>
+              </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 bg-gradient-to-r from-primary via-primary-hover to-primary relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]" />
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Ready to Experience Luxury?
+          </h2>
+          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            Book your perfect room at Donatello Hotel Dubai and discover unparalleled comfort
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button 
+              size="lg" 
+              className="bg-neon hover:bg-neon-glow text-neon-foreground font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+            >
+              Book Your Stay
+            </Button>
+            
+            <Button 
+              variant="outline" 
+              size="lg"
+              className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm px-8 py-4 rounded-full text-lg"
+            >
+              <Phone className="w-5 h-5 mr-2" />
+              +971 4 340 9040
+            </Button>
           </div>
         </div>
       </section>
