@@ -99,6 +99,7 @@ export function BookingWidget({ className }: { className?: string }) {
             <div 
               id="37316DCF-9BB6-4B80-BE26-7651D87C5F6B_outerRGdiv" 
               className="relative z-50 overflow-hidden w-full"
+              style={{ minHeight: defaultHeight }}
               ref={containerRef}
             >
               <iframe 
