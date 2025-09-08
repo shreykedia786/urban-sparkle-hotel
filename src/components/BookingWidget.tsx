@@ -23,8 +23,8 @@ export function BookingWidget({ className }: { className?: string }) {
       const iframe = document.getElementById(
         "86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe"
       ) as HTMLIFrameElement | null;
-      if (iframe) {
-        iframe.style.height = `${Math.max(newHeight, defaultHeight)}px`;
+      if (iframe && typeof newHeight === 'number' && newHeight > 0) {
+        iframe.style.height = `${newHeight}px`;
       }
     };
 
@@ -50,7 +50,7 @@ export function BookingWidget({ className }: { className?: string }) {
         }
 
         if (typeof newHeight === 'number' && newHeight > 0) {
-          (window as any).changeIframeHeight(Math.max(newHeight, defaultHeight));
+          (window as any).changeIframeHeight(newHeight);
         }
       } catch {}
     };
@@ -99,7 +99,6 @@ export function BookingWidget({ className }: { className?: string }) {
             <div 
               id="37316DCF-9BB6-4B80-BE26-7651D87C5F6B_outerRGdiv" 
               className="relative z-50 overflow-hidden w-full"
-              style={{ minHeight: defaultHeight }}
               ref={containerRef}
             >
               <iframe 
@@ -115,14 +114,13 @@ export function BookingWidget({ className }: { className?: string }) {
                           background: transparent; 
                           overflow: visible !important;
                           height: auto !important;
-                          min-height: ${defaultHeight}px !important;
                           width: 100% !important;
                         }
                         #rg-booking-widget {
                           z-index: 9999 !important;
                           position: relative !important;
                           overflow: visible !important;
-                          min-height: ${defaultHeight}px !important;
+                          
                           width: 100% !important;
                           ${useVerticalLayout ? '' : 'min-width: 1024px !important;'}
                         }
@@ -158,7 +156,7 @@ export function BookingWidget({ className }: { className?: string }) {
                               document.body.scrollHeight,
                               document.documentElement.scrollHeight
                             );
-                            try{ parent.postMessage({ newHeight: h+16 }, '*'); }catch(e){}
+                            try{ parent.postMessage({ newHeight: h }, '*'); }catch(e){}
                           }
                           var ro=new ResizeObserver(send);
                           ro.observe(document.body);
@@ -180,7 +178,7 @@ export function BookingWidget({ className }: { className?: string }) {
                   width: '100%',
                   zIndex: 9999,
                   background: 'transparent',
-                  minHeight: defaultHeight
+                  
                 }}
                 id="86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe"
                 allow="same-origin"
