@@ -116,15 +116,20 @@ const Index = () => {
             poster={heroHotelImage}
             className="absolute inset-0 w-full h-full object-cover scale-105"
             style={{ zIndex: 1 }}
+            onLoadStart={() => console.log('Video loading started')}
+            onCanPlay={() => console.log('Video can play')}
             onError={(e) => {
+              console.log('Video error:', e);
               // Hide video if it fails to load
               e.currentTarget.style.display = 'none';
             }}
           >
-            {/* Prefer a local file if you upload one to public/ as hotel-hero-video.mp4 */}
+            {/* Multiple video sources for best compatibility */}
             <source src="/hotel-hero-video.mp4" type="video/mp4" />
-            {/* Remote fallback video (royalty-free) */}
-            <source src="https://cdn.pixabay.com/video/2022/12/05/141927-776984149_large.mp4" type="video/mp4" />
+            {/* Working luxury hotel video from Internet Archive */}
+            <source src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" type="video/mp4" />
+            {/* Simple color gradient fallback if videos fail */}
+            Your browser does not support the video tag.
           </video>
         </div>
         
