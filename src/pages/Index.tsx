@@ -214,11 +214,11 @@ const Index = () => {
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/60 to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/40 to-transparent"></div>
               
-              <div className="relative z-10 p-8 lg:p-12">
+              <div className="relative z-10 p-2 sm:p-4 md:p-8 lg:p-12">
                 {/* Removed duplicate title - it's now in the BookingWidget */}
 
                 {/* Enhanced booking widget */}
-                <div className="relative z-50">
+                <div className="relative z-40">
                   <BookingWidget className="w-full" />
                 </div>
 
