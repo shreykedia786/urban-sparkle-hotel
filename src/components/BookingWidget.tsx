@@ -1,13 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { useIsMobile } from "@/hooks/use-mobile";
+
 export function BookingWidget({ className }: { className?: string }) {
-  const isMobile = useIsMobile();
-  const defaultHeight = isMobile ? 420 : 160;
+  const [isNarrow, setIsNarrow] = useState(false);
+  useEffect(() => {
+    const mql = window.matchMedia('(max-width: 1023px)');
+    const onChange = () => setIsNarrow(mql.matches);
+    onChange();
+    mql.addEventListener('change', onChange);
+    return () => mql.removeEventListener('change', onChange);
+  }, []);
+
+  const defaultHeight = isNarrow ? 820 : 200;
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  // Only use scaling for very small screens where horizontal layout would be unusable
-  const useVerticalLayout = isMobile;
+  // Vertical layout for tablets and mobiles (<1024px)
+  const useVerticalLayout = isNarrow;
 
   useEffect(() => {
     // Expose the height change function expected by RateGain
@@ -71,7 +79,7 @@ export function BookingWidget({ className }: { className?: string }) {
           <div className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/60 to-transparent ${useVerticalLayout ? 'hidden' : 'block'}`}></div>
           <div className={`absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/40 to-transparent ${useVerticalLayout ? 'hidden' : 'block'}`}></div>
           
-          <div className={`relative ${useVerticalLayout ? 'z-0 p-2' : 'z-10 p-6 md:p-8'}`} style={{ minHeight: (useVerticalLayout ? defaultHeight + 200 : defaultHeight + 80) }}>
+          <div className={`relative ${useVerticalLayout ? 'z-0 p-2' : 'z-10 p-6 md:p-8'}`} style={{ minHeight: (useVerticalLayout ? defaultHeight + 40 : defaultHeight + 80) }}>
             {/* Header */}
             <div className="text-center mb-6">
               <div className="flex justify-center gap-1 mb-3">
