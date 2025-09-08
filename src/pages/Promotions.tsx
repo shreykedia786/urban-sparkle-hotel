@@ -45,6 +45,7 @@ const promotions = [
   {
     title: "Early Bird Booking",
     description: "Book 30 days in advance and save significantly on your luxury stay",
+    image: "/src/assets/deluxe-triple.jpg",
     type: "Accommodation",
     status: "Year Round",
     details: "Plan ahead and enjoy substantial savings on our luxury rooms and suites",
@@ -54,6 +55,7 @@ const promotions = [
   {
     title: "Extended Stay Package",
     description: "Stay 3 nights or more and enjoy complimentary benefits and exclusive amenities",
+    image: "/src/assets/grand-suite.jpg",
     type: "Accommodation", 
     status: "Available",
     details: "Includes complimentary breakfast, late checkout, and spa credit",
@@ -63,6 +65,7 @@ const promotions = [
   {
     title: "Business Traveler Special",
     description: "Exclusive rates and benefits designed specifically for corporate guests",
+    image: "/src/assets/room-cityview.jpg",
     type: "Corporate",
     status: "Available",
     details: "Includes high-speed WiFi, meeting room access, and business center services",
@@ -72,6 +75,7 @@ const promotions = [
   {
     title: "Weekend Getaway",
     description: "Perfect package for weekend leisure stays in the heart of Dubai",
+    image: "/src/assets/lobby-interior.jpg",
     type: "Leisure",
     status: "Weekends",
     details: "Includes breakfast, pool access, and complimentary minibar",
@@ -313,13 +317,24 @@ const Promotions = () => {
                 ))}
               </div>
               
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-neon to-neon-glow hover:from-neon-glow hover:to-neon text-neon-foreground transition-all duration-300 hover:scale-105"
-              >
-                <Award className="w-5 h-5 mr-2" />
-                Join Loyalty Program
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-neon to-neon-glow hover:from-neon-glow hover:to-neon text-neon-foreground font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                >
+                  <Award className="w-5 h-5 mr-2" />
+                  Join Loyalty Program
+                </Button>
+                
+                <Button 
+                  variant="outline"
+                  size="lg"
+                  className="border-neon/30 text-neon hover:bg-neon/10 backdrop-blur-sm px-8 py-4 rounded-full text-lg transition-all duration-300"
+                >
+                  <Users className="w-5 h-5 mr-2" />
+                  Learn More
+                </Button>
+              </div>
             </div>
             
             <div className="bg-card rounded-2xl border border-border shadow-card p-8">
@@ -332,28 +347,28 @@ const Promotions = () => {
                   Contact us directly to learn about current promotions and customize a package that suits your needs perfectly.
                 </p>
                 
-                <div className="space-y-3">
+                <div className="grid gap-4">
                   <Button 
                     variant="outline" 
-                    className="w-full border-border hover:border-neon hover:text-neon" 
+                    className="w-full border-2 border-neon/30 hover:border-neon text-neon hover:bg-neon/10 font-semibold py-4 px-6 rounded-xl text-lg transition-all duration-300 hover:scale-[1.02]" 
                     size="lg"
                   >
-                    <MessageCircle className="w-4 h-4 mr-2" />
+                    <MessageCircle className="w-5 h-5 mr-2" />
                     Start WhatsApp Chat
                   </Button>
                   <Button 
                     variant="outline" 
-                    className="w-full border-border hover:border-neon hover:text-neon" 
+                    className="w-full border-2 border-neon/30 hover:border-neon text-neon hover:bg-neon/10 font-semibold py-4 px-6 rounded-xl text-lg transition-all duration-300 hover:scale-[1.02]" 
                     size="lg"
                   >
-                    <Phone className="w-4 h-4 mr-2" />
+                    <Phone className="w-5 h-5 mr-2" />
                     Call Reception
                   </Button>
                   <Button 
-                    className="w-full bg-gradient-to-r from-neon to-neon-glow hover:from-neon-glow hover:to-neon text-neon-foreground transition-all duration-300" 
+                    className="w-full bg-gradient-to-r from-neon to-neon-glow hover:from-neon-glow hover:to-neon text-neon-foreground font-semibold py-4 px-6 rounded-xl text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl" 
                     size="lg"
                   >
-                    <Calendar className="w-4 h-4 mr-2" />
+                    <Calendar className="w-5 h-5 mr-2" />
                     Check Availability
                   </Button>
                 </div>
