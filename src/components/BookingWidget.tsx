@@ -17,7 +17,7 @@ export function BookingWidget({ className }: { className?: string }) {
   return (
     <div className={cn("w-full max-w-full", className)}>
       {/* Booking Widget Structure - matching uploaded image */}
-      <div className="bg-slate-800 rounded-lg flex flex-col lg:flex-row items-stretch">
+      <div className="bg-slate-800 rounded-lg flex flex-col xl:flex-row items-stretch min-h-[80px]">
         
         {/* DESTINATION */}
         <div className="flex-1 p-4 border-r border-slate-600 last:border-r-0">
