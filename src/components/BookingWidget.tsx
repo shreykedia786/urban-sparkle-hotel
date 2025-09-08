@@ -90,7 +90,7 @@ export function BookingWidget({ className }: { className?: string }) {
             {/* RateGain Widget Container */}
             <div 
               id="37316DCF-9BB6-4B80-BE26-7651D87C5F6B_outerRGdiv" 
-              className="relative z-50 overflow-visible w-full"
+              className="relative z-50 overflow-hidden w-full"
               style={{ minHeight: defaultHeight }}
               ref={containerRef}
             >
@@ -147,13 +147,13 @@ export function BookingWidget({ className }: { className?: string }) {
                 width="100%" 
                 style={{
                   border: 'none', 
-                  overflow: useVerticalLayout ? 'auto' : 'visible', 
+                  overflow: 'hidden', 
                   height: defaultHeight, 
                   width: '100%',
                   zIndex: 9999,
                   background: 'transparent',
                   minHeight: defaultHeight
-                }} 
+                }}
                 id="86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe"
                 allow="same-origin"
                 scrolling={useVerticalLayout ? "auto" : "no"}
