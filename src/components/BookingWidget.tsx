@@ -79,7 +79,7 @@ export function BookingWidget({ className }: { className?: string }) {
           <div className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/60 to-transparent ${useVerticalLayout ? 'hidden' : 'block'}`}></div>
           <div className={`absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/40 to-transparent ${useVerticalLayout ? 'hidden' : 'block'}`}></div>
           
-          <div className={`relative ${useVerticalLayout ? 'z-0 p-2' : 'z-10 p-6 md:p-8'}`} style={{ minHeight: defaultHeight }}>
+          <div className={`relative ${useVerticalLayout ? 'z-0 p-2' : 'z-10 p-6 md:p-8'}`}>
             {/* Header */}
             <div className="text-center mb-6">
               <div className="flex justify-center gap-1 mb-3">
@@ -99,7 +99,6 @@ export function BookingWidget({ className }: { className?: string }) {
             <div 
               id="37316DCF-9BB6-4B80-BE26-7651D87C5F6B_outerRGdiv" 
               className="relative z-50 overflow-hidden w-full"
-              style={{ minHeight: defaultHeight }}
               ref={containerRef}
             >
               <iframe 
