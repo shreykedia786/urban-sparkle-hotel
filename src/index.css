@@ -114,34 +114,34 @@ All colors MUST be HSL for perfect theme consistency.
   }
 
   .dark {
-    /* Dark Urban Palette */
+    /* Premium Dark Urban Palette */
     --background: 220 13% 8%;            /* Deep dark */
     --foreground: 0 0% 98%;
 
-    --card: 220 13% 12%;                 /* Dark cards */
+    --card: 220 13% 10%;                 /* Slightly lighter dark cards */
     --card-foreground: 0 0% 98%;
 
-    --popover: 220 13% 12%;
+    --popover: 220 13% 10%;
     --popover-foreground: 0 0% 98%;
 
     /* Dark Brand Colors */
-    --primary: 0 0% 98%;                 /* Light text on dark */
-    --primary-foreground: 220 13% 8%;
-    --primary-hover: 0 0% 90%;           /* Slightly dimmed hover */
+    --primary: 220 13% 12%;              /* Dark primary background */
+    --primary-foreground: 0 0% 98%;      /* Light text on dark */
+    --primary-hover: 220 13% 15%;        /* Slightly lighter on hover */
     
     /* Gold Accent - Consistent in Dark Mode */
     --neon: 35 85% 55%;                /* Same gold as light mode */
-    --neon-foreground: 0 0% 98%;       /* Light text on gold in dark mode */
+    --neon-foreground: 220 13% 8%;      /* Dark text on gold */
     --neon-glow: 35 85% 65%;           /* Lighter gold for glow */
     
     /* Dark Urban Neutrals */
-    --secondary: 220 9% 20%;             /* Dark secondary */
+    --secondary: 220 9% 18%;             /* Dark secondary */
     --secondary-foreground: 0 0% 98%;
     
-    --muted: 220 13% 15%;                /* Dark muted */
-    --muted-foreground: 220 9% 65%;
+    --muted: 220 13% 12%;                /* Dark muted */
+    --muted-foreground: 220 9% 70%;
     
-    --accent: 220 13% 15%;
+    --accent: 220 13% 12%;
     --accent-foreground: 0 0% 98%;
 
     /* Dark Status Colors */
@@ -153,30 +153,31 @@ All colors MUST be HSL for perfect theme consistency.
     --success-foreground: 0 0% 98%;
 
     /* Dark Interactive States */
-    --border: 220 13% 20%;
-    --input: 220 13% 20%;
+    --border: 220 13% 18%;
+    --input: 220 13% 15%;
     --ring: 35 85% 55%;                  /* Gold ring for focus */
 
-    /* Dark Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(220, 13%, 8%) 0%, hsl(220, 13%, 15%) 100%);
+    /* Enhanced Dark Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(220, 13%, 8%) 0%, hsl(220, 13%, 12%) 100%);
     --gradient-neon: linear-gradient(135deg, hsl(35, 85%, 55%) 0%, hsl(35, 85%, 65%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(220, 13%, 8%) 0%, hsl(220, 13%, 12%) 100%);
-    --gradient-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(220, 13%, 8%) 0%, hsl(220, 13%, 10%) 100%);
+    --gradient-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 100%);
 
-    /* Dark Shadows - More Dramatic */
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
-    --shadow-neon: 0 0 30px rgba(147, 126, 39, 0.5);
-    --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.4);
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Enhanced Dark Shadows with Gold Accents */
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 8px -2px rgba(0, 0, 0, 0.4), 0 2px 6px -1px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 20px -6px rgba(0, 0, 0, 0.5), 0 4px 8px -2px rgba(0, 0, 0, 0.4);
+    --shadow-neon: 0 0 25px rgba(147, 126, 39, 0.4), 0 0 50px rgba(147, 126, 39, 0.2);
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 16px rgba(0, 0, 0, 0.2);
+    
+    --sidebar-background: 220 13% 10%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 35 85% 55%;
+    --sidebar-primary-foreground: 220 13% 8%;
+    --sidebar-accent: 220 13% 12%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 220 13% 18%;
+    --sidebar-ring: 35 85% 55%;
   }
 }
 

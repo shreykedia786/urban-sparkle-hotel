@@ -168,9 +168,9 @@ const Index = () => {
             <div className="absolute -inset-2 bg-gradient-to-r from-neon/15 via-transparent to-neon/15 rounded-3xl blur-xl"></div>
             
             {/* Main card */}
-            <div className="relative bg-white/95 backdrop-blur-xl border border-white/40 rounded-3xl shadow-[0_32px_64px_-12px_rgba(0,0,0,0.25)] overflow-hidden">
+            <div className="relative bg-card/95 backdrop-blur-xl border border-border/40 rounded-3xl shadow-card overflow-hidden">
               {/* Premium glass overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-white/30 to-white/10 pointer-events-none"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-card/60 via-card/30 to-card/10 pointer-events-none"></div>
               
               {/* Luxury accent borders */}
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/60 to-transparent"></div>
@@ -238,10 +238,10 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {luxuryFeatures.map((feature, index) => (
-              <Card key={index} className="group bg-gradient-to-br from-white to-muted/30 border-none shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105">
+              <Card key={index} className="group bg-card border border-border shadow-card hover:shadow-neon transition-all duration-500 hover:scale-105">
                 <CardContent className="p-8 text-center">
                   <div className="w-16 h-16 bg-gradient-to-br from-neon to-neon-glow rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <feature.icon className="w-8 h-8 text-white" />
+                    <feature.icon className="w-8 h-8 text-neon-foreground" />
                   </div>
                   <h3 className="text-xl font-bold text-foreground mb-3">{feature.title}</h3>
                   <p className="text-muted-foreground">{feature.desc}</p>
@@ -269,7 +269,7 @@ const Index = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {accommodations.map((room, index) => (
-              <Card key={index} className="group overflow-hidden bg-gradient-to-b from-white to-muted/20 border-none shadow-xl hover:shadow-2xl transition-all duration-500">
+              <Card key={index} className="group overflow-hidden bg-card border border-border shadow-card hover:shadow-neon transition-all duration-500">
                 <div className="relative overflow-hidden">
                   <img 
                     src={room.image}
@@ -372,7 +372,7 @@ const Index = () => {
                 title: "Lifestyle Consultant"
               }
             ].map((testimonial, index) => (
-              <Card key={index} className="bg-gradient-to-br from-white to-muted/20 border-none shadow-lg hover:shadow-xl transition-all duration-300">
+              <Card key={index} className="bg-card border border-border shadow-card hover:shadow-neon transition-all duration-300">
                 <CardContent className="p-8">
                   <Quote className="w-12 h-12 text-neon mb-4" />
                   <p className="text-muted-foreground mb-6 leading-relaxed italic">{testimonial.text}</p>
