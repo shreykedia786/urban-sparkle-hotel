@@ -39,7 +39,7 @@ export function BookingWidget({ className }: { className?: string }) {
         <div className="absolute -inset-2 bg-gradient-to-r from-neon/15 via-transparent to-neon/15 rounded-3xl blur-xl"></div>
         
         {/* Premium glass container */}
-        <div className="relative bg-card/95 backdrop-blur-xl border border-neon/20 rounded-3xl shadow-2xl overflow-visible">
+        <div className="relative bg-card/95 backdrop-blur-xl border border-neon/20 rounded-3xl shadow-2xl overflow-hidden">
           {/* Luxury accent borders */}
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/60 to-transparent"></div>
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/40 to-transparent"></div>
@@ -63,7 +63,7 @@ export function BookingWidget({ className }: { className?: string }) {
             {/* RateGain Widget Container */}
             <div 
               id="37316DCF-9BB6-4B80-BE26-7651D87C5F6B_outerRGdiv" 
-              className="relative z-50 overflow-visible"
+              className="relative z-50 overflow-hidden w-full"
               style={{ minHeight: '120px' }}
             >
               <iframe 
@@ -73,22 +73,22 @@ export function BookingWidget({ className }: { className?: string }) {
                       <title>Booking Engine Widget</title>
                       <link href='https://ibe.rategain.com/widget/index.css' rel='stylesheet'/>
                     <style>
-                        html, body { 
-                          margin: 0; 
-                          padding: 0; 
-                          background: transparent; 
-                          overflow: visible !important;
-                          height: auto !important;
-                          min-height: 140px !important;
-                          min-width: 1024px !important;
-                        }
-                        #rg-booking-widget {
-                          z-index: 9999 !important;
-                          position: relative !important;
-                          overflow: visible !important;
-                          min-height: 140px !important;
-                          min-width: 1024px !important;
-                        }
+                         html, body { 
+                           margin: 0; 
+                           padding: 0; 
+                           background: transparent; 
+                           overflow: visible !important;
+                           height: auto !important;
+                           min-height: 140px !important;
+                           width: 100% !important;
+                         }
+                         #rg-booking-widget {
+                           z-index: 9999 !important;
+                           position: relative !important;
+                           overflow: visible !important;
+                           min-height: 140px !important;
+                           width: 100% !important;
+                         }
                         /* Ensure dropdowns appear above everything */
                         .rg-dropdown, .rg-calendar, .rg-popover, [class*="dropdown"], [class*="calendar"] {
                           z-index: 99999 !important;
@@ -118,13 +118,14 @@ export function BookingWidget({ className }: { className?: string }) {
                 width="100%" 
                 style={{
                   border: 'none', 
-                  overflow: 'visible', 
+                  overflow: 'hidden', 
                   height: '120px', 
                   width: '100%',
+                  maxWidth: '100%',
                   zIndex: 9999,
                   background: 'transparent',
                   minHeight: '120px'
-                }} 
+                }}
                 id="86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe"
                 allow="same-origin"
                 scrolling="no"
