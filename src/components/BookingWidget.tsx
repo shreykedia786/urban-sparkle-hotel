@@ -149,18 +149,23 @@ export function BookingWidget({ className }: { className?: string }) {
                       </div>
                       <script>
                         (function(){
+                          function measure(){
+                            var root = document.getElementById('rg-booking-widget');
+                            if(!root) return 0;
+                            var rect = root.getBoundingClientRect();
+                            var h = Math.ceil(rect.height || 0);
+                            if(!h || h < 60){
+                              h = Math.max(root.offsetHeight || 0, root.scrollHeight || 0);
+                            }
+                            return h;
+                          }
                           function send(){
-                            var root=document.getElementById('rg-booking-widget');
-                            var h=Math.max(
-                              root?root.scrollHeight:0,
-                              document.body.scrollHeight,
-                              document.documentElement.scrollHeight
-                            );
+                            var h = measure();
                             try{ parent.postMessage({ newHeight: h }, '*'); }catch(e){}
                           }
-                          var ro=new ResizeObserver(send);
+                          var ro = new ResizeObserver(send);
                           ro.observe(document.body);
-                          var mo=new MutationObserver(send);
+                          var mo = new MutationObserver(send);
                           mo.observe(document.body,{childList:true,subtree:true,attributes:true});
                           window.addEventListener('load',send);
                           setInterval(send,1200);
@@ -176,9 +181,9 @@ export function BookingWidget({ className }: { className?: string }) {
                   overflow: 'hidden', 
                   height: defaultHeight, 
                   width: '100%',
+                  display: 'block',
                   zIndex: 9999,
-                  background: 'transparent',
-                  
+                  background: 'transparent'
                 }}
                 id="86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe"
                 allow="same-origin"
