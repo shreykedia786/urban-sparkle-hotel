@@ -69,9 +69,8 @@ export function BookingWidget({ className }: { className?: string }) {
     <div className={cn("w-full relative", className)}>
       {/* World-class wrapper for RateGain widget */}
       <div className="relative">
-        {/* Luxury background effects - hidden on mobile */}
-        <div className={`absolute -inset-4 bg-gradient-to-r from-neon/10 via-neon-glow/20 to-neon/10 rounded-3xl blur-2xl opacity-60 ${useVerticalLayout ? 'hidden' : 'block'}`}></div>
-        <div className={`absolute -inset-2 bg-gradient-to-r from-neon/15 via-transparent to-neon/15 rounded-3xl blur-xl ${useVerticalLayout ? 'hidden' : 'block'}`}></div>
+        <div className={`absolute -inset-4 bg-gradient-to-r from-neon/10 via-neon-glow/20 to-neon/10 rounded-3xl blur-2xl opacity-60 pointer-events-none ${useVerticalLayout ? 'hidden' : 'block'}`}></div>
+        <div className={`absolute -inset-2 bg-gradient-to-r from-neon/15 via-transparent to-neon/15 rounded-3xl blur-xl pointer-events-none ${useVerticalLayout ? 'hidden' : 'block'}`}></div>
         
         {/* Premium glass container - simplified on mobile */}
         <div className={`relative ${useVerticalLayout ? 'bg-transparent' : 'bg-card/95 backdrop-blur-xl border border-neon/20 rounded-3xl shadow-2xl'} overflow-visible`}>
@@ -98,7 +97,7 @@ export function BookingWidget({ className }: { className?: string }) {
             {/* RateGain Widget Container */}
             <div 
               id="37316DCF-9BB6-4B80-BE26-7651D87C5F6B_outerRGdiv" 
-              className="relative z-50 overflow-hidden w-full"
+              className="relative z-[9999] overflow-visible w-full"
               style={{ minHeight: defaultHeight }}
               ref={containerRef}
             >
@@ -126,10 +125,9 @@ export function BookingWidget({ className }: { className?: string }) {
                           width: 100% !important;
                           ${useVerticalLayout ? '' : 'min-width: 1024px !important;'}
                         }
-                        /* Ensure dropdowns appear above everything */
+                        /* Ensure dropdowns appear above everything and don't push layout */
                         .rg-dropdown, .rg-calendar, .rg-popover, [class*="dropdown"], [class*="calendar"] {
-                          z-index: 99999 !important;
-                          position: relative !important;
+                          z-index: 2147483647 !important;
                           overflow: visible !important;
                         }
                     </style>
@@ -175,7 +173,7 @@ export function BookingWidget({ className }: { className?: string }) {
                 width="100%" 
                 style={{
                   border: 'none', 
-                  overflow: 'hidden', 
+                  overflow: 'visible', 
                   height: defaultHeight, 
                   width: '100%',
                   zIndex: 9999,
