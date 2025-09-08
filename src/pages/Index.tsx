@@ -177,25 +177,7 @@ const Index = () => {
               <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/40 to-transparent"></div>
               
               <div className="relative z-10 p-8 lg:p-12">
-                {/* Header */}
-                <div className="text-center mb-8">
-                  <div className="inline-flex items-center gap-3 mb-4">
-                    <div className="w-8 h-px bg-gradient-to-r from-transparent to-neon/60"></div>
-                    <div className="flex text-neon gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-current" />
-                      ))}
-                    </div>
-                    <div className="w-8 h-px bg-gradient-to-l from-transparent to-neon/60"></div>
-                  </div>
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 tracking-tight">
-                    Reserve Your 
-                    <span className="bg-gradient-to-r from-neon via-neon-glow to-neon bg-clip-text text-transparent"> Luxury Stay</span>
-                  </h2>
-                  <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-                    Experience unparalleled luxury with instant confirmation and our best rate guarantee
-                  </p>
-                </div>
+                {/* Removed duplicate title - it's now in the BookingWidget */}
 
                 {/* Enhanced booking widget */}
                 <div className="relative">
