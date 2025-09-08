@@ -151,6 +151,14 @@ export default {
 					'100%': {
 						backgroundPosition: '200% 0'
 					}
+				},
+				'slide-across': {
+					'0%': {
+						transform: 'translateX(-100%)'
+					},
+					'100%': {
+						transform: 'translateX(100vw)'
+					}
 				}
 			},
 			animation: {
@@ -159,7 +167,8 @@ export default {
 				'fade-in': 'fade-in 0.5s ease-out',
 				'slide-up': 'slide-up 0.6s ease-out',
 				'glow': 'glow 2s ease-in-out infinite',
-				'shimmer': 'shimmer 2s linear infinite'
+				'shimmer': 'shimmer 2s linear infinite',
+				'slide-across': 'slide-across 8s ease-in-out infinite'
 			}
 		}
 	},

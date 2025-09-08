@@ -90,12 +90,40 @@ const Index = () => {
       
       {/* Hero Section - Cinematic */}
       <section className="relative min-h-screen overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 animate-fade-in"
-          style={{
-            backgroundImage: `url(${heroHotelImage})`
-          }}
-        />
+        {/* Animated Background - Hotel Ambiance */}
+        <div className="absolute inset-0">
+          {/* Base hotel image */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 animate-fade-in"
+            style={{
+              backgroundImage: `url(${heroHotelImage})`
+            }}
+          />
+          
+          {/* Animated overlay effects for luxury ambiance */}
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute inset-0 bg-gradient-to-br from-neon/10 via-transparent to-neon/5 animate-pulse"></div>
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] animate-[slide-across_8s_ease-in-out_infinite]"></div>
+          </div>
+          
+          {/* Try to load video if available */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover scale-105"
+            style={{ zIndex: 1 }}
+            onError={(e) => {
+              // Hide video if it fails to load
+              e.currentTarget.style.display = 'none';
+            }}
+          >
+            <source src="/hotel-placeholder-video.mp4" type="video/mp4" />
+          </video>
+        </div>
+        
+        {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70" />
         
         {/* Floating elements */}
