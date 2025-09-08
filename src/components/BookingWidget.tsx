@@ -181,7 +181,7 @@ export function BookingWidget({ className }: { className?: string }) {
                   scrolling="no"
                 />
               </div>
-            </div]
+            </div>
           </div>
         </div>
       </div>
