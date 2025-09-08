@@ -131,6 +131,7 @@ export function BookingWidget({ className }: { className?: string }) {
                   height: defaultHeight, 
                   width: '100%',
                   display: 'block',
+                  position: 'relative',
                   zIndex: 9999,
                   background: 'transparent'
                 }}
