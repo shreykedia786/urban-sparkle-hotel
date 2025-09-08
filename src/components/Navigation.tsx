@@ -113,11 +113,13 @@ export function Navigation() {
                     onWhiteBackground ? "bg-white/20" : "bg-white/5"
                   )}></div>
                   
-                  {/* Luxury underline effect */}
-                  <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-neon to-neon-glow group-hover:w-3/4 group-hover:left-1/8 transition-all duration-500"></div>
+                  {/* Enhanced underline effect */}
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-neon to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center"></div>
                   
-                  {/* Shine effect on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 -skew-x-12 group-hover:animate-pulse"></div>
+                  {/* Active state indicator */}
+                  {location.pathname === item.href && (
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-neon to-transparent scale-x-100"></div>
+                  )}
                 </Link>
               </div>
             ))}
