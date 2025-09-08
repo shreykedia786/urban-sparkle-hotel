@@ -112,6 +112,8 @@ const Index = () => {
             muted
             loop
             playsInline
+            preload="auto"
+            poster={heroHotelImage}
             className="absolute inset-0 w-full h-full object-cover scale-105"
             style={{ zIndex: 1 }}
             onError={(e) => {
@@ -119,7 +121,10 @@ const Index = () => {
               e.currentTarget.style.display = 'none';
             }}
           >
-            <source src="/hotel-placeholder-video.mp4" type="video/mp4" />
+            {/* Prefer a local file if you upload one to public/ as hotel-hero-video.mp4 */}
+            <source src="/hotel-hero-video.mp4" type="video/mp4" />
+            {/* Remote fallback video (royalty-free) */}
+            <source src="https://cdn.pixabay.com/video/2022/12/05/141927-776984149_large.mp4" type="video/mp4" />
           </video>
         </div>
         
