@@ -17,36 +17,14 @@ export function BookingWidget({ className }: { className?: string }) {
   // Vertical layout for tablets and mobiles (<1024px)
   const useVerticalLayout = isNarrow;
 
-  const adjustIframeToContent = () => {
-    const iframe = document.getElementById("86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe") as HTMLIFrameElement | null;
-    if (!iframe) return;
-    try {
-      const doc = iframe.contentDocument || iframe.contentWindow?.document;
-      if (!doc) return;
-      const body = doc.body;
-      const html = doc.documentElement;
-      const h = Math.ceil(Math.max(
-        body?.scrollHeight || 0,
-        html?.scrollHeight || 0,
-        body?.getBoundingClientRect().height || 0
-      ));
-      if (h && h > 0) {
-        iframe.style.height = `${Math.max(h, defaultHeight)}px`;
-      }
-    } catch {}
-  };
-
   useEffect(() => {
     // Expose the height change function expected by RateGain
     (window as any).changeIframeHeight = (newHeight: number) => {
       const iframe = document.getElementById(
         "86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe"
       ) as HTMLIFrameElement | null;
-      if (iframe && typeof newHeight === 'number' && newHeight > 0) {
-        // Guard against early 0/1px messages; keep a sensible minimum to avoid collapse
-        const min = defaultHeight;
-        iframe.style.height = `${Math.max(newHeight, min)}px`;
-        console.log('RG Widget height changed to:', newHeight);
+      if (iframe) {
+        iframe.style.height = `${Math.max(newHeight, defaultHeight)}px`;
       }
     };
 
@@ -85,7 +63,7 @@ export function BookingWidget({ className }: { className?: string }) {
         delete (window as any).changeIframeHeight; 
       } catch {}
     };
-  }, [defaultHeight]);
+  }, []);
 
   return (
     <div className={cn("w-full relative", className)}>
@@ -101,7 +79,7 @@ export function BookingWidget({ className }: { className?: string }) {
           <div className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/60 to-transparent ${useVerticalLayout ? 'hidden' : 'block'}`}></div>
           <div className={`absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/40 to-transparent ${useVerticalLayout ? 'hidden' : 'block'}`}></div>
           
-          <div className={`relative ${useVerticalLayout ? 'z-0 p-2' : 'z-10 p-6 md:p-8'}`}>
+          <div className={`relative ${useVerticalLayout ? 'z-0 p-2' : 'z-10 p-6 md:p-8'}`} style={{ minHeight: defaultHeight }}>
             {/* Header */}
             <div className="text-center mb-6">
               <div className="flex justify-center gap-1 mb-3">
@@ -120,36 +98,93 @@ export function BookingWidget({ className }: { className?: string }) {
             {/* RateGain Widget Container */}
             <div 
               id="37316DCF-9BB6-4B80-BE26-7651D87C5F6B_outerRGdiv" 
-              className="relative z-[99999] overflow-visible w-full min-h-[200px]"
+              className="relative z-50 overflow-hidden w-full"
+              style={{ minHeight: defaultHeight }}
               ref={containerRef}
             >
               <iframe 
-                src="/rg-widget.html"
+                srcDoc={`
+                  <html lang='en'>
+                    <head>
+                      <title>Booking Engine Widget</title>
+                      <link href='https://ibe.rategain.com/widget/index.css' rel='stylesheet'/>
+                    <style>
+                        html, body { 
+                          margin: 0; 
+                          padding: 0; 
+                          background: transparent; 
+                          overflow: visible !important;
+                          height: auto !important;
+                          min-height: ${defaultHeight}px !important;
+                          width: 100% !important;
+                        }
+                        #rg-booking-widget {
+                          z-index: 9999 !important;
+                          position: relative !important;
+                          overflow: visible !important;
+                          min-height: ${defaultHeight}px !important;
+                          width: 100% !important;
+                          ${useVerticalLayout ? '' : 'min-width: 1024px !important;'}
+                        }
+                        /* Ensure dropdowns appear above everything */
+                        .rg-dropdown, .rg-calendar, .rg-popover, [class*="dropdown"], [class*="calendar"] {
+                          z-index: 99999 !important;
+                          position: relative !important;
+                          overflow: visible !important;
+                        }
+                    </style>
+                    </head>
+                    <body>            
+                      <div 
+                        data-brandID='937bf5e9-7f12-4e04-be25-5e3e823242b7'  
+                        data-chainID='d9c3cc24-da05-4697-a759-3bcea2872153'  
+                        data-backgroundprimarycolor='#1e293b' 
+                        data-backgroundsecondarycolor='#334155'   
+                        data-widgetFontColor='#ffffff'   
+                        data-widgetSearchFontColorButton='#ffffff'  
+                        data-widgetSearchColorButton='#937e27'  
+                        data-widgetSearchFontColorHoverstate='#ffffff'   
+                        data-widgetSearchColorHoverState='#b89f2a'   
+                        id='rg-booking-widget'
+                      >
+                        <script src='https://ibe.rategain.com/widget/index.js'></script>
+                      </div>
+                      <script>
+                        (function(){
+                          function send(){
+                            var root=document.getElementById('rg-booking-widget');
+                            var h=Math.max(
+                              root?root.scrollHeight:0,
+                              document.body.scrollHeight,
+                              document.documentElement.scrollHeight
+                            );
+                            try{ parent.postMessage({ newHeight: h+16 }, '*'); }catch(e){}
+                          }
+                          var ro=new ResizeObserver(send);
+                          ro.observe(document.body);
+                          var mo=new MutationObserver(send);
+                          mo.observe(document.body,{childList:true,subtree:true,attributes:true});
+                          window.addEventListener('load',send);
+                          setInterval(send,1200);
+                          send();
+                        })();
+                      </script>
+                    </body>
+                  </html>
+                `}
                 width="100%" 
                 style={{
                   border: 'none', 
-                  overflow: 'visible', 
+                  overflow: 'hidden', 
                   height: defaultHeight, 
                   width: '100%',
-                  display: 'block',
-                  position: 'relative',
-                  zIndex: 99999,
-                  background: 'transparent'
+                  zIndex: 9999,
+                  background: 'transparent',
+                  minHeight: defaultHeight
                 }}
                 id="86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe"
-                onLoad={() => {
-                  console.log('RG Widget iframe loaded');
-                  const iframe = document.getElementById("86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe") as HTMLIFrameElement;
-                  if (iframe) {
-                    // Force minimum height and ensure visibility
-                    iframe.style.height = `${defaultHeight}px`;
-                    iframe.style.minHeight = `${defaultHeight}px`;
-                  }
-                }}
+                allow="same-origin"
                 scrolling="no"
-                loading="eager"
-                title="Booking Widget"
-                allow="fullscreen"
               />
             </div>
           </div>
@@ -158,3 +193,4 @@ export function BookingWidget({ className }: { className?: string }) {
     </div>
   );
 }
+
