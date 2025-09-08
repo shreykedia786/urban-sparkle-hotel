@@ -13,10 +13,29 @@ export function BookingWidget({ className }: { className?: string }) {
 
   const defaultHeight = isNarrow ? 560 : 200;
   const containerRef = useRef<HTMLDivElement | null>(null);
-
+  
   // Vertical layout for tablets and mobiles (<1024px)
   const useVerticalLayout = isNarrow;
-
+  
+  const adjustIframeToContent = () => {
+    const iframe = document.getElementById("86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe") as HTMLIFrameElement | null;
+    if (!iframe) return;
+    try {
+      const doc = iframe.contentDocument || iframe.contentWindow?.document;
+      if (!doc) return;
+      const body = doc.body;
+      const html = doc.documentElement;
+      const h = Math.ceil(Math.max(
+        body?.scrollHeight || 0,
+        html?.scrollHeight || 0,
+        body?.getBoundingClientRect().height || 0
+      ));
+      if (h && h > 0) {
+        iframe.style.height = `${Math.max(h, defaultHeight)}px`;
+      }
+    } catch {}
+  };
+  
   useEffect(() => {
     // Expose the height change function expected by RateGain
     (window as any).changeIframeHeight = (newHeight: number) => {
@@ -116,8 +135,16 @@ export function BookingWidget({ className }: { className?: string }) {
                   background: 'transparent'
                 }}
                 id="86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe"
+                onLoad={() => {
+                  try {
+                    // initial adjust + retries
+                    adjustIframeToContent();
+                    setTimeout(adjustIframeToContent, 400);
+                    setTimeout(adjustIframeToContent, 1200);
+                  } catch {}
+                }}
                 scrolling="no"
-                loading="lazy"
+                loading="eager"
                 title="Booking Widget"
               />
             </div>
