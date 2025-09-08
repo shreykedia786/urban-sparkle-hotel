@@ -58,11 +58,11 @@ const offers = [
   }
 ];
 
-interface DonatelloOffersProps {
+interface EmiradOffersProps {
   language?: string;
 }
 
-export function DonatelloOffers({ language = "EN" }: DonatelloOffersProps) {
+export function EmiradOffers({ language = "EN" }: EmiradOffersProps) {
   const lang = language.toLowerCase() as 'en' | 'es';
 
   return (
@@ -152,8 +152,8 @@ export function DonatelloOffers({ language = "EN" }: DonatelloOffersProps) {
           <div className="bg-muted rounded-2xl p-8 md:p-12">
             <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
               {language === "EN" 
-                ? "Ready to Experience Donatello Hotel Dubai?" 
-                : "¿Listo para Experimentar el Hotel Donatello Dubai?"
+                ? "Ready to Experience Emirad Hotel Dubai?" 
+                : "¿Listo para Experimentar el Hotel Emirad Dubai?"
               }
             </h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">

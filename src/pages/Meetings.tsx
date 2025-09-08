@@ -295,7 +295,7 @@ const Meetings = () => {
                 Where Business Meets Success
               </h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                The Donatello Hotel is the perfect location for boardroom meetings, product launches, corporate trainings, and intimate gatherings. Our modular seating arrangements in rooms with natural daylight, coupled with professional service and exceptional catering, ensure every event is a success.
+                The Emirad Hotel is the perfect location for boardroom meetings, product launches, corporate trainings, and intimate gatherings. Our modular seating arrangements in rooms with natural daylight, coupled with professional service and exceptional catering, ensure every event is a success.
               </p>
               
               <div className="grid grid-cols-2 gap-6 mb-8">
@@ -396,7 +396,7 @@ const Meetings = () => {
             </div>
             <div className="flex items-center gap-2">
               <Mail className="w-4 h-4" />
-              <span>reservations@donatellodubai.com</span>
+              <span>reservations@emiraddubai.com</span>
             </div>
           </div>
         </div>

@@ -374,7 +374,7 @@ const Rooms = () => {
             Ready to Experience Luxury?
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Book your perfect room at Donatello Hotel Dubai and discover unparalleled comfort
+            Book your perfect room at Emirad Hotel Dubai and discover unparalleled comfort
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -117,7 +117,7 @@ export default function Contact() {
                     Get in <span className="text-neon">Touch</span>
                   </h2>
                   <p className="text-lg text-muted-foreground leading-relaxed">
-                    Experience the perfect blend of innovative design, relaxing inspiration and gracious hospitality that is Donatello Hotel Dubai!
+                    Experience the perfect blend of innovative design, relaxing inspiration and gracious hospitality that is Emirad Hotel Dubai!
                   </p>
                 </div>
                 
@@ -139,13 +139,13 @@ export default function Contact() {
                   
                   <Card className="group hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-border/50 hover:border-neon/30">
                     <CardContent className="p-6">
-                      <a href="mailto:info@donatello-hoteldubai.com" className="flex items-center">
+                      <a href="mailto:info@emirad-hoteldubai.com" className="flex items-center">
                         <div className="p-4 bg-gradient-to-br from-neon/20 to-neon-glow/30 rounded-2xl mr-4 group-hover:scale-110 transition-transform">
                           <Mail className="w-6 h-6 text-neon" />
                         </div>
                         <div>
                           <h3 className="font-semibold text-foreground text-lg">Email Us</h3>
-                          <p className="text-muted-foreground font-medium">info@donatello-hoteldubai.com</p>
+                          <p className="text-muted-foreground font-medium">info@emirad-hoteldubai.com</p>
                         </div>
                       </a>
                     </CardContent>
@@ -161,10 +161,10 @@ export default function Contact() {
                     </h3>
                     <div className="space-y-6">
                       {[
-                        { title: "Reservations", phone: "+971 4 314 6810", email: "reservations@donatello-hoteldubai.com" },
-                        { title: "Sales & Marketing", phone: "+971 504 740 622", email: "sales@donatello-hoteldubai.com" },
-                        { title: "F&B Services", phone: "+974 05 0481 6822", email: "asstfnbmanager@donatello-hoteldubai.com" },
-                        { title: "Lost & Found", phone: "+971 4 340 6760", email: "info@donatello-hoteldubai.com" }
+                        { title: "Reservations", phone: "+971 4 314 6810", email: "reservations@emirad-hoteldubai.com" },
+                        { title: "Sales & Marketing", phone: "+971 504 740 622", email: "sales@emirad-hoteldubai.com" },
+                        { title: "F&B Services", phone: "+974 05 0481 6822", email: "asstfnbmanager@emirad-hoteldubai.com" },
+                        { title: "Lost & Found", phone: "+971 4 340 6760", email: "info@emirad-hoteldubai.com" }
                       ].map((dept, index) => (
                         <div key={index} className="border-l-4 border-neon pl-6 py-2">
                           <h4 className="font-semibold text-foreground text-lg">{dept.title}</h4>
@@ -299,7 +299,7 @@ export default function Contact() {
                 Our <span className="text-neon">Location</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                Donatello Hotel is a 5-minute walk to/from the Mall of the Emirates & Ski Dubai. 
+                Emirad Hotel is a 5-minute walk to/from the Mall of the Emirates & Ski Dubai. 
                 The Mall of Emirates Metro Stop is less than 450 metres from the hotel, and the Mashreq Metro Station is just 200 metres away.
               </p>
             </div>

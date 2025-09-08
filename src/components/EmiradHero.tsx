@@ -18,8 +18,8 @@ const heroSlides = [
       es: "Experimenta la mezcla perfecta de diseño innovador y refinamiento clásico" 
     },
     description: { 
-      en: "Visit the vibrant city of Dubai and experience the perfect blend of innovative design, classic refinement and personalized service that is Donatello Hotel!", 
-      es: "¡Visita la vibrante ciudad de Dubai y experimenta la mezcla perfecta de diseño innovador, refinamiento clásico y servicio personalizado que es el Hotel Donatello!" 
+      en: "Visit the vibrant city of Dubai and experience the perfect blend of innovative design, classic refinement and personalized service that is Emirad Hotel!", 
+      es: "¡Visita la vibrante ciudad de Dubai y experimenta la mezcla perfecta de diseño innovador, refinamiento clásico y servicio personalizado que es el Hotel Emirad!"
     },
     cta: { en: "Book Direct", es: "Reservar Directo" }
   },
@@ -50,18 +50,18 @@ const heroSlides = [
       es: "Elige entre 132 habitaciones y suites bien equipadas" 
     },
     description: { 
-      en: "Whether traveling for business or leisure, staying at the Donatello Hotel Dubai is sure to be more comfortable, productive and enjoyable than ever before.", 
-      es: "Ya sea que viajes por negocios o placer, alojarte en el Hotel Donatello Dubai será más cómodo, productivo y agradable que nunca." 
+      en: "Whether traveling for business or leisure, staying at the Emirad Hotel Dubai is sure to be more comfortable, productive and enjoyable than ever before.", 
+      es: "Ya sea que viajes por negocios o placer, alojarte en el Hotel Emirad Dubai será más cómodo, productivo y agradable que nunca."
     },
     cta: { en: "View Rooms", es: "Ver Habitaciones" }
   }
 ];
 
-interface DonatelloHeroProps {
+interface EmiradHeroProps {
   language?: string;
 }
 
-export function DonatelloHero({ language = "EN" }: DonatelloHeroProps) {
+export function EmiradHero({ language = "EN" }: EmiradHeroProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {

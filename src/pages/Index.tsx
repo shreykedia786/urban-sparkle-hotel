@@ -113,7 +113,7 @@ const Index = () => {
             
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
               <span className="bg-gradient-to-r from-white via-white to-neon bg-clip-text text-transparent">
-                DONATELLO
+                EMIRAD
               </span>
               <br />
               <span className="text-3xl md:text-4xl lg:text-5xl font-light text-white/90">

@@ -5,7 +5,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Switch } from "@/components/ui/switch";
 import { Menu, Moon, Sun, Globe, Calendar, ChevronDown, Star, Crown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import donatelloLogo from "@/assets/donatello-logo.png";
+import emiradLogo from "@/assets/emirad-logo.png";
 
 const navigationItems = [
   { label: { en: "Home", es: "Inicio" }, href: "/" },
@@ -67,8 +67,8 @@ export function Navigation() {
               <div className="absolute inset-0 bg-gradient-to-r from-neon/20 to-neon-glow/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/20 hover:border-neon/30 transition-all duration-300">
                 <img 
-                  src={donatelloLogo} 
-                  alt="Donatello Hotel Dubai" 
+                  src={emiradLogo} 
+                  alt="Emirad Hotel Dubai" 
                   className="h-8 w-auto max-w-[140px] transition-transform duration-300 group-hover:scale-105"
                 />
               </div>

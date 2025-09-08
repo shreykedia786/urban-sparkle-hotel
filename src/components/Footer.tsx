@@ -14,7 +14,7 @@ import {
   MessageCircle,
   Send
 } from "lucide-react";
-import donatelloLogo from "@/assets/donatello-logo.png";
+import emiradLogo from "@/assets/emirad-logo.png";
 
 const footerSections = [
   {
@@ -66,13 +66,13 @@ export function Footer() {
             <div className="lg:col-span-4">
               <div className="flex items-center space-x-3 mb-6">
                 <img 
-                  src={donatelloLogo} 
-                  alt="Donatello Hotel Dubai" 
+                  src={emiradLogo} 
+                  alt="Emirad Hotel Dubai" 
                   className="h-10 w-auto"
                 />
                 <div className="flex flex-col">
                   <span className="font-display font-bold text-xl text-primary-foreground">
-                    DONATELLO
+                    EMIRAD
                   </span>
                   <span className="text-sm text-primary-foreground/70 -mt-1">
                     Hotel Dubai
@@ -81,7 +81,7 @@ export function Footer() {
               </div>
               
               <p className="text-primary-foreground/80 mb-6 text-lg leading-relaxed">
-                Experience the perfect blend of innovative design, relaxing inspiration and gracious hospitality that is Donatello Hotel Dubai!
+                Experience the perfect blend of innovative design, relaxing inspiration and gracious hospitality that is Emirad Hotel Dubai!
               </p>
 
               {/* Contact Info */}
@@ -101,8 +101,8 @@ export function Footer() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="w-5 h-5 text-neon flex-shrink-0" />
-                  <a href="mailto:info@donatello-hoteldubai.com" className="text-primary-foreground/80 hover:text-neon transition-colors">
-                    info@donatello-hoteldubai.com
+                  <a href="mailto:info@emirad-hoteldubai.com" className="text-primary-foreground/80 hover:text-neon transition-colors">
+                    info@emirad-hoteldubai.com
                   </a>
                 </div>
               </div>
@@ -143,7 +143,7 @@ export function Footer() {
                 Stay Connected
               </h3>
               <p className="text-primary-foreground/70 text-sm mb-4">
-                Subscribe for exclusive offers and updates from Donatello Hotel Dubai.
+                Subscribe for exclusive offers and updates from Emirad Hotel Dubai.
               </p>
               
               <div className="space-y-3">
@@ -166,22 +166,22 @@ export function Footer() {
               <div className="mt-6">
                 <h4 className="font-medium text-primary-foreground mb-3 text-sm">Follow Us</h4>
                 <div className="flex space-x-3">
-                  <a href="https://instagram.com/donatellodubai" target="_blank" rel="noopener noreferrer">
+                  <a href="https://instagram.com/emiraddubai" target="_blank" rel="noopener noreferrer">
                     <Button variant="ghost" size="icon" className="hover:bg-primary-foreground/10 hover:text-neon">
                       <Instagram className="w-5 h-5" />
                     </Button>
                   </a>
-                  <a href="https://facebook.com/donatellodubai" target="_blank" rel="noopener noreferrer">
+                  <a href="https://facebook.com/emiraddubai" target="_blank" rel="noopener noreferrer">
                     <Button variant="ghost" size="icon" className="hover:bg-primary-foreground/10 hover:text-neon">
                       <Facebook className="w-5 h-5" />
                     </Button>
                   </a>
-                  <a href="https://twitter.com/donatellodubai" target="_blank" rel="noopener noreferrer">
+                  <a href="https://twitter.com/emiraddubai" target="_blank" rel="noopener noreferrer">
                     <Button variant="ghost" size="icon" className="hover:bg-primary-foreground/10 hover:text-neon">
                       <Twitter className="w-5 h-5" />
                     </Button>
                   </a>
-                  <a href="https://linkedin.com/company/donatello-hotel-dubai" target="_blank" rel="noopener noreferrer">
+                  <a href="https://linkedin.com/company/emirad-hotel-dubai" target="_blank" rel="noopener noreferrer">
                     <Button variant="ghost" size="icon" className="hover:bg-primary-foreground/10 hover:text-neon">
                       <Linkedin className="w-5 h-5" />
                     </Button>
@@ -198,7 +198,7 @@ export function Footer() {
         <div className="py-8">
             <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
               <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6 text-sm text-primary-foreground/70">
-                <span>© 2024 Donatello Hotel Dubai. All rights reserved.</span>
+                <span>© 2024 Emirad Hotel Dubai. All rights reserved.</span>
                 <div className="flex space-x-4">
                   <Link to="/contact" className="hover:text-neon transition-colors">Privacy Policy</Link>
                   <Link to="/contact" className="hover:text-neon transition-colors">Terms of Service</Link>

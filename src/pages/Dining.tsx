@@ -26,13 +26,13 @@ const restaurants = [
     id: "d-roof",
     title: "The D ROOF",
     category: "Rooftop Dining",
-    description: "Located at the Rooftop level of the Donatello Hotel in Al Barsha, Dubai, The D Roof offers you the fun and frolic with a wide selection of beverages. Unwind in the sunshine or dine beneath the moonlit sky on elevated platforms overlooking the glistening pool and a view of the Dubai skyline with iconic landmarks – Burj Al Arab and Burj Khalifa.",
+    description: "Located at the Rooftop level of the Emirad Hotel in Al Barsha, Dubai, The D Roof offers you the fun and frolic with a wide selection of beverages. Unwind in the sunshine or dine beneath the moonlit sky on elevated platforms overlooking the glistening pool and a view of the Dubai skyline with iconic landmarks – Burj Al Arab and Burj Khalifa.",
     image: "https://donatellodubai.com/wp-content/uploads/2022/07/125.jpg",
     hours: "12:00 PM - 3:00 AM",
     cuisine: "International Cuisine & Beverages",
     highlights: ["Dubai Skyline Views", "Burj Al Arab & Burj Khalifa Views", "Shisha Varieties", "Pool Overlooking Terrace"],
     icon: Utensils,
-    reservationEmail: "fnbmanager@donatello-hoteldubai.com",
+    reservationEmail: "fnbmanager@emirad-hoteldubai.com",
     tier: "premium"
   },
   {
@@ -45,7 +45,7 @@ const restaurants = [
     cuisine: "International Cuisine",
     highlights: ["Breakfast Buffet", "International Cuisine", "Ala Carte & Buffet", "Quality Ingredients"],
     icon: Utensils,
-    reservationEmail: "fnbmanager@donatello-hoteldubai.com",
+    reservationEmail: "fnbmanager@emirad-hoteldubai.com",
     tier: "classic"
   },
   {
@@ -58,7 +58,7 @@ const restaurants = [
     cuisine: "Coffee, Pastries & Light Meals",
     highlights: ["International Coffee", "Business Friendly", "Pastries & Chocolates", "Dine-in & Take-away"],
     icon: Coffee,
-    reservationEmail: "fnbmanager@donatello-hoteldubai.com",
+    reservationEmail: "fnbmanager@emirad-hoteldubai.com",
     tier: "casual"
   },
   {
@@ -71,7 +71,7 @@ const restaurants = [
     cuisine: "Cocktails & Entertainment",
     highlights: ["World-Class DJs", "Expert Cocktails", "Vibrant Atmosphere", "Top-notch Entertainment"],
     icon: Wine,
-    reservationEmail: "fnbmanager@donatello-hoteldubai.com",
+    reservationEmail: "fnbmanager@emirad-hoteldubai.com",
     tier: "premium"
   }
 ];
