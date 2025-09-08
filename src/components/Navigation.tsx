@@ -52,13 +52,9 @@ export function Navigation() {
   return (
     <nav className={cn(
       "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-      scrolled 
-        ? "bg-black/20 backdrop-blur-2xl border-b border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]" 
-        : "bg-black/10 backdrop-blur-md"
+      "bg-black/90 backdrop-blur-md border-b border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.35)]"
     )}>
-      {/* Glass shine effects */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
-      <div className="absolute top-0 left-0 bottom-0 w-px bg-gradient-to-b from-white/30 via-transparent to-transparent"></div>
+      {/* Luxury accent line */}
       
       {/* Luxury accent line */}
       <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-neon/50 to-transparent"></div>
