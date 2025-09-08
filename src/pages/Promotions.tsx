@@ -337,42 +337,56 @@ const Promotions = () => {
               </div>
             </div>
             
-            <div className="bg-card rounded-2xl border border-border shadow-card p-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-neon to-neon-glow rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Gift className="w-8 h-8 text-neon-foreground" />
-                </div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">Ready to Save?</h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Contact us directly to learn about current promotions and customize a package that suits your needs perfectly.
-                </p>
-                
-                <div className="grid gap-4">
-                  <Button 
-                    variant="outline" 
-                    className="w-full border-2 border-neon/30 hover:border-neon text-neon hover:bg-neon/10 font-semibold py-4 px-6 rounded-xl text-lg transition-all duration-300 hover:scale-[1.02]" 
-                    size="lg"
-                  >
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    Start WhatsApp Chat
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    className="w-full border-2 border-neon/30 hover:border-neon text-neon hover:bg-neon/10 font-semibold py-4 px-6 rounded-xl text-lg transition-all duration-300 hover:scale-[1.02]" 
-                    size="lg"
-                  >
-                    <Phone className="w-5 h-5 mr-2" />
-                    Call Reception
-                  </Button>
-                  <Button 
-                    className="w-full bg-gradient-to-r from-neon to-neon-glow hover:from-neon-glow hover:to-neon text-neon-foreground font-semibold py-4 px-6 rounded-xl text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl" 
-                    size="lg"
-                  >
-                    <Calendar className="w-5 h-5 mr-2" />
-                    Check Availability
-                  </Button>
-                </div>
-              </div>
+            <div className="relative">
+              {/* Luxury background card */}
+              <div className="absolute inset-0 bg-gradient-to-br from-neon/5 via-neon-glow/10 to-neon/5 rounded-3xl blur-xl"></div>
+              
+              <Card className="relative border-neon/20 shadow-2xl backdrop-blur-sm bg-card/80 overflow-hidden">
+                <CardContent className="p-10">
+                  {/* Elegant header */}
+                  <div className="text-center mb-10">
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-neon to-neon-glow rounded-2xl mb-6 shadow-lg">
+                      <Gift className="w-8 h-8 text-neon-foreground" />
+                    </div>
+                    
+                    <h3 className="text-3xl font-bold text-foreground mb-4">
+                      Ready to <span className="text-neon">Save?</span>
+                    </h3>
+                    
+                    <p className="text-lg text-muted-foreground leading-relaxed max-w-md mx-auto">
+                      Contact us directly to learn about current promotions and customize a package that suits your needs perfectly.
+                    </p>
+                  </div>
+                  
+                  {/* Simplified CTA buttons */}
+                  <div className="space-y-4 max-w-sm mx-auto">
+                    <Button 
+                      className="w-full bg-gradient-to-r from-neon to-neon-glow hover:from-neon-glow hover:to-neon text-neon-foreground font-semibold py-4 px-8 rounded-2xl text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl" 
+                      size="lg"
+                    >
+                      <Calendar className="w-5 h-5 mr-3" />
+                      Check Availability
+                    </Button>
+                    
+                    <div className="flex gap-3">
+                      <Button 
+                        variant="outline" 
+                        className="flex-1 border-neon/30 text-neon hover:bg-neon/10 font-medium py-3 px-4 rounded-xl transition-all duration-300 hover:scale-[1.02]" 
+                      >
+                        <MessageCircle className="w-4 h-4 mr-2" />
+                        WhatsApp
+                      </Button>
+                      <Button 
+                        variant="outline" 
+                        className="flex-1 border-neon/30 text-neon hover:bg-neon/10 font-medium py-3 px-4 rounded-xl transition-all duration-300 hover:scale-[1.02]" 
+                      >
+                        <Phone className="w-4 h-4 mr-2" />
+                        Call
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
