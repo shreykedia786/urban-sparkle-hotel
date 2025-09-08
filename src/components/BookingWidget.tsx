@@ -64,7 +64,7 @@ export function BookingWidget({ className }: { className?: string }) {
             <div 
               id="37316DCF-9BB6-4B80-BE26-7651D87C5F6B_outerRGdiv" 
               className="relative z-50 overflow-visible"
-              style={{ minHeight: '80px' }}
+              style={{ minHeight: '120px' }}
             >
               <iframe 
                 srcDoc={`
@@ -79,10 +79,18 @@ export function BookingWidget({ className }: { className?: string }) {
                           background: transparent; 
                           overflow: visible !important;
                           height: auto !important;
+                          min-height: 120px !important;
                         }
                         #rg-booking-widget {
                           z-index: 9999 !important;
                           position: relative !important;
+                          overflow: visible !important;
+                          min-height: 120px !important;
+                        }
+                        /* Force horizontal layout */
+                        .rg-widget-container {
+                          min-width: 800px !important;
+                          border-radius: 12px !important;
                           overflow: visible !important;
                         }
                         /* Ensure dropdowns appear above everything */
@@ -91,24 +99,19 @@ export function BookingWidget({ className }: { className?: string }) {
                           position: relative !important;
                           overflow: visible !important;
                         }
-                        /* Style the widget to match luxury theme */
-                        .rg-widget-container {
-                          border-radius: 12px !important;
-                          overflow: visible !important;
-                        }
                       </style>
                     </head>
                     <body>            
                       <div 
                         data-brandID='937bf5e9-7f12-4e04-be25-5e3e823242b7'  
                         data-chainID='d9c3cc24-da05-4697-a759-3bcea2872153'  
-                        data-backgroundprimarycolor='#937e27' 
-                        data-backgroundsecondarycolor='#937e27'   
+                        data-backgroundprimarycolor='#1e293b' 
+                        data-backgroundsecondarycolor='#334155'   
                         data-widgetFontColor='#ffffff'   
-                        data-widgetSearchFontColorButton='#1a1a1a'  
+                        data-widgetSearchFontColorButton='#000000'  
                         data-widgetSearchColorButton='#d4c342'  
-                        data-widgetSearchFontColorHoverstate='#1a1a1a'   
-                        data-widgetSearchColorHoverState='#b89f2a'   
+                        data-widgetSearchFontColorHoverstate='#000000'   
+                        data-widgetSearchColorHoverState='#937e27'   
                         id='rg-booking-widget'
                       >
                         <script src='https://ibe.rategain.com/widget/index.js'></script>
@@ -120,10 +123,11 @@ export function BookingWidget({ className }: { className?: string }) {
                 style={{
                   border: 'none', 
                   overflow: 'visible', 
-                  height: '80px', 
+                  height: '120px', 
                   width: '100%',
                   zIndex: 9999,
-                  background: 'transparent'
+                  background: 'transparent',
+                  minHeight: '120px'
                 }} 
                 id="86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe"
                 allow="same-origin"
