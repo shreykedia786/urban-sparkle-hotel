@@ -15,7 +15,7 @@ export function BookingWidget({ className }: { className?: string }) {
   const [children, setChildren] = useState("0");
 
   return (
-    <div className={cn("w-full", className)}>
+    <div className={cn("w-full max-w-full", className)}>
       {/* Booking Widget Structure - matching uploaded image */}
       <div className="bg-slate-800 rounded-lg flex flex-col lg:flex-row items-stretch">
         
