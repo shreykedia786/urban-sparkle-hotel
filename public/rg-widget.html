@@ -11,18 +11,21 @@
       padding: 0; 
       background: transparent; 
       overflow: visible !important;
-      z-index: 9999 !important;
+      z-index: 99999 !important;
+      height: auto;
+      min-height: 200px;
     }
     #rg-booking-widget {
-      z-index: 9999 !important;
-      position: relative !important;
-      min-height: 120px; /* ensure visible while loading */
-      display: block;
-    }
-    /* Ensure dropdowns appear above everything */
-    .rg-dropdown, .rg-calendar, .rg-popover {
       z-index: 99999 !important;
       position: relative !important;
+      min-height: 200px;
+      display: block;
+      width: 100%;
+    }
+    /* Ensure dropdowns appear above everything */
+    .rg-dropdown, .rg-calendar, .rg-popover, .rg-select-dropdown {
+      z-index: 999999 !important;
+      position: fixed !important;
     }
   </style>
 </head>
@@ -42,10 +45,15 @@
     <script src="https://ibe.rategain.com/widget/index.js"></script>
   </div>
   <script>
+    console.log('RG Widget HTML loaded');
+    
     (function(){
       function measure(){
         var root = document.getElementById('rg-booking-widget');
-        if(!root) return 0;
+        if(!root) {
+          console.log('RG Widget root element not found');
+          return 200;
+        }
         var rect = root.getBoundingClientRect();
         var h = Math.ceil(rect.height || 0);
         if(!h || h < 80){
@@ -53,21 +61,46 @@
             root.offsetHeight || 0,
             root.scrollHeight || 0,
             document.body.scrollHeight,
-            document.documentElement.scrollHeight
+            document.documentElement.scrollHeight,
+            200 // minimum fallback
           );
         }
+        console.log('RG Widget measured height:', h);
         return h;
       }
+      
       function send(){
         var h = measure();
-        try { parent.postMessage({ newHeight: h }, '*'); } catch(e){}
+        try { 
+          parent.postMessage({ newHeight: h }, '*');
+          console.log('RG Widget sent height message:', h);
+        } catch(e){
+          console.error('RG Widget height message failed:', e);
+        }
       }
-      var ro = new ResizeObserver(send);
-      ro.observe(document.body);
+      
+      // Initialize ResizeObserver if available
+      if (window.ResizeObserver) {
+        var ro = new ResizeObserver(send);
+        ro.observe(document.body);
+      }
+      
+      // Initialize MutationObserver
       var mo = new MutationObserver(send);
-      mo.observe(document.body,{childList:true,subtree:true,attributes:true});
+      mo.observe(document.body, {childList:true, subtree:true, attributes:true});
+      
+      // Send initial height
       window.addEventListener('load', send);
-      setInterval(send, 1200);
+      setTimeout(send, 100);
+      setTimeout(send, 500);
+      setTimeout(send, 1000);
+      setInterval(send, 2000);
+      
+      // Force initial measurement
       send();
+      
+      console.log('RG Widget initialization complete');
     })();
   </script>
+</body>
+</html>
