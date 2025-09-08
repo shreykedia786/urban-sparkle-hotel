@@ -1,7 +1,10 @@
 import { useEffect } from "react";
 import { cn } from "@/lib/utils";
-
+import { useIsMobile } from "@/hooks/use-mobile";
 export function BookingWidget({ className }: { className?: string }) {
+  const isMobile = useIsMobile();
+  const defaultHeight = isMobile ? 420 : 160;
+
   useEffect(() => {
     // Expose the height change function expected by RateGain
     (window as any).changeIframeHeight = (newHeight: number) => {
@@ -15,9 +18,29 @@ export function BookingWidget({ className }: { className?: string }) {
 
     // Message listener for RateGain widget
     const handleMessage = (event: MessageEvent) => {
+      // Handshake for DLYX (RateGain requirement)
       if (event.data === 'GET_DLYX' && event.source) {
         (event.source as Window).postMessage({ dlyx: (window as any).dlyx }, '*');
+        return;
       }
+
+      // Try to detect height messages from the widget and resize iframe
+      try {
+        const data: any = event.data;
+        let newHeight: number | undefined;
+
+        if (typeof data === 'number') newHeight = data;
+        else if (typeof data === 'string') {
+          const match = data.match(/(height|iframeHeight|rgHeight)[^0-9]*(\d{2,4})/i);
+          if (match) newHeight = parseInt(match[2], 10);
+        } else if (data && typeof data === 'object') {
+          newHeight = data.height || data.iframeHeight || data.rgHeight || data.newHeight || data.h;
+        }
+
+        if (typeof newHeight === 'number' && newHeight > 0) {
+          (window as any).changeIframeHeight(Math.max(newHeight, defaultHeight));
+        }
+      } catch {}
     };
 
     window.addEventListener('message', handleMessage);
@@ -119,16 +142,16 @@ export function BookingWidget({ className }: { className?: string }) {
                 style={{
                   border: 'none', 
                   overflow: 'hidden', 
-                  height: '120px', 
+                  height: defaultHeight, 
                   width: '100%',
                   maxWidth: '100%',
                   zIndex: 9999,
                   background: 'transparent',
-                  minHeight: '120px'
+                  minHeight: defaultHeight
                 }}
                 id="86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe"
                 allow="same-origin"
-                scrolling="no"
+                scrolling={isMobile ? "auto" : "no"}
               />
             </div>
           </div>
