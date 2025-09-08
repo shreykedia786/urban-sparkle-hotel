@@ -168,7 +168,7 @@ const Index = () => {
             <div className="absolute -inset-2 bg-gradient-to-r from-neon/15 via-transparent to-neon/15 rounded-3xl blur-xl"></div>
             
             {/* Main card */}
-            <div className="relative bg-card/95 backdrop-blur-xl border border-border/40 rounded-3xl shadow-card overflow-hidden">
+            <div className="relative bg-card/95 backdrop-blur-xl border border-border/40 rounded-3xl shadow-card overflow-visible">
               {/* Premium glass overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-card/60 via-card/30 to-card/10 pointer-events-none"></div>
               
