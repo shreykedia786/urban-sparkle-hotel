@@ -71,7 +71,7 @@ export function BookingWidget({ className }: { className?: string }) {
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/60 to-transparent"></div>
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/40 to-transparent"></div>
           
-          <div className="relative z-10 p-8">
+          <div className="relative z-10 p-6 md:p-8" style={{ minHeight: (useVerticalLayout ? defaultHeight + 200 : defaultHeight + 80) }}>
             {/* Header */}
             <div className="text-center mb-6">
               <div className="flex justify-center gap-1 mb-3">
