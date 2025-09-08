@@ -51,11 +51,11 @@ All colors MUST be HSL for perfect theme consistency.
     /* Interactive States */
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 172 100% 50%;             /* Neon ring for focus */
+    --ring: 35 85% 55%;               /* Gold ring for focus */
 
     /* Urban Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(220, 13%, 18%) 0%, hsl(220, 13%, 25%) 100%);
-    --gradient-neon: linear-gradient(135deg, hsl(172, 100%, 50%) 0%, hsl(172, 70%, 45%) 100%);
+    --gradient-neon: linear-gradient(135deg, hsl(35, 85%, 55%) 0%, hsl(35, 85%, 65%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(0, 0%, 98%) 0%, hsl(220, 14%, 96%) 100%);
     --gradient-overlay: linear-gradient(180deg, rgba(34, 40, 49, 0.7) 0%, rgba(34, 40, 49, 0.3) 100%);
 
@@ -63,7 +63,7 @@ All colors MUST be HSL for perfect theme consistency.
     --shadow-sm: 0 1px 2px 0 rgba(34, 40, 49, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(34, 40, 49, 0.1), 0 2px 4px -1px rgba(34, 40, 49, 0.06);
     --shadow-lg: 0 10px 15px -3px rgba(34, 40, 49, 0.1), 0 4px 6px -2px rgba(34, 40, 49, 0.05);
-    --shadow-neon: 0 0 20px rgba(0, 255, 255, 0.3);
+    --shadow-neon: 0 0 20px rgba(147, 126, 39, 0.3);
     --shadow-card: 0 8px 30px rgba(34, 40, 49, 0.12);
 
     /* Typography Scale */
@@ -129,10 +129,10 @@ All colors MUST be HSL for perfect theme consistency.
     --primary-foreground: 220 13% 8%;
     --primary-hover: 0 0% 90%;           /* Slightly dimmed hover */
     
-    /* Neon Accent - More Intense in Dark */
-    --neon: 172 100% 60%;                /* Brighter neon in dark */
-    --neon-foreground: 220 13% 8%;
-    --neon-glow: 172 100% 60%;
+    /* Gold Accent - Consistent in Dark Mode */
+    --neon: 35 85% 55%;                /* Same gold as light mode */
+    --neon-foreground: 0 0% 98%;       /* Light text on gold in dark mode */
+    --neon-glow: 35 85% 65%;           /* Lighter gold for glow */
     
     /* Dark Urban Neutrals */
     --secondary: 220 9% 20%;             /* Dark secondary */
@@ -155,11 +155,11 @@ All colors MUST be HSL for perfect theme consistency.
     /* Dark Interactive States */
     --border: 220 13% 20%;
     --input: 220 13% 20%;
-    --ring: 172 100% 60%;                /* Bright neon ring */
+    --ring: 35 85% 55%;                  /* Gold ring for focus */
 
     /* Dark Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(220, 13%, 8%) 0%, hsl(220, 13%, 15%) 100%);
-    --gradient-neon: linear-gradient(135deg, hsl(172, 100%, 60%) 0%, hsl(172, 80%, 55%) 100%);
+    --gradient-neon: linear-gradient(135deg, hsl(35, 85%, 55%) 0%, hsl(35, 85%, 65%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(220, 13%, 8%) 0%, hsl(220, 13%, 12%) 100%);
     --gradient-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 100%);
 
@@ -167,7 +167,7 @@ All colors MUST be HSL for perfect theme consistency.
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
-    --shadow-neon: 0 0 30px rgba(0, 255, 255, 0.5);
+    --shadow-neon: 0 0 30px rgba(147, 126, 39, 0.5);
     --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.4);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
