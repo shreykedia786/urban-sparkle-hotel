@@ -30,14 +30,17 @@ export default function Contact() {
       
       <main className="pt-16">
         {/* Hero Section */}
-        <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
-          {/* Background with cinematic gradient overlay */}
+        <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+          {/* Background Image */}
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: "linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.7) 100%), url('/src/assets/lobby-interior.jpg')"
+              backgroundImage: "url('/src/assets/lobby-interior.jpg')"
             }}
           />
+          
+          {/* Cinematic gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/80"></div>
           
           {/* Luxury floating elements */}
           <div className="absolute inset-0">
