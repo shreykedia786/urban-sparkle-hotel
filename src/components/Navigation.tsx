@@ -53,8 +53,8 @@ export function Navigation() {
     <nav className={cn(
       "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
       scrolled 
-        ? "bg-white/5 backdrop-blur-2xl border-b border-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]" 
-        : "bg-transparent"
+        ? "bg-black/20 backdrop-blur-2xl border-b border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]" 
+        : "bg-black/10 backdrop-blur-md"
     )}>
       {/* Glass shine effects */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
@@ -97,10 +97,8 @@ export function Navigation() {
                   to={item.href}
                   className={cn(
                     "relative block px-4 py-3 text-sm font-medium transition-all duration-300 uppercase tracking-[0.1em] whitespace-nowrap",
-                    onWhiteBackground 
-                      ? "text-foreground/80 hover:text-foreground" 
-                      : "text-white/80 hover:text-white",
-                    location.pathname === item.href && (onWhiteBackground ? "text-foreground" : "text-white")
+                    "text-white/80 hover:text-white",
+                    location.pathname === item.href && "text-white"
                   )}
                 >
                   <span className="relative z-10">
@@ -110,7 +108,7 @@ export function Navigation() {
                   {/* Luxury hover background */}
                   <div className={cn(
                     "absolute inset-0 backdrop-blur-sm rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 scale-95 group-hover:scale-100",
-                    onWhiteBackground ? "bg-white/20" : "bg-white/5"
+                    "bg-white/5"
                   )}></div>
                   
                   {/* Enhanced underline effect */}
@@ -134,9 +132,7 @@ export function Navigation() {
               onClick={toggleLanguage}
               className={cn(
                 "hidden sm:flex items-center space-x-2 backdrop-blur-md border rounded-xl px-4 py-2 transition-all duration-300",
-                onWhiteBackground 
-                  ? "bg-black/10 border-black/20 hover:border-black/40 text-foreground hover:bg-black/15" 
-                  : "bg-white/10 border-white/20 hover:border-white/40 text-white hover:bg-white/15"
+                "bg-white/10 border-white/20 hover:border-white/40 text-white hover:bg-white/15"
               )}
             >
               <Globe className="w-4 h-4 text-neon" />
@@ -147,17 +143,15 @@ export function Navigation() {
             {/* Premium Theme Toggle */}
             <div className={cn(
               "hidden sm:flex items-center space-x-3 backdrop-blur-md border rounded-xl px-4 py-2",
-              onWhiteBackground 
-                ? "bg-black/10 border-black/20" 
-                : "bg-white/10 border-white/20"
+              "bg-white/10 border-white/20"
             )}>
-              <Sun className={cn("w-4 h-4", onWhiteBackground ? "text-foreground/60" : "text-white/60")} />
+              <Sun className="w-4 h-4 text-white/60" />
               <Switch 
                 checked={isDark} 
                 onCheckedChange={toggleTheme}
                 className="data-[state=checked]:bg-neon"
               />
-              <Moon className={cn("w-4 h-4", onWhiteBackground ? "text-foreground/60" : "text-white/60")} />
+              <Moon className="w-4 h-4 text-white/60" />
             </div>
 
             {/* Luxury Book Now Button */}
@@ -181,9 +175,7 @@ export function Navigation() {
                   size="icon" 
                   className={cn(
                     "xl:hidden backdrop-blur-md border rounded-xl w-12 h-12 transition-all duration-300",
-                    onWhiteBackground 
-                      ? "bg-black/10 border-black/20 hover:border-black/40 text-foreground hover:bg-black/15" 
-                      : "bg-white/10 border-white/20 hover:border-white/40 text-white hover:bg-white/15"
+                    "bg-white/10 border-white/20 hover:border-white/40 text-white hover:bg-white/15"
                   )}
                 >
                   <Menu className="w-6 h-6" />
