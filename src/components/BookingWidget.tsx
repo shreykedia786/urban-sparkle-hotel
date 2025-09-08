@@ -79,18 +79,18 @@ export function BookingWidget({ className }: { className?: string }) {
           <div className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/60 to-transparent ${useVerticalLayout ? 'hidden' : 'block'}`}></div>
           <div className={`absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/40 to-transparent ${useVerticalLayout ? 'hidden' : 'block'}`}></div>
           
-          <div className={`relative ${useVerticalLayout ? 'z-0 p-2' : 'z-10 p-6 md:p-8'}`} style={{ minHeight: defaultHeight }}>
+          <div className={`relative ${useVerticalLayout ? 'z-0 p-4' : 'z-10 p-6 md:p-8'}`} style={{ minHeight: defaultHeight }}>
             {/* Header */}
-            <div className="text-center mb-6">
+            <div className={`text-center ${useVerticalLayout ? 'mb-4' : 'mb-6'}`}>
               <div className="flex justify-center gap-1 mb-3">
                 {[...Array(5)].map((_, i) => (
                   <span key={i} className="text-neon text-sm">★</span>
                 ))}
               </div>
-              <h3 className="text-2xl font-bold text-foreground mb-2">
+              <h3 className={`${useVerticalLayout ? 'text-xl' : 'text-2xl'} font-bold text-foreground mb-2`}>
                 Reserve Your <span className="text-neon">Luxury Stay</span>
               </h3>
-              <p className="text-muted-foreground">
+              <p className={`text-muted-foreground ${useVerticalLayout ? 'text-sm px-2' : ''}`}>
                 Experience unparalleled luxury with instant confirmation
               </p>
             </div>
