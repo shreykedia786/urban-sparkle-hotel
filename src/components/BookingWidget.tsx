@@ -72,26 +72,22 @@ export function BookingWidget({ className }: { className?: string }) {
                     <head>
                       <title>Booking Engine Widget</title>
                       <link href='https://ibe.rategain.com/widget/index.css' rel='stylesheet'/>
-                      <style>
+                    <style>
                         html, body { 
                           margin: 0; 
                           padding: 0; 
                           background: transparent; 
                           overflow: visible !important;
                           height: auto !important;
-                          min-height: 120px !important;
+                          min-height: 140px !important;
+                          min-width: 1024px !important;
                         }
                         #rg-booking-widget {
                           z-index: 9999 !important;
                           position: relative !important;
                           overflow: visible !important;
-                          min-height: 120px !important;
-                        }
-                        /* Force horizontal layout */
-                        .rg-widget-container {
-                          min-width: 800px !important;
-                          border-radius: 12px !important;
-                          overflow: visible !important;
+                          min-height: 140px !important;
+                          min-width: 1024px !important;
                         }
                         /* Ensure dropdowns appear above everything */
                         .rg-dropdown, .rg-calendar, .rg-popover, [class*="dropdown"], [class*="calendar"] {
@@ -99,7 +95,7 @@ export function BookingWidget({ className }: { className?: string }) {
                           position: relative !important;
                           overflow: visible !important;
                         }
-                      </style>
+                    </style>
                     </head>
                     <body>            
                       <div 
@@ -108,10 +104,10 @@ export function BookingWidget({ className }: { className?: string }) {
                         data-backgroundprimarycolor='#1e293b' 
                         data-backgroundsecondarycolor='#334155'   
                         data-widgetFontColor='#ffffff'   
-                        data-widgetSearchFontColorButton='#000000'  
-                        data-widgetSearchColorButton='#d4c342'  
-                        data-widgetSearchFontColorHoverstate='#000000'   
-                        data-widgetSearchColorHoverState='#937e27'   
+                        data-widgetSearchFontColorButton='#ffffff'  
+                        data-widgetSearchColorButton='#937e27'  
+                        data-widgetSearchFontColorHoverstate='#ffffff'   
+                        data-widgetSearchColorHoverState='#b89f2a'   
                         id='rg-booking-widget'
                       >
                         <script src='https://ibe.rategain.com/widget/index.js'></script>
