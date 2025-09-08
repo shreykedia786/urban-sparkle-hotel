@@ -130,7 +130,12 @@ export function Navigation() {
               variant="ghost"
               size="sm"
               onClick={toggleLanguage}
-              className="hidden sm:flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 hover:border-white/40 rounded-xl px-4 py-2 text-white hover:bg-white/15 transition-all duration-300"
+              className={cn(
+                "hidden sm:flex items-center space-x-2 backdrop-blur-md border rounded-xl px-4 py-2 transition-all duration-300",
+                onWhiteBackground 
+                  ? "bg-black/10 border-black/20 hover:border-black/40 text-foreground hover:bg-black/15" 
+                  : "bg-white/10 border-white/20 hover:border-white/40 text-white hover:bg-white/15"
+              )}
             >
               <Globe className="w-4 h-4 text-neon" />
               <span className="text-sm font-medium tracking-wide">{language}</span>
@@ -138,14 +143,19 @@ export function Navigation() {
             </Button>
 
             {/* Premium Theme Toggle */}
-            <div className="hidden sm:flex items-center space-x-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-4 py-2">
-              <Sun className="w-4 h-4 text-white/60" />
+            <div className={cn(
+              "hidden sm:flex items-center space-x-3 backdrop-blur-md border rounded-xl px-4 py-2",
+              onWhiteBackground 
+                ? "bg-black/10 border-black/20" 
+                : "bg-white/10 border-white/20"
+            )}>
+              <Sun className={cn("w-4 h-4", onWhiteBackground ? "text-foreground/60" : "text-white/60")} />
               <Switch 
                 checked={isDark} 
                 onCheckedChange={toggleTheme}
                 className="data-[state=checked]:bg-neon"
               />
-              <Moon className="w-4 h-4 text-white/60" />
+              <Moon className={cn("w-4 h-4", onWhiteBackground ? "text-foreground/60" : "text-white/60")} />
             </div>
 
             {/* Luxury Book Now Button */}
@@ -167,7 +177,12 @@ export function Navigation() {
                 <Button 
                   variant="ghost" 
                   size="icon" 
-                  className="xl:hidden bg-white/10 backdrop-blur-md border border-white/20 hover:border-white/40 rounded-xl w-12 h-12 text-white hover:bg-white/15 transition-all duration-300"
+                  className={cn(
+                    "xl:hidden backdrop-blur-md border rounded-xl w-12 h-12 transition-all duration-300",
+                    onWhiteBackground 
+                      ? "bg-black/10 border-black/20 hover:border-black/40 text-foreground hover:bg-black/15" 
+                      : "bg-white/10 border-white/20 hover:border-white/40 text-white hover:bg-white/15"
+                  )}
                 >
                   <Menu className="w-6 h-6" />
                 </Button>
