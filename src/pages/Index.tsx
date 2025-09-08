@@ -180,8 +180,12 @@ const Index = () => {
                 {/* Removed duplicate title - it's now in the BookingWidget */}
 
                 {/* Enhanced booking widget */}
-                <div className="relative">
-                  <BookingWidget className="booking-widget-luxury" />
+                <div className="relative z-50">
+                  <div className="rounded-3xl p-2 bg-gradient-to-r from-neon/20 via-neon-glow/30 to-neon/20 shadow-card">
+                    <div className="rounded-2xl bg-black/30 backdrop-blur-xl border border-white/10 overflow-visible">
+                      <BookingWidget className="w-full" />
+                    </div>
+                  </div>
                 </div>
 
                 {/* Trust indicators */}
