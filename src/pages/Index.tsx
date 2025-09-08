@@ -160,7 +160,7 @@ const Index = () => {
 
       {/* Overlapping Booking Widget Section */}
       <section className="relative -mt-32 z-30 pb-16">
-        <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
           {/* World-class booking widget card */}
           <div className="relative">
             {/* Luxury glow effects */}
