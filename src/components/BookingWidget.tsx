@@ -28,7 +28,7 @@ export function BookingWidget({ className }: { className?: string }) {
   ];
 
   return (
-    <div className={cn("w-full max-w-7xl mx-auto", className)}>
+    <div className={cn("w-full max-w-[1400px] mx-auto", className)}>
       <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
         {/* Header Section */}
         <div className="text-center mb-8">
@@ -242,36 +242,7 @@ export function BookingWidget({ className }: { className?: string }) {
           </div>
         </div>
 
-        {/* Trust Badges */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-          <div className="flex flex-col items-center space-y-2">
-            <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
-              <Shield className="w-5 h-5 text-amber-600" />
-            </div>
-            <div>
-              <h3 className="font-bold text-gray-900 text-base">Secure Booking</h3>
-              <p className="text-gray-600 text-sm">SSL encrypted</p>
-            </div>
-          </div>
-          <div className="flex flex-col items-center space-y-2">
-            <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
-              <Clock className="w-5 h-5 text-amber-600" />
-            </div>
-            <div>
-              <h3 className="font-bold text-gray-900 text-base">Instant Confirmation</h3>
-              <p className="text-gray-600 text-sm">Real-time booking</p>
-            </div>
-          </div>
-          <div className="flex flex-col items-center space-y-2">
-            <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
-              <DollarSign className="w-5 h-5 text-amber-600" />
-            </div>
-            <div>
-              <h3 className="font-bold text-gray-900 text-base">Best Rate Guarantee</h3>
-              <p className="text-gray-600 text-sm">Price match promise</p>
-            </div>
-          </div>
-        </div>
+        {/* Removed duplicate trust badges - they appear elsewhere on the page */}
       </div>
     </div>
   );
