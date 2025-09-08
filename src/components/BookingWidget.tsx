@@ -119,7 +119,7 @@ export function BookingWidget({ className }: { className?: string }) {
             {/* RateGain Widget Container */}
             <div 
               id="37316DCF-9BB6-4B80-BE26-7651D87C5F6B_outerRGdiv" 
-              className="relative z-50 overflow-hidden w-full"
+              className="relative z-[9999] overflow-visible w-full"
               ref={containerRef}
             >
               <iframe 

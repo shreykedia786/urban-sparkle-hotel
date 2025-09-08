@@ -197,62 +197,11 @@ const Index = () => {
       </section>
 
       {/* Overlapping Booking Widget Section */}
-      <section className="relative -mt-16 md:-mt-32 z-30 pb-16">
+      <section className="relative -mt-16 md:-mt-32 z-[9999] pb-10">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          {/* World-class booking widget card */}
           <div className="relative">
-            {/* Luxury glow effects */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-neon/10 via-neon-glow/20 to-neon/10 rounded-3xl blur-2xl opacity-60"></div>
-            <div className="absolute -inset-2 bg-gradient-to-r from-neon/15 via-transparent to-neon/15 rounded-3xl blur-xl"></div>
-            
-            {/* Main card */}
-            <div className="relative bg-card/95 backdrop-blur-xl border border-border/40 rounded-3xl shadow-card overflow-visible">
-              {/* Premium glass overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-card/60 via-card/30 to-card/10 pointer-events-none"></div>
-              
-              {/* Luxury accent borders */}
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/60 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/40 to-transparent"></div>
-              
-              <div className="relative z-10 p-2 sm:p-4 md:p-8 lg:p-12">
-                {/* Removed duplicate title - it's now in the BookingWidget */}
-
-                {/* Enhanced booking widget */}
-                <div className="relative z-40">
-                  <BookingWidget className="w-full" />
-                </div>
-
-                {/* Trust indicators */}
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mt-8 pt-6 border-t border-border/50 pb-8">
-                  <div className="flex items-center gap-3 text-muted-foreground">
-                    <div className="w-10 h-10 bg-gradient-to-br from-neon/20 to-neon-glow/30 rounded-full flex items-center justify-center">
-                      <Shield className="w-5 h-5 text-neon" />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-foreground">Secure Booking</div>
-                      <div className="text-sm">SSL encrypted</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3 text-muted-foreground">
-                    <div className="w-10 h-10 bg-gradient-to-br from-neon/20 to-neon-glow/30 rounded-full flex items-center justify-center">
-                      <Clock className="w-5 h-5 text-neon" />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-foreground">Instant Confirmation</div>
-                      <div className="text-sm">Real-time booking</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3 text-muted-foreground">
-                    <div className="w-10 h-10 bg-gradient-to-br from-neon/20 to-neon-glow/30 rounded-full flex items-center justify-center">
-                      <Award className="w-5 h-5 text-neon" />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-foreground">Best Rate Guarantee</div>
-                      <div className="text-sm">Price match promise</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className="relative z-[9999]">
+              <BookingWidget className="w-full" />
             </div>
           </div>
         </div>
