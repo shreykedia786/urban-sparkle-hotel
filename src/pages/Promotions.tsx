@@ -25,7 +25,7 @@ const promotions = [
   {
     title: "Cocktail Promotion",
     description: "Enjoy special cocktail offers at our premium bars and lounges with expertly crafted drinks",
-    image: "https://donatellodubai.com/wp-content/uploads/2025/03/Coctail-Promotion.png",
+    image: "/src/assets/lobby-interior.jpg",
     type: "Food & Beverage",
     status: "Limited Time",
     details: "Experience our signature cocktails at special prices during happy hours",
@@ -35,7 +35,7 @@ const promotions = [
   {
     title: "Special Transfer Rates", 
     description: "Avail our luxury transfers during your stay with exclusive rates for hotel guests",
-    image: "https://donatellodubai.com/wp-content/uploads/2022/11/Yam1-2.jpeg",
+    image: "/src/assets/hero-hotel-exterior.jpg",
     type: "Transportation",
     status: "Available",
     details: "Contact our reception for more information about our premium transfer services",
@@ -117,7 +117,7 @@ const Promotions = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
           style={{
-            backgroundImage: `url('https://donatellodubai.com/wp-content/uploads/2025/03/Coctail-Promotion.png')`
+            backgroundImage: `url('/src/assets/lobby-interior.jpg')`
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80" />
@@ -191,31 +191,33 @@ const Promotions = () => {
             {promotions.map((promo, index) => (
               <Card key={index} className="group overflow-hidden bg-card border border-border shadow-card hover:shadow-neon transition-all duration-500 hover:scale-105">
                 <CardContent className="p-0">
-                  {promo.image && (
-                    <div className="relative h-48 overflow-hidden">
-                      <img 
-                        src={promo.image} 
-                        alt={promo.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                      
-                      {/* Tier Badge */}
-                      <Badge className={cn(
-                        "absolute top-4 left-4 text-white border-0",
-                        promo.tier === "premium" ? "bg-gradient-to-r from-neon to-neon-glow" :
-                        "bg-gradient-to-r from-secondary to-secondary/80"
-                      )}>
-                        {promo.tier === "premium" && <Crown className="w-3 h-3 mr-1" />}
-                        {promo.tier === "premium" ? "Premium Offer" : "Special Deal"}
-                      </Badge>
+                  <div className="relative h-48 overflow-hidden">
+                    <img 
+                      src={promo.image} 
+                      alt={promo.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      loading="lazy"
+                      onError={(e) => {
+                        e.currentTarget.src = '/src/assets/lobby-interior.jpg';
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    
+                    {/* Tier Badge */}
+                    <Badge className={cn(
+                      "absolute top-4 left-4 text-white border-0",
+                      promo.tier === "premium" ? "bg-gradient-to-r from-neon to-neon-glow" :
+                      "bg-gradient-to-r from-secondary to-secondary/80"
+                    )}>
+                      {promo.tier === "premium" && <Crown className="w-3 h-3 mr-1" />}
+                      {promo.tier === "premium" ? "Premium Offer" : "Special Deal"}
+                    </Badge>
 
-                      {/* Discount Badge */}
-                      <Badge className="absolute top-4 right-4 bg-neon text-neon-foreground">
-                        {promo.discount}
-                      </Badge>
-                    </div>
-                  )}
+                    {/* Discount Badge */}
+                    <Badge className="absolute top-4 right-4 bg-neon text-neon-foreground">
+                      {promo.discount}
+                    </Badge>
+                  </div>
                   
                   <div className="p-6 space-y-4">
                     <div className="flex items-start justify-between">
