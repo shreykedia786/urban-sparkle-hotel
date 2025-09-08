@@ -11,7 +11,7 @@ export function BookingWidget({ className }: { className?: string }) {
     return () => mql.removeEventListener('change', onChange);
   }, []);
 
-  const defaultHeight = isNarrow ? 820 : 200;
+  const defaultHeight = isNarrow ? 560 : 200;
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   // Vertical layout for tablets and mobiles (<1024px)
@@ -79,7 +79,7 @@ export function BookingWidget({ className }: { className?: string }) {
           <div className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/60 to-transparent ${useVerticalLayout ? 'hidden' : 'block'}`}></div>
           <div className={`absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/40 to-transparent ${useVerticalLayout ? 'hidden' : 'block'}`}></div>
           
-          <div className={`relative ${useVerticalLayout ? 'z-0 p-2' : 'z-10 p-6 md:p-8'}`} style={{ minHeight: (useVerticalLayout ? defaultHeight + 40 : defaultHeight + 80) }}>
+          <div className={`relative ${useVerticalLayout ? 'z-0 p-2' : 'z-10 p-6 md:p-8'}`} style={{ minHeight: defaultHeight }}>
             {/* Header */}
             <div className="text-center mb-6">
               <div className="flex justify-center gap-1 mb-3">
@@ -149,6 +149,26 @@ export function BookingWidget({ className }: { className?: string }) {
                       >
                         <script src='https://ibe.rategain.com/widget/index.js'></script>
                       </div>
+                      <script>
+                        (function(){
+                          function send(){
+                            var root=document.getElementById('rg-booking-widget');
+                            var h=Math.max(
+                              root?root.scrollHeight:0,
+                              document.body.scrollHeight,
+                              document.documentElement.scrollHeight
+                            );
+                            try{ parent.postMessage({ newHeight: h+16 }, '*'); }catch(e){}
+                          }
+                          var ro=new ResizeObserver(send);
+                          ro.observe(document.body);
+                          var mo=new MutationObserver(send);
+                          mo.observe(document.body,{childList:true,subtree:true,attributes:true});
+                          window.addEventListener('load',send);
+                          setInterval(send,1200);
+                          send();
+                        })();
+                      </script>
                     </body>
                   </html>
                 `}
@@ -164,7 +184,7 @@ export function BookingWidget({ className }: { className?: string }) {
                 }}
                 id="86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe"
                 allow="same-origin"
-                scrolling={useVerticalLayout ? "auto" : "no"}
+                scrolling="no"
               />
             </div>
           </div>
