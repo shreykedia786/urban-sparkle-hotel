@@ -223,7 +223,7 @@ const Index = () => {
                 </div>
 
                 {/* Trust indicators */}
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mt-8 pt-6 border-t border-border/50 pb-8">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 lg:gap-16 mt-8 pt-8 border-t border-border/50 pb-8">
                   <div className="flex items-center gap-3 text-muted-foreground">
                     <div className="w-10 h-10 bg-gradient-to-br from-neon/20 to-neon-glow/30 rounded-full flex items-center justify-center">
                       <Shield className="w-5 h-5 text-neon" />
