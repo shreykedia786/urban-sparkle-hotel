@@ -24,7 +24,7 @@ export function BookingWidget({ className }: { className?: string }) {
     };
   }, []);
 
-  const defaultHeight = isMobile ? 600 : isNarrow ? 560 : 200;
+  const defaultHeight = isMobile ? 450 : isNarrow ? 520 : 200;
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   // Vertical layout for tablets and mobiles (<1024px)
@@ -136,11 +136,11 @@ export function BookingWidget({ className }: { className?: string }) {
                         #rg-booking-widget {
                           z-index: 9999 !important;
                           position: relative !important;
-                          overflow: visible !important;
+                          overflow: hidden !important;
                           min-height: ${defaultHeight}px !important;
                           width: 100% !important;
-                          ${useVerticalLayout ? '' : 'min-width: 1024px !important;'}
-                          ${isMobile ? 'font-size: 14px !important;' : ''}
+                          max-width: 100% !important;
+                          ${isMobile ? 'font-size: 14px !important; box-sizing: border-box !important;' : ''}
                         }
                         /* Enhanced dropdown styles for mobile/tablet */
                         .rg-dropdown, .rg-dropdown-menu, .rg-select-menu, .rg-calendar, .rg-popover, [class*="dropdown"], [class*="menu"], [class*="calendar"], [role="listbox"], [aria-haspopup="listbox"] {
@@ -151,16 +151,20 @@ export function BookingWidget({ className }: { className?: string }) {
                         }
                         /* Mobile-specific optimizations */
                         ${isMobile ? `
+                          * { box-sizing: border-box !important; }
                           .rg-form-group, .rg-input-group {
-                            margin-bottom: 8px !important;
+                            margin-bottom: 6px !important;
+                            width: 100% !important;
                           }
                           .rg-input, .rg-select, .rg-button {
-                            padding: 12px !important;
+                            padding: 10px !important;
                             font-size: 14px !important;
-                            min-height: 44px !important;
+                            min-height: 40px !important;
+                            width: 100% !important;
+                            max-width: 100% !important;
                           }
                           .rg-dropdown-menu {
-                            max-height: 200px !important;
+                            max-height: 180px !important;
                             overflow-y: auto !important;
                           }
                         ` : ''}
@@ -214,9 +218,10 @@ export function BookingWidget({ className }: { className?: string }) {
                 width="100%" 
                 style={{
                   border: 'none', 
-                  overflow: 'visible', 
+                  overflow: 'hidden', 
                   height: defaultHeight, 
                   width: '100%',
+                  maxWidth: '100%',
                   zIndex: 9999,
                   background: 'transparent',
                   minHeight: defaultHeight,
