@@ -89,7 +89,7 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section - Cinematic */}
-      <section className="relative min-h-[60vh] md:min-h-[80vh] lg:min-h-screen overflow-hidden">
+      <section className="relative min-h-[75vh] md:min-h-[80vh] lg:min-h-screen overflow-hidden">
         {/* Animated Background - Hotel Ambiance */}
         <div className="absolute inset-0">
           {/* Base hotel image */}
@@ -141,7 +141,7 @@ const Index = () => {
         <div className="absolute top-32 right-32 w-1 h-1 bg-white rounded-full animate-pulse opacity-40" />
         <div className="absolute bottom-40 left-20 w-1.5 h-1.5 bg-neon rounded-full animate-pulse opacity-50" />
         
-        <div className="relative z-10 flex items-center justify-center min-h-[60vh] md:min-h-[80vh] lg:min-h-screen px-4">
+        <div className="relative z-10 flex items-center justify-center min-h-[75vh] md:min-h-[80vh] lg:min-h-screen px-4">
           <div className={`text-center text-white transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="mb-6">
               <span className="inline-block px-4 py-2 bg-neon/20 backdrop-blur-sm rounded-full text-neon text-sm font-medium border border-neon/30">
