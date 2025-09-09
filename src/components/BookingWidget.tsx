@@ -132,7 +132,10 @@ export function BookingWidget({ className }: { className?: string }) {
                           min-height: ${defaultHeight}px !important;
                           width: 100% !important;
                           touch-action: manipulation !important;
+                          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
                         }
+                        
+                        /* Premium Widget Container */
                         #rg-booking-widget {
                           z-index: 9999 !important;
                           position: relative !important;
@@ -140,41 +143,191 @@ export function BookingWidget({ className }: { className?: string }) {
                           min-height: ${defaultHeight}px !important;
                           width: 100% !important;
                           max-width: 100% !important;
+                          background: linear-gradient(135deg, rgba(147, 126, 39, 0.05) 0%, rgba(184, 159, 42, 0.1) 100%) !important;
+                          border-radius: 16px !important;
+                          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+                          backdrop-filter: blur(8px) !important;
+                          border: 1px solid rgba(147, 126, 39, 0.2) !important;
                           ${isMobile ? 'font-size: 14px !important; box-sizing: border-box !important;' : ''}
                         }
-                        /* Enhanced dropdown styles for mobile/tablet */
-                        .rg-dropdown, .rg-dropdown-menu, .rg-select-menu, .rg-calendar, .rg-popover, [class*="dropdown"], [class*="menu"], [class*="calendar"], [role="listbox"], [aria-haspopup="listbox"] {
+                        
+                        /* Premium Form Styling */
+                        .rg-form, .rg-booking-form, [class*="form"] {
+                          background: transparent !important;
+                          padding: ${isMobile ? '16px' : '24px'} !important;
+                          border-radius: 12px !important;
+                        }
+                        
+                        /* Luxury Input Fields */
+                        .rg-input, .rg-select, input, select {
+                          background: rgba(255, 255, 255, 0.95) !important;
+                          border: 2px solid rgba(147, 126, 39, 0.3) !important;
+                          border-radius: 12px !important;
+                          padding: ${isMobile ? '12px 16px' : '16px 20px'} !important;
+                          font-size: ${isMobile ? '14px' : '16px'} !important;
+                          font-weight: 500 !important;
+                          color: #1a1a1a !important;
+                          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                          box-shadow: 0 2px 8px rgba(147, 126, 39, 0.1) !important;
+                          min-height: ${isMobile ? '48px' : '56px'} !important;
+                          width: 100% !important;
+                          max-width: 100% !important;
+                        }
+                        
+                        .rg-input:focus, .rg-select:focus, input:focus, select:focus {
+                          outline: none !important;
+                          border-color: #937e27 !important;
+                          box-shadow: 0 0 0 4px rgba(147, 126, 39, 0.2), 0 4px 16px rgba(147, 126, 39, 0.3) !important;
+                          transform: translateY(-2px) !important;
+                        }
+                        
+                        .rg-input:hover, .rg-select:hover, input:hover, select:hover {
+                          border-color: rgba(147, 126, 39, 0.5) !important;
+                          box-shadow: 0 4px 12px rgba(147, 126, 39, 0.2) !important;
+                        }
+                        
+                        /* World-Class Dropdown Styling */
+                        .rg-dropdown, .rg-dropdown-menu, .rg-select-menu, .rg-calendar, .rg-popover, 
+                        [class*="dropdown"], [class*="menu"], [class*="calendar"], [role="listbox"], 
+                        [aria-haspopup="listbox"], .rg-options, [class*="options"] {
                           z-index: 2147483647 !important;
                           overflow: visible !important;
                           position: ${isNarrow ? 'fixed' : 'absolute'} !important;
-                          ${isMobile ? 'left: 10px !important; right: 10px !important; width: auto !important;' : ''}
+                          background: rgba(255, 255, 255, 0.98) !important;
+                          backdrop-filter: blur(20px) !important;
+                          border: 2px solid rgba(147, 126, 39, 0.2) !important;
+                          border-radius: 16px !important;
+                          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 8px 32px rgba(147, 126, 39, 0.2) !important;
+                          margin-top: 8px !important;
+                          animation: dropdownSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+                          ${isMobile ? 'left: 10px !important; right: 10px !important; width: auto !important; max-height: 250px !important;' : 'min-width: 250px !important;'}
                         }
-                        /* Mobile-specific optimizations */
+                        
+                        /* Dropdown Items */
+                        .rg-dropdown-item, .rg-option, [class*="option"], [role="option"] {
+                          padding: ${isMobile ? '12px 16px' : '16px 20px'} !important;
+                          color: #1a1a1a !important;
+                          font-weight: 500 !important;
+                          border-bottom: 1px solid rgba(147, 126, 39, 0.1) !important;
+                          transition: all 0.2s ease !important;
+                          cursor: pointer !important;
+                        }
+                        
+                        .rg-dropdown-item:hover, .rg-option:hover, [class*="option"]:hover, [role="option"]:hover {
+                          background: linear-gradient(135deg, rgba(147, 126, 39, 0.1) 0%, rgba(184, 159, 42, 0.15) 100%) !important;
+                          color: #937e27 !important;
+                          transform: translateX(4px) !important;
+                        }
+                        
+                        .rg-dropdown-item:last-child, .rg-option:last-child {
+                          border-bottom: none !important;
+                        }
+                        
+                        /* Premium Button Styling */
+                        .rg-button, .rg-submit, button, [type="submit"] {
+                          background: linear-gradient(135deg, #937e27 0%, #b89f2a 100%) !important;
+                          border: none !important;
+                          border-radius: 12px !important;
+                          color: white !important;
+                          font-weight: 600 !important;
+                          font-size: ${isMobile ? '16px' : '18px'} !important;
+                          padding: ${isMobile ? '14px 24px' : '18px 32px'} !important;
+                          cursor: pointer !important;
+                          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                          box-shadow: 0 4px 16px rgba(147, 126, 39, 0.3) !important;
+                          text-transform: uppercase !important;
+                          letter-spacing: 0.5px !important;
+                          min-height: ${isMobile ? '52px' : '60px'} !important;
+                        }
+                        
+                        .rg-button:hover, .rg-submit:hover, button:hover, [type="submit"]:hover {
+                          background: linear-gradient(135deg, #b89f2a 0%, #937e27 100%) !important;
+                          transform: translateY(-3px) !important;
+                          box-shadow: 0 8px 24px rgba(147, 126, 39, 0.4) !important;
+                        }
+                        
+                        .rg-button:active, .rg-submit:active, button:active, [type="submit"]:active {
+                          transform: translateY(-1px) !important;
+                          box-shadow: 0 4px 12px rgba(147, 126, 39, 0.3) !important;
+                        }
+                        
+                        /* Form Groups & Layout */
+                        .rg-form-group, .rg-input-group, [class*="form-group"], [class*="input-group"] {
+                          margin-bottom: ${isMobile ? '16px' : '20px'} !important;
+                          width: 100% !important;
+                        }
+                        
+                        /* Labels */
+                        .rg-label, label {
+                          color: #2d3748 !important;
+                          font-weight: 600 !important;
+                          font-size: ${isMobile ? '14px' : '16px'} !important;
+                          margin-bottom: 8px !important;
+                          display: block !important;
+                        }
+                        
+                        /* Premium Calendar Styling */
+                        .rg-calendar {
+                          background: rgba(255, 255, 255, 0.98) !important;
+                          border-radius: 20px !important;
+                          box-shadow: 0 24px 48px rgba(0, 0, 0, 0.15) !important;
+                          border: 2px solid rgba(147, 126, 39, 0.2) !important;
+                          padding: 20px !important;
+                        }
+                        
+                        .rg-calendar-day, [class*="day"] {
+                          border-radius: 8px !important;
+                          transition: all 0.2s ease !important;
+                        }
+                        
+                        .rg-calendar-day:hover, [class*="day"]:hover {
+                          background: rgba(147, 126, 39, 0.1) !important;
+                          transform: scale(1.05) !important;
+                        }
+                        
+                        /* Animation Keyframes */
+                        @keyframes dropdownSlideIn {
+                          0% {
+                            opacity: 0;
+                            transform: translateY(-10px) scale(0.95);
+                          }
+                          100% {
+                            opacity: 1;
+                            transform: translateY(0) scale(1);
+                          }
+                        }
+                        
+                        /* Responsive Optimizations */
                         ${isMobile ? `
                           * { box-sizing: border-box !important; }
-                          .rg-form-group, .rg-input-group {
-                            margin-bottom: 6px !important;
-                            width: 100% !important;
-                          }
-                          .rg-input, .rg-select, .rg-button {
-                            padding: 10px !important;
-                            font-size: 14px !important;
-                            min-height: 40px !important;
-                            width: 100% !important;
-                            max-width: 100% !important;
+                          .rg-form-row, [class*="row"] {
+                            flex-direction: column !important;
+                            gap: 16px !important;
                           }
                           .rg-dropdown-menu {
-                            max-height: 180px !important;
+                            max-height: 200px !important;
                             overflow-y: auto !important;
                           }
                         ` : ''}
+                        
                         /* Tablet optimizations */
                         ${isNarrow && !isMobile ? `
                           .rg-input, .rg-select, .rg-button {
-                            padding: 10px !important;
-                            min-height: 40px !important;
+                            min-height: 52px !important;
                           }
                         ` : ''}
+                        
+                        /* Loading States */
+                        .rg-loading, [class*="loading"] {
+                          background: linear-gradient(90deg, rgba(147, 126, 39, 0.1) 0%, rgba(184, 159, 42, 0.2) 50%, rgba(147, 126, 39, 0.1) 100%) !important;
+                          background-size: 200% 100% !important;
+                          animation: loading 1.5s ease-in-out infinite !important;
+                        }
+                        
+                        @keyframes loading {
+                          0% { background-position: 200% 0; }
+                          100% { background-position: -200% 0; }
+                        }
                     </style>
                     </head>
                     <body>            
