@@ -143,10 +143,10 @@ export function BookingWidget({ className }: { className?: string }) {
                           ${isMobile ? 'font-size: 14px !important;' : ''}
                         }
                         /* Enhanced dropdown styles for mobile/tablet */
-                        .rg-dropdown, .rg-calendar, .rg-popover, [class*="dropdown"], [class*="calendar"] {
+                        .rg-dropdown, .rg-dropdown-menu, .rg-select-menu, .rg-calendar, .rg-popover, [class*="dropdown"], [class*="menu"], [class*="calendar"], [role="listbox"], [aria-haspopup="listbox"] {
                           z-index: 2147483647 !important;
                           overflow: visible !important;
-                          position: ${isMobile ? 'fixed' : 'absolute'} !important;
+                          position: ${isNarrow ? 'fixed' : 'absolute'} !important;
                           ${isMobile ? 'left: 10px !important; right: 10px !important; width: auto !important;' : ''}
                         }
                         /* Mobile-specific optimizations */
