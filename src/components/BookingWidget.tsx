@@ -146,7 +146,7 @@ export function BookingWidget({ className }: { className?: string }) {
                         .rg-dropdown, .rg-dropdown-menu, .rg-select-menu, .rg-calendar, .rg-popover, [class*="dropdown"], [class*="menu"], [class*="calendar"], [role="listbox"], [aria-haspopup="listbox"] {
                           z-index: 2147483647 !important;
                           overflow: visible !important;
-                          position: ${isNarrow ? 'fixed' : 'absolute'} !important;
+                          position: fixed !important;
                           ${isMobile ? 'left: 10px !important; right: 10px !important; width: auto !important;' : ''}
                         }
                         /* Mobile-specific optimizations */
@@ -194,21 +194,47 @@ export function BookingWidget({ className }: { className?: string }) {
                       </div>
                       <script>
                         (function(){
-                          function send(){
-                            var root=document.getElementById('rg-booking-widget');
-                            var h=Math.max(
-                              root?root.scrollHeight:0,
+                          function computeDocumentHeight(){
+                            var root = document.getElementById('rg-booking-widget');
+                            var base = Math.max(
+                              root ? root.scrollHeight : 0,
                               document.body.scrollHeight,
                               document.documentElement.scrollHeight
                             );
-                            try{ parent.postMessage({ newHeight: h+16 }, '*'); }catch(e){}
+
+                            // Include absolutely/fixed-positioned dropdowns, calendars, popovers
+                            var selectors = '.rg-dropdown, .rg-dropdown-menu, .rg-select-menu, .rg-calendar, .rg-popover, [class*="dropdown"], [class*="menu"], [class*="calendar"], [role="listbox"], [aria-haspopup="listbox"]';
+                            var maxBottom = 0;
+                            try {
+                              var nodes = document.querySelectorAll(selectors);
+                              nodes.forEach(function(el){
+                                // Consider only visible elements
+                                var rects = el.getClientRects();
+                                if (rects.length) {
+                                  var rect = el.getBoundingClientRect();
+                                  var bottom = rect.bottom + (window.scrollY || window.pageYOffset || 0);
+                                  if (bottom > maxBottom) maxBottom = bottom;
+                                }
+                              });
+                            } catch(e) {}
+
+                            return Math.max(base, Math.ceil(maxBottom));
                           }
-                          var ro=new ResizeObserver(send);
+
+                          function send(){
+                            var h = computeDocumentHeight() + 16;
+                            try { parent.postMessage({ newHeight: h }, '*'); } catch(e){}
+                          }
+
+                          var ro = new ResizeObserver(send);
                           ro.observe(document.body);
-                          var mo=new MutationObserver(send);
-                          mo.observe(document.body,{childList:true,subtree:true,attributes:true});
-                          window.addEventListener('load',send);
-                          setInterval(send,1200);
+                          var mo = new MutationObserver(send);
+                          mo.observe(document.body, { childList: true, subtree: true, attributes: true });
+                          window.addEventListener('load', send);
+                          window.addEventListener('click', send, true);
+                          window.addEventListener('focusin', send, true);
+                          window.addEventListener('transitionend', send, true);
+                          setInterval(send, 1000);
                           send();
                         })();
                       </script>
