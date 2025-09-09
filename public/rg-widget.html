@@ -21,7 +21,8 @@
     .rg-dropdown, .rg-dropdown-menu, .rg-select-menu, .rg-calendar, .rg-popover, [class*="dropdown"], [class*="menu"], [class*="calendar"], [role="listbox"], [aria-haspopup="listbox"] {
       z-index: 2147483647 !important;
       overflow: visible !important;
-      position: fixed !important;
+      position: absolute !important;
+      transform: translateZ(0) !important;
     }
   </style>
 </head>
@@ -65,7 +66,7 @@
         return Math.max(base, Math.ceil(maxBottom));
       }
        function send(){
-         var h = computeDocumentHeight() + 2;
+         var h = computeDocumentHeight() + 50;
          try { parent.postMessage({ newHeight: h }, '*'); } catch(e){}
        }
       var ro = new ResizeObserver(send);

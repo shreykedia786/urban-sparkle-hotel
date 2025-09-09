@@ -140,11 +140,12 @@ export function BookingWidget({ className }: { className?: string }) {
                           max-width: 100% !important;
                           ${isMobile ? 'font-size: 14px !important; box-sizing: border-box !important;' : ''}
                         }
-                        /* Enhanced dropdown styles for mobile/tablet */
+                        /* Enhanced dropdown styles - force escape iframe */
                         .rg-dropdown, .rg-dropdown-menu, .rg-select-menu, .rg-calendar, .rg-popover, [class*="dropdown"], [class*="menu"], [class*="calendar"], [role="listbox"], [aria-haspopup="listbox"] {
                           z-index: 2147483647 !important;
                           overflow: visible !important;
-                          position: fixed !important;
+                          position: absolute !important;
+                          transform: translateZ(0) !important;
                           ${isMobile ? 'left: 10px !important; right: 10px !important; width: auto !important;' : ''}
                         }
                         /* Mobile-specific optimizations */
@@ -220,7 +221,7 @@ export function BookingWidget({ className }: { className?: string }) {
                           }
 
                           function send(){
-                            var h = computeDocumentHeight() + 2;
+                            var h = computeDocumentHeight() + 50;
                             try { parent.postMessage({ newHeight: h }, '*'); } catch(e){}
                           }
 
@@ -242,7 +243,7 @@ export function BookingWidget({ className }: { className?: string }) {
                 width="100%" 
                 style={{
                   border: 'none', 
-                  overflow: 'hidden', 
+                  overflow: 'visible', 
                   height: defaultHeight, 
                   width: '100%',
                   maxWidth: '100%',
