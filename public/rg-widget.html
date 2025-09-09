@@ -16,6 +16,7 @@
     #rg-booking-widget {
       z-index: 9999 !important;
       position: relative !important;
+      overflow: visible !important;
     }
     /* Ensure dropdowns appear above everything */
     .rg-dropdown, .rg-dropdown-menu, .rg-select-menu, .rg-calendar, .rg-popover, [class*="dropdown"], [class*="menu"], [class*="calendar"], [role="listbox"], [aria-haspopup="listbox"] {
@@ -66,19 +67,18 @@
         return Math.max(base, Math.ceil(maxBottom));
       }
        function send(){
-         var h = computeDocumentHeight() + 50;
+         var h = computeDocumentHeight() + 4;
          try { parent.postMessage({ newHeight: h }, '*'); } catch(e){}
        }
-      var ro = new ResizeObserver(send);
-      ro.observe(document.body);
-      var mo = new MutationObserver(send);
-      mo.observe(document.body,{childList:true,subtree:true,attributes:true});
-      window.addEventListener('load', send);
-      window.addEventListener('click', send, true);
-      window.addEventListener('focusin', send, true);
-      window.addEventListener('transitionend', send, true);
-      setInterval(send, 1000);
-      send();
+       var ro = new ResizeObserver(send);
+       ro.observe(document.body);
+       var mo = new MutationObserver(send);
+       mo.observe(document.body,{childList:true,subtree:true,attributes:true,characterData:true});
+       ;['load','click','pointerdown','pointerup','keydown','keyup','input','focusin','focusout','transitionend','animationend','scroll','resize'].forEach(function(ev){
+         window.addEventListener(ev, send, true);
+       });
+       setInterval(send, 200);
+       send();
     })();
   </script>
 </body>

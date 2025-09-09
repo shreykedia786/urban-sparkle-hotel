@@ -37,7 +37,8 @@ export function BookingWidget({ className }: { className?: string }) {
         "86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe"
       ) as HTMLIFrameElement | null;
       if (iframe) {
-        iframe.style.height = `${Math.max(newHeight, defaultHeight)}px`;
+        const target = Math.max(Math.ceil(newHeight) + 4, defaultHeight);
+        iframe.style.height = `${target}px`;
       }
     };
 
@@ -63,7 +64,8 @@ export function BookingWidget({ className }: { className?: string }) {
         }
 
         if (typeof newHeight === 'number' && newHeight > 0) {
-          (window as any).changeIframeHeight(Math.max(newHeight, defaultHeight));
+          console.info('RG iframe height update', { newHeight });
+          (window as any).changeIframeHeight(newHeight);
         }
       } catch {}
     };
@@ -134,7 +136,7 @@ export function BookingWidget({ className }: { className?: string }) {
                         #rg-booking-widget {
                           z-index: 9999 !important;
                           position: relative !important;
-                          overflow: hidden !important;
+                          overflow: visible !important;
                           min-height: ${defaultHeight}px !important;
                           width: 100% !important;
                           max-width: 100% !important;
@@ -221,19 +223,18 @@ export function BookingWidget({ className }: { className?: string }) {
                           }
 
                           function send(){
-                            var h = computeDocumentHeight() + 50;
+                            var h = computeDocumentHeight() + 4;
                             try { parent.postMessage({ newHeight: h }, '*'); } catch(e){}
                           }
 
                           var ro = new ResizeObserver(send);
                           ro.observe(document.body);
                           var mo = new MutationObserver(send);
-                          mo.observe(document.body, { childList: true, subtree: true, attributes: true });
-                          window.addEventListener('load', send);
-                          window.addEventListener('click', send, true);
-                          window.addEventListener('focusin', send, true);
-                          window.addEventListener('transitionend', send, true);
-                          setInterval(send, 1000);
+                          mo.observe(document.body, { childList: true, subtree: true, attributes: true, characterData: true });
+                          ;['load','click','pointerdown','pointerup','keydown','keyup','input','focusin','focusout','transitionend','animationend','scroll','resize'].forEach(function(ev){
+                            window.addEventListener(ev, send, true);
+                          });
+                          setInterval(send, 200);
                           send();
                         })();
                       </script>
