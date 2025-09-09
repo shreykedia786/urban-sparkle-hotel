@@ -64,10 +64,10 @@
         } catch(e) {}
         return Math.max(base, Math.ceil(maxBottom));
       }
-      function send(){
-        var h = computeDocumentHeight() + 16;
-        try { parent.postMessage({ newHeight: h }, '*'); } catch(e){}
-      }
+       function send(){
+         var h = computeDocumentHeight() + 2;
+         try { parent.postMessage({ newHeight: h }, '*'); } catch(e){}
+       }
       var ro = new ResizeObserver(send);
       ro.observe(document.body);
       var mo = new MutationObserver(send);

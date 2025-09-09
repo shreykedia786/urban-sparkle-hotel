@@ -37,9 +37,7 @@ export function BookingWidget({ className }: { className?: string }) {
         "86A3B1AA-E95E-45EE-B4E7-34B40AFAC538_Iframe"
       ) as HTMLIFrameElement | null;
       if (iframe) {
-        // Add extra padding for mobile dropdowns
-        const extraHeight = isMobile ? 100 : 50;
-        iframe.style.height = `${Math.max(newHeight + extraHeight, defaultHeight)}px`;
+        iframe.style.height = `${Math.max(newHeight, defaultHeight)}px`;
       }
     };
 
@@ -222,7 +220,7 @@ export function BookingWidget({ className }: { className?: string }) {
                           }
 
                           function send(){
-                            var h = computeDocumentHeight() + 16;
+                            var h = computeDocumentHeight() + 2;
                             try { parent.postMessage({ newHeight: h }, '*'); } catch(e){}
                           }
 
