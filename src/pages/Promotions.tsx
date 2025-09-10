@@ -25,7 +25,7 @@ const promotions = [
   {
     title: "Cocktail Promotion",
     description: "Enjoy special cocktail offers at our premium bars and lounges with expertly crafted drinks",
-    image: "/src/assets/lobby-interior.jpg",
+    image: "/lobby-interior.jpg",
     type: "Food & Beverage",
     status: "Limited Time",
     details: "Experience our signature cocktails at special prices during happy hours",
@@ -35,7 +35,7 @@ const promotions = [
   {
     title: "Special Transfer Rates", 
     description: "Avail our luxury transfers during your stay with exclusive rates for hotel guests",
-    image: "/src/assets/hero-hotel-exterior.jpg",
+    image: "/hero-hotel-exterior.jpg",
     type: "Transportation",
     status: "Available",
     details: "Contact our reception for more information about our premium transfer services",
@@ -45,7 +45,7 @@ const promotions = [
   {
     title: "Early Bird Booking",
     description: "Book 30 days in advance and save significantly on your luxury stay",
-    image: "/src/assets/deluxe-triple.jpg",
+    image: "/deluxe-triple.jpg",
     type: "Accommodation",
     status: "Year Round",
     details: "Plan ahead and enjoy substantial savings on our luxury rooms and suites",
@@ -55,7 +55,7 @@ const promotions = [
   {
     title: "Extended Stay Package",
     description: "Stay 3 nights or more and enjoy complimentary benefits and exclusive amenities",
-    image: "/src/assets/grand-suite.jpg",
+    image: "/grand-suite.jpg",
     type: "Accommodation", 
     status: "Available",
     details: "Includes complimentary breakfast, late checkout, and spa credit",
@@ -65,7 +65,7 @@ const promotions = [
   {
     title: "Business Traveler Special",
     description: "Exclusive rates and benefits designed specifically for corporate guests",
-    image: "/src/assets/room-cityview.jpg",
+    image: "/room-cityview.jpg",
     type: "Corporate",
     status: "Available",
     details: "Includes high-speed WiFi, meeting room access, and business center services",
@@ -75,7 +75,7 @@ const promotions = [
   {
     title: "Weekend Getaway",
     description: "Perfect package for weekend leisure stays in the heart of Dubai",
-    image: "/src/assets/lobby-interior.jpg",
+    image: "/lobby-interior.jpg",
     type: "Leisure",
     status: "Weekends",
     details: "Includes breakfast, pool access, and complimentary minibar",
@@ -117,7 +117,7 @@ const Promotions = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
           style={{
-            backgroundImage: `url('/src/assets/lobby-interior.jpg')`
+            backgroundImage: `url('/lobby-interior.jpg')`
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80" />
@@ -198,7 +198,7 @@ const Promotions = () => {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       loading="lazy"
                       onError={(e) => {
-                        e.currentTarget.src = '/src/assets/lobby-interior.jpg';
+                        e.currentTarget.src = '/lobby-interior.jpg';
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
