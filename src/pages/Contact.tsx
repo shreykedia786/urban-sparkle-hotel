@@ -35,7 +35,7 @@ export default function Contact() {
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: "url('/src/assets/lobby-interior.jpg')"
+              backgroundImage: "url('/lobby-interior.jpg')"
             }}
           />
           
